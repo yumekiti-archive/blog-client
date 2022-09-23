@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Header from './components/Header';
-import Reports from './components/Reports';
+import Knowledge from './components/Knowledge';
 
 const App: FC = () => {
   return (
@@ -14,57 +14,16 @@ const App: FC = () => {
         ]}
       />
       <div className='w-8/12 mx-auto'>
-        <Reports
-          reports={[
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほasdasdげほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほげasdasdasdほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
-            {
-              img: 'https://source.unsplash.com/random/100x100',
-              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
-              category: 'カテゴリー',
-              path: '/report/1',
-              date: '2021/10/10',
-            },
+        <Knowledge
+          knowledge={[
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
           ]}
         />
       </div>
