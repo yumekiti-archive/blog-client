@@ -19,22 +19,28 @@ const Introduce: FC<Props> = ({ name, body, links }) => {
       />
       <p className='text-center font-bold'>
         {name}
-        ゆめきち
       </p>
       <div className='p-4'>
         <p className='text-center text-sm'>
-          {body}
-          専門学校生です。<br/>主にインフラを勉強しています。
+          {body.split('\\n').map((line) => (
+            <span key={line}>
+              {line}
+              <br />
+            </span>
+          ))}
         </p>
         <ul className='flex items-center justify-end mt-4'>
           {links.map((link) => (
             <li className='mx-2'>
-              <a href={link.path}>
+              <a href={link.path} target='_blank' rel='noreferrer'>
                 <img
                   src={link.img}
                   alt={link.name}
-                  className='w-6 h-6'
+                  className='w-6 h-6 object-cover mx-auto'
                 />
+                <p className='text-xs text-center'>
+                  {link.name}
+                </p>
               </a>
             </li>
           ))}
