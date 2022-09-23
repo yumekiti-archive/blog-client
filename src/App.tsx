@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Header from './components/Header';
-import Tags from './components/Tags';
+import Reports from './components/Reports';
 
 const App: FC = () => {
   return (
@@ -13,15 +13,58 @@ const App: FC = () => {
           { name: 'About', path: '/about' }
         ]}
       />
-      <div className='w-3/12 mx-auto'>
-        <Tags
-          tags={[
-            { name: 'React', path: '/tags/react' },
-            { name: 'TypeScript', path: '/tags/typescript' },
-            { name: 'Next.js', path: '/tags/next.js' },
-            { name: 'Tailwind CSS', path: '/tags/tailwind-css' },
-            { name: 'Vercel', path: '/tags/vercel' },
-            { name: 'GitHub', path: '/tags/github' }
+      <div className='w-8/12 mx-auto'>
+        <Reports
+          reports={[
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほasdasdげほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほげasdasdasdほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
+            {
+              img: 'https://source.unsplash.com/random/100x100',
+              title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
+              category: 'カテゴリー',
+              path: '/report/1',
+              date: '2021/10/10',
+            },
           ]}
         />
       </div>
