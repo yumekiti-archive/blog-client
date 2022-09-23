@@ -14,7 +14,7 @@ const Tags: FC<Props> = ({ tags }) => {
       <h1 className='text-md text-center py-4 font-bold'>
         タグ
       </h1>
-      <div className='px-4 flex flex-wrap items-center justify-start'>
+      <div className='px-4 flex flex-wrap items-center justify-center'>
         {tags.map((tag) => (
           <Link
             key={tag.path}

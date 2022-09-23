@@ -38,9 +38,11 @@ const Reports: FC<Props> = ({ reports }) => {
                 <div className="p-4 relative">
                   <div className="bg-white">
                     <img src={report.img} alt={report.title} className="w-full h-48 object-cover" />
-                    <p className="text-md text-center py-4 px-2">
-                      {report.title}
-                    </p>
+                    <div className="flex justify-center items-center px-4 py-2">
+                      <p className="text-md text-left">
+                        {report.title}
+                      </p>
+                    </div>
                     <p className="text-sm text-right pr-2">{report.date}</p>
                     <span className="top-6 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full">{report.category}</span>
                   </div>
