@@ -13,7 +13,7 @@ interface Props {
 
 const Knowledge: FC<Props> = ({ knowledge }) => {
   const knowledgeGroup = knowledge.reduce((acc, cur, i) => {
-    if (i % 3 === 0) {
+    if (i % 5 === 0) {
       acc.push([cur]);
     } else {
       acc[acc.length - 1].push(cur);

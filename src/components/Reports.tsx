@@ -13,7 +13,7 @@ interface Props {
 
 const Reports: FC<Props> = ({ reports }) => {
   const reportsGroup = reports.reduce((acc, cur, i) => {
-    if (i % 2 === 0) {
+    if (i % 4 === 0) {
       acc.push([cur]);
     } else {
       acc[acc.length - 1].push(cur);
