@@ -9,7 +9,7 @@ interface Props {
 const Introduce: FC<Props> = ({ name, body, links }) => {
   return (
     <div className='bg-white'>
-      <h1 className='text-md text-center py-4'>
+      <h1 className='text-md text-center py-4 font-bold'>
         自己紹介
       </h1>
       <img
