@@ -8,7 +8,7 @@ interface Props {
   }[];
 }
 
-const Category: FC<Props> = ({ categorys }) => {
+const Categories: FC<Props> = ({ categorys }) => {
   return (
     <div className='bg-white'>
       <h1 className='text-md text-center py-4 font-bold'>
@@ -34,4 +34,4 @@ const Category: FC<Props> = ({ categorys }) => {
   );
 }
 
-export default Category;
+export default Categories;
