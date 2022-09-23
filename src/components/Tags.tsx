@@ -20,7 +20,7 @@ const Tags: FC<Props> = ({ tags }) => {
             key={tag.path}
             to={tag.path}
           >
-            <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm mr-2 mb-2 hover:underline'>
+            <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm mr-2 mb-2 hover:underline cursor-pointer'>
               {tag.name}
             </p>
           </Link>
