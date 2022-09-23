@@ -1,7 +1,7 @@
 import { FC } from 'react';
 
 import Header from './components/Header';
-import Knowledge from './components/Knowledge';
+import Home from './pages/Home';
 
 const App: FC = () => {
   return (
@@ -13,20 +13,7 @@ const App: FC = () => {
           { name: 'About', path: '/about' }
         ]}
       />
-      <div className='w-8/12 mx-auto'>
-        <Knowledge
-          knowledge={[
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-            {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-          ]}
-        />
-      </div>
+      <Home />
     </>
   );
 }
