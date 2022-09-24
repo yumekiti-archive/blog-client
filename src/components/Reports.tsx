@@ -44,8 +44,8 @@ const Reports: FC<Props> = ({ reports }) => {
                   <div className="p-4 relative">
                     <div className="bg-white">
                       <img src={report.img} alt={report.title} className="w-full h-48 object-cover" />
-                      <div className="flex justify-center items-start px-4 py-2 h-40">
-                        <p className="text-md text-left line-clamp-5">
+                      <div className="flex justify-center items-start px-4 py-2 h-20">
+                        <p className="text-md text-left line-clamp-2">
                           {report.title}
                         </p>
                       </div>
@@ -59,7 +59,7 @@ const Reports: FC<Props> = ({ reports }) => {
               <div key={index} className="w-1/2">
                 <div className="p-4">
                   <div className="w-full h-48"></div>
-                  <div className="h-40"></div>
+                  <div className="h-20"></div>
                   <div className="h-6"></div>
                 </div>
               </div>
