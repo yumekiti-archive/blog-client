@@ -1,12 +1,14 @@
 import { FC } from 'react';
 
 interface Props {
-  name: string;
-  body: string;
-  links: { name: string; path: string; img: string }[];
+  introduce: {
+    name: string;
+    body: string;
+    links: { name: string; path: string; img: string }[];
+  };
 }
 
-const Introduce: FC<Props> = ({ name, body, links }) => {
+const Introduce: FC<Props> = ({ introduce }) => {
   return (
     <div className='bg-white'>
       <h1 className='text-md text-center py-4 font-bold'>
@@ -18,11 +20,11 @@ const Introduce: FC<Props> = ({ name, body, links }) => {
         className='w-32 h-32 mx-auto rounded-full object-cover'
       />
       <p className='text-center font-bold'>
-        {name}
+        {introduce.name}
       </p>
       <div className='p-4'>
         <p className='text-center text-sm'>
-          {body.split('\\n').map((line) => (
+          {introduce.body.split('\\n').map((line) => (
             <span key={line}>
               {line}
               <br />
@@ -30,7 +32,7 @@ const Introduce: FC<Props> = ({ name, body, links }) => {
           ))}
         </p>
         <ul className='flex items-center justify-end mt-4'>
-          {links.map((link) => (
+          {introduce.links.map((link) => (
             <li className='mx-2' key={link.path}>
               <a href={link.path} target='_blank' rel='noreferrer'>
                 <img

@@ -12,11 +12,13 @@ interface Props {
 }
 
 const Knowledge: FC<Props> = ({ knowledge }) => {
-  if (knowledge.length % 5 !== 0) {
-    for (let i = 0; i < knowledge.length % 5; i++) {
-      knowledge.push({ id: 0, img: "", title: "", subtitle: "", date: "" });
+  useEffect(() => {
+    if (knowledge.length % 5 !== 0) {
+      for (let i = 0; i < knowledge.length % 5; i++) {
+        knowledge.push({ id: 0, img: "", title: "", subtitle: "", date: "" });
+      }
     }
-  }
+  }, [knowledge]);
 
   const knowledgeGroup = knowledge.reduce((acc, cur, i) => {
     if (i % 5 === 0) {

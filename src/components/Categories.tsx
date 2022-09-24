@@ -2,20 +2,20 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 
 interface Props {
-  categorys: {
+  categories: {
     id: number;
     name: string;
   }[];
 }
 
-const Categories: FC<Props> = ({ categorys }) => {
+const Categories: FC<Props> = ({ categories }) => {
   return (
     <div className='bg-white'>
       <h1 className='text-md text-center py-4 font-bold'>
         カテゴリー
       </h1>
       <div className='px-4'>
-        {categorys.map((category) => (
+        {categories.map((category) => (
           <Link
             key={category.id}
             to={'category/' + category.id}

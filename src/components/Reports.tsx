@@ -12,11 +12,13 @@ interface Props {
 }
 
 const Reports: FC<Props> = ({ reports }) => {
-  if(reports.length % 4 !== 0) {
-    for(let i = 0; i < reports.length % 4; i++) {
-      reports.push({ id: 0, img: "", title: "", category: "", date: "" });
+  useEffect(() => {
+    if(reports.length % 4 !== 0) {
+      for(let i = 0; i < reports.length % 4; i++) {
+        reports.push({ id: 0, img: "", title: "", category: "", date: "" });
+      }
     }
-  }
+  }, [reports]);
 
   const reportsGroup = reports.reduce((acc, cur, i) => {
     if (i % 4 === 0) {
