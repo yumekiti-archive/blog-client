@@ -35,7 +35,7 @@ const Knowledge: FC<Props> = ({ knowledge }) => {
   return (
     <>
       <div className="bg-cyan-100">
-        <h1 className="text-md text-center py-4 font-bold">最近得た知見</h1>
+        <h1 className="text-md text-center py-4 font-bold">新規知見</h1>
         <div className="flex items-center justify-center flex-wrap">
           {knowledgeGroup[(page - 1)].map((knowledge, index) => (
             knowledge.id !== 0 ? (

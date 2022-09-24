@@ -35,7 +35,7 @@ const Reports: FC<Props> = ({ reports }) => {
   return (
     <>
       <div className="bg-cyan-100">
-        <h1 className="text-md text-center py-4 font-bold">最新の記事</h1>
+        <h1 className="text-md text-center py-4 font-bold">新規記事</h1>
         <div className="flex items-center justify-between flex-wrap">
           {reportsGroup[(page - 1)].map((report, index) => (
             report.id !== 0 ? (
@@ -43,7 +43,7 @@ const Reports: FC<Props> = ({ reports }) => {
                 <Link
                   to={'report/' + report.id}
                 >
-                  <div className="p-4 relative">
+                  <div className="px-4 pb-6 relative">
                     <div className="bg-white">
                       <img src={report.img} alt={report.title} className="w-full h-48 object-cover" />
                       <div className="flex justify-center items-start px-4 py-2 h-20">
