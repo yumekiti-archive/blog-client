@@ -24,7 +24,7 @@ const Introduce: FC<Props> = ({ introduce }) => {
       </p>
       <div className='p-4'>
         <p className='text-center text-sm'>
-          {introduce.body.split('\\n').map((line) => (
+          {introduce.body.split('\n').map((line) => (
             <span key={line}>
               {line}
               <br />
