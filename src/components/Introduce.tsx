@@ -33,7 +33,7 @@ const Introduce: FC<Props> = ({ introduce }) => {
         </p>
         <ul className='flex items-center justify-end mt-4'>
           {introduce.links.map((link) => (
-            <li className='mx-2' key={link.path}>
+            <li className='mx-2 hover:opacity-50' key={link.path}>
               <a href={link.path} target='_blank' rel='noreferrer'>
                 <img
                   src={link.img}

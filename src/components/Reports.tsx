@@ -39,7 +39,7 @@ const Reports: FC<Props> = ({ reports }) => {
         <div className="flex items-center justify-between flex-wrap">
           {reportsGroup[(page - 1)].map((report, index) => (
             report.id !== 0 ? (
-              <div key={report.id} className="w-1/2 hover:opacity-80">
+              <div key={report.id} className="w-full lg:w-1/2 hover:opacity-80">
                 <Link
                   to={'report/' + report.id}
                 >
@@ -60,7 +60,7 @@ const Reports: FC<Props> = ({ reports }) => {
             ) : (
               <div key={index} className="w-1/2">
                 <div className="px-4 pb-6">
-                  <div className="w-full h-48"></div>
+                  <div className="w-full lg:w-1/2 h-48"></div>
                   <div className="h-20"></div>
                   <div className="h-6"></div>
                 </div>

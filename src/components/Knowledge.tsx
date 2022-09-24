@@ -42,18 +42,18 @@ const Knowledge: FC<Props> = ({ knowledge }) => {
               <Link
                 key={knowledge.id}
                 to={'knowledge/' + knowledge.id}
-                className="bg-white w-full mx-6 mb-4"
+                className="bg-white w-full mx-6 mb-4 overflow-hidden hover:shadow-lg rounded-lg"
               >
                 <br />
                 <div className="flex items-center">
                   <img src={knowledge.img} alt={knowledge.title}
                     className="w-16 h-16 object-cover rounded-full mx-6"
                   />
-                  <div className="text-md text-left">
-                    <p className="text-xl">
+                  <div className="text-md text-left truncate">
+                    <p className="text-xl truncate">
                       {knowledge.title}
                     </p>
-                    <p className="text-md">
+                    <p className="text-md truncate">
                       {knowledge.subtitle}
                     </p>
                   </div>
