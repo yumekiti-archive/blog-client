@@ -31,7 +31,7 @@ const Introduce: FC<Props> = ({ name, body, links }) => {
         </p>
         <ul className='flex items-center justify-end mt-4'>
           {links.map((link) => (
-            <li className='mx-2'>
+            <li className='mx-2' key={link.path}>
               <a href={link.path} target='_blank' rel='noreferrer'>
                 <img
                   src={link.img}

@@ -1,17 +1,23 @@
-import { FC, useState } from "react";
+import { FC, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 interface Props {
   knowledge: {
+    id: number;
     img: string;
     title: string;
     subtitle: string;
-    path: string;
     date: string;
   }[];
 }
 
 const Knowledge: FC<Props> = ({ knowledge }) => {
+  if (knowledge.length % 5 !== 0) {
+    for (let i = 0; i < knowledge.length % 5; i++) {
+      knowledge.push({ id: 0, img: "", title: "", subtitle: "", date: "" });
+    }
+  }
+
   const knowledgeGroup = knowledge.reduce((acc, cur, i) => {
     if (i % 5 === 0) {
       acc.push([cur]);
@@ -19,7 +25,7 @@ const Knowledge: FC<Props> = ({ knowledge }) => {
       acc[acc.length - 1].push(cur);
     }
     return acc;
-  }, [] as { img: string; title: string; subtitle: string; path: string; date: string; }[][]);
+  }, [] as { id: number; img: string; title: string; subtitle: string; date: string }[][]);
 
   const [page, setPage] = useState(1);
   const maxPage = knowledgeGroup.length;
@@ -29,28 +35,38 @@ const Knowledge: FC<Props> = ({ knowledge }) => {
       <div className="bg-cyan-100">
         <h1 className="text-md text-center py-4 font-bold">最近得た知見</h1>
         <div className="flex items-center justify-center flex-wrap">
-          {knowledgeGroup[(page - 1)].map((knowledge) => (
-            <Link
-              key={knowledge.path}
-              to={knowledge.path}
-              className="bg-white w-full mx-6 mb-4"
-            >
-              <br />
-              <div className="flex items-center">
-                <img src={knowledge.img} alt={knowledge.title}
-                  className="w-16 h-16 object-cover rounded-full mx-6"
-                />
-                <div className="text-md text-left">
-                  <p className="text-xl">
-                    {knowledge.title}
-                  </p>
-                  <p className="text-md">
-                    {knowledge.subtitle}
-                  </p>
+          {knowledgeGroup[(page - 1)].map((knowledge, index) => (
+            knowledge.id !== 0 ? (
+              <Link
+                key={knowledge.id}
+                to={'knowledge/' + knowledge.id}
+                className="bg-white w-full mx-6 mb-4"
+              >
+                <br />
+                <div className="flex items-center">
+                  <img src={knowledge.img} alt={knowledge.title}
+                    className="w-16 h-16 object-cover rounded-full mx-6"
+                  />
+                  <div className="text-md text-left">
+                    <p className="text-xl">
+                      {knowledge.title}
+                    </p>
+                    <p className="text-md">
+                      {knowledge.subtitle}
+                    </p>
+                  </div>
                 </div>
+                <div className="h-6">
+                  <p className="text-sm text-right pr-2">{knowledge.date}</p>
+                </div>
+              </Link>
+            ) : (
+              <div key={index} className="w-full mx-6 mb-4">
+                <br />
+                <div className="h-16" />
+                <div className="h-6" />
               </div>
-              <p className="text-sm text-right pr-2">{knowledge.date}</p>
-            </Link>
+            )
           ))}
         </div>
       </div>

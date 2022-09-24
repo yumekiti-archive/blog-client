@@ -15,38 +15,38 @@ const Home: FC = () => {
             <Reports
               reports={[
                 {
+                  id: 1,
                   img: 'https://source.unsplash.com/random/100x100',
                   title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
                   category: 'カテゴリー',
-                  path: '/report/1',
                   date: '2021/10/10',
                 },
                 {
+                  id: 2,
                   img: 'https://source.unsplash.com/random/100x100',
-                  title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
+                  title: '記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
                   category: 'カテゴリー',
-                  path: '/report/1',
                   date: '2021/10/10',
                 },
                 {
+                  id: 3,
                   img: 'https://source.unsplash.com/random/100x100',
                   title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
                   category: 'カテゴリー',
-                  path: '/report/1',
                   date: '2021/10/10',
                 },
                 {
+                  id: 4,
                   img: 'https://source.unsplash.com/random/100x100',
                   title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
                   category: 'カテゴリー',
-                  path: '/report/1',
                   date: '2021/10/10',
                 },
                 {
+                  id: 5,
                   img: 'https://source.unsplash.com/random/100x100',
                   title: '記事タイトル記事タイトル記事タイトルほげほげほげほげほげほげほげ',
                   category: 'カテゴリー',
-                  path: '/report/1',
                   date: '2021/10/10',
                 },
               ]}
@@ -55,11 +55,12 @@ const Home: FC = () => {
           <div className='my-12 mx-6'>
             <Knowledge
               knowledge={[
-                {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-                {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-                {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-                {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
-                {img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', path: 'https://twitter.com/yumekiti1204', date: '2021/01/01'},
+                {id: 1, img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', date: '2021/01/01'},
+                {id: 2, img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', date: '2021/01/01'},
+                {id: 3, img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', date: '2021/01/01'},
+                {id: 4, img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', date: '2021/01/01'},
+                {id: 5, img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', date: '2021/01/01'},
+                {id: 6, img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png', title: 'title', subtitle: 'subtitle', date: '2021/01/01'},
               ]}
             />
           </div>
@@ -78,9 +79,9 @@ const Home: FC = () => {
           <div className='my-12 mx-6'>
             <Categories
               categorys={[
-                { name: 'ここにカテゴリーが入ります。(999)', path: '/category/infra' },
-                { name: 'ここにカテゴリーが入ります。(999)', path: '/category/infra' },
-                { name: 'ここにカテゴリーが入ります。(999)', path: '/category/infra' },
+                { id: 1, name: 'ここにカテゴリーが入ります。(999)' },
+                { id: 2, name: 'ここにカテゴリーが入ります。(999)' },
+                { id: 3, name: 'ここにカテゴリーが入ります。(999)' },
               ]}
             />
           </div>

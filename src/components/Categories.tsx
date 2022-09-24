@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 interface Props {
   categorys: {
+    id: number;
     name: string;
-    path: string;
   }[];
 }
 
@@ -17,8 +17,8 @@ const Categories: FC<Props> = ({ categorys }) => {
       <div className='px-4'>
         {categorys.map((category) => (
           <Link
-            key={category.path}
-            to={category.path}
+            key={category.id}
+            to={'category/' + category.id}
             className='block pb-4'
           >
             <p className='text-sm text-center cursor-pointer hover:underline flex items-center justify-center'>
