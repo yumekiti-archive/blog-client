@@ -59,7 +59,7 @@ const Reports: FC<Props> = ({ reports }) => {
               </div>
             ) : (
               <div key={index} className="w-1/2">
-                <div className="p-4">
+                <div className="px-4 pb-6">
                   <div className="w-full h-48"></div>
                   <div className="h-20"></div>
                   <div className="h-6"></div>
