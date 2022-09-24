@@ -52,7 +52,7 @@ const Reports: FC<Props> = ({ reports }) => {
                         </p>
                       </div>
                       <p className="h-6 text-sm text-right pr-2">{report.date}</p>
-                      <span className="top-6 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full">{report.category}</span>
+                      <span className="top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full">{report.category}</span>
                     </div>
                   </div>
                 </Link>
