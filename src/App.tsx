@@ -3,7 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 import Home from './pages/Home';
-import Reports from './pages/Reports';
+import ReportList from './pages/ReportList';
 
 import { getHeaderMock } from './libs/mocks/header';
 
@@ -15,7 +15,7 @@ const App: FC = () => {
       />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="reports" element={<Reports />} />
+        <Route path="reports" element={<ReportList />} />
       </Routes>
     </>
   );
