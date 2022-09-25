@@ -1,13 +1,18 @@
 import { FC, useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 
 interface Props {
   knowledge: {
     id: number;
-    img: string;
     title: string;
     subtitle: string;
+    img: string;
     date: string;
+    path: string;
+    category: string;
+    tags: {
+      id: number;
+      name: string;
+    }[];
   }[];
   groupNum: number;
 }
@@ -16,10 +21,10 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
   useEffect(() => {
     if (knowledge.length % groupNum !== 0) {
       for (let i = 0; i < knowledge.length % groupNum; i++) {
-        knowledge.push({ id: 0, img: "", title: "", subtitle: "", date: "" });
+        knowledge.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: "", tags: [] });
       }
     }
-  }, [knowledge]);
+  }, [knowledge, groupNum]);
 
   const knowledgeGroup = knowledge.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {
@@ -28,7 +33,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
       acc[acc.length - 1].push(cur);
     }
     return acc;
-  }, [] as { id: number; img: string; title: string; subtitle: string; date: string }[][]);
+  }, [] as { id: number; title: string; subtitle: string; img: string; date: string; path: string; category: string; tags: { id: number; name: string; }[]; }[][]);
 
   const [page, setPage] = useState(1);
   const maxPage = knowledgeGroup.length;
@@ -39,17 +44,16 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
         <h1 className="text-xl text-center py-4">新規知見</h1>
         <div className="flex items-center justify-center flex-wrap">
           {knowledgeGroup[(page - 1)].map((knowledge, index) => (
-            knowledge.id !== 0 ? (
+            knowledge.title.length !== 0 ? (
               <div key={knowledge.id} className="bg-white w-full mx-6 mb-4 overflow-hidden hover:shadow-lg rounded-lg animate-slide-in-elliptic-top-fwd">
-                <Link
-                  to={'knowledge/' + knowledge.id}
-                >
+                <a href={knowledge.path} target="_blank" rel="noreferrer">
                   <br />
                   <div className="flex items-center">
                     <img src={knowledge.img} alt={knowledge.title}
                       className="w-16 h-16 object-cover rounded-full mx-6"
                     />
-                    <div className="text-md text-left truncate">
+                    <div className="text-md text-left truncate w-full">
+                      <p className="text-sm">{knowledge.date}</p>
                       <p className="text-xl truncate">
                         {knowledge.title}
                       </p>
@@ -58,10 +62,19 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="h-6">
-                    <p className="text-sm text-right pr-2">{knowledge.date}</p>
+                  <div className="flex justify-end items-center text-sm">
+                    <p className="px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2">
+                      {knowledge.category}
+                    </p>
+                    <div className="overflow-hidden flex">
+                      {knowledge.tags.map((tag) => (
+                        <p className='bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2' key={tag.id}>
+                          {tag.name}
+                        </p>
+                      ))}
+                    </div>
                   </div>
-                </Link>
+                </a>
               </div>
             ) : (
               <div key={index} className="w-full mx-6 mb-4">

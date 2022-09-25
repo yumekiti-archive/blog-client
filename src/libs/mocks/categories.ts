@@ -1,6 +1,4 @@
-import { Categories } from "../../interfaces/categories"
-
-export const getCategoriesMock = (): Categories => {
+export const getCategoriesMock = () => {
   return {
     categories: [
       { id: 1, name: 'ここにカテゴリーが入ります。(999)' },

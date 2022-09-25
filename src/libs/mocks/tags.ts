@@ -1,6 +1,4 @@
-import { Tags } from "../../interfaces/tags"
-
-export const getTagsMock = (): Tags => {
+export const getTagsMock = () => {
   return {
     tags: [
       { id: 1, name: "タグ1" },

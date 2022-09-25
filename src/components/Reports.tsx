@@ -19,7 +19,7 @@ const Reports: FC<Props> = ({ reports, groupNum }) => {
         reports.push({ id: 0, img: "", title: "", category: "", date: "" });
       }
     }
-  }, [reports]);
+  }, [reports, groupNum]);
 
   const reportsGroup = reports.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {

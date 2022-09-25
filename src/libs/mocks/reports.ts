@@ -1,6 +1,4 @@
-import { Reports } from "../../interfaces/reports"
-
-export const getReportsMock = (): Reports => {
+export const getReportsMock = () => {
   return {
     reports: [
       {

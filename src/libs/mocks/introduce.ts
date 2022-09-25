@@ -1,6 +1,4 @@
-import { Introduce } from "../../interfaces/introduce"
-
-export const getIntroduceMock = (): Introduce => {
+export const getIntroduceMock = () => {
   return {
     introduce: {
       name: 'ゆめきち',
