@@ -10,8 +10,8 @@ interface Props {
 
 const Categories: FC<Props> = ({ categories }) => {
   return (
-    <div className='bg-white'>
-      <h1 className='text-md text-center py-4 font-bold'>
+    <div className='bg-white rounded'>
+      <h1 className='text-xl text-center py-4'>
         カテゴリー
       </h1>
       <div className='px-4'>

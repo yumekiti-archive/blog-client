@@ -20,11 +20,13 @@ const Home: FC = () => {
           <div className='my-12 mx-6'>
             <Reports
               reports={getReportsMock().reports}
+              groupNum={4}
             />
           </div>
           <div className='my-12 mx-6'>
             <Knowledge
               knowledge={getKnowledgeMock().knowledge}
+              groupNum={5}
             />
           </div>
         </div>

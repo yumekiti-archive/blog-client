@@ -9,19 +9,20 @@ interface Props {
     subtitle: string;
     date: string;
   }[];
+  groupNum: number;
 }
 
-const Knowledge: FC<Props> = ({ knowledge }) => {
+const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
   useEffect(() => {
-    if (knowledge.length % 5 !== 0) {
-      for (let i = 0; i < knowledge.length % 5; i++) {
+    if (knowledge.length % groupNum !== 0) {
+      for (let i = 0; i < knowledge.length % groupNum; i++) {
         knowledge.push({ id: 0, img: "", title: "", subtitle: "", date: "" });
       }
     }
   }, [knowledge]);
 
   const knowledgeGroup = knowledge.reduce((acc, cur, i) => {
-    if (i % 5 === 0) {
+    if (i % groupNum === 0) {
       acc.push([cur]);
     } else {
       acc[acc.length - 1].push(cur);
@@ -34,34 +35,34 @@ const Knowledge: FC<Props> = ({ knowledge }) => {
 
   return (
     <>
-      <div className="bg-cyan-100">
-        <h1 className="text-md text-center py-4 font-bold">新規知見</h1>
+      <div className="bg-cyan-100 rounded">
+        <h1 className="text-xl text-center py-4">新規知見</h1>
         <div className="flex items-center justify-center flex-wrap">
           {knowledgeGroup[(page - 1)].map((knowledge, index) => (
             knowledge.id !== 0 ? (
-              <Link
-                key={knowledge.id}
-                to={'knowledge/' + knowledge.id}
-                className="bg-white w-full mx-6 mb-4 overflow-hidden hover:shadow-lg rounded-lg"
-              >
-                <br />
-                <div className="flex items-center">
-                  <img src={knowledge.img} alt={knowledge.title}
-                    className="w-16 h-16 object-cover rounded-full mx-6"
-                  />
-                  <div className="text-md text-left truncate">
-                    <p className="text-xl truncate">
-                      {knowledge.title}
-                    </p>
-                    <p className="text-md truncate">
-                      {knowledge.subtitle}
-                    </p>
+              <div key={knowledge.id} className="bg-white w-full mx-6 mb-4 overflow-hidden hover:shadow-lg rounded-lg animate-slide-in-elliptic-top-fwd">
+                <Link
+                  to={'knowledge/' + knowledge.id}
+                >
+                  <br />
+                  <div className="flex items-center">
+                    <img src={knowledge.img} alt={knowledge.title}
+                      className="w-16 h-16 object-cover rounded-full mx-6"
+                    />
+                    <div className="text-md text-left truncate">
+                      <p className="text-xl truncate">
+                        {knowledge.title}
+                      </p>
+                      <p className="text-md truncate">
+                        {knowledge.subtitle}
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="h-6">
-                  <p className="text-sm text-right pr-2">{knowledge.date}</p>
-                </div>
-              </Link>
+                  <div className="h-6">
+                    <p className="text-sm text-right pr-2">{knowledge.date}</p>
+                  </div>
+                </Link>
+              </div>
             ) : (
               <div key={index} className="w-full mx-6 mb-4">
                 <br />
@@ -85,6 +86,7 @@ const Knowledge: FC<Props> = ({ knowledge }) => {
           :
           <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2"></p>
         }
+          <p className="text-md mr-2">{page} / {maxPage}</p>
         {
           page < maxPage ?
           <button

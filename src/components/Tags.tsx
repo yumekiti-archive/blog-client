@@ -10,17 +10,17 @@ interface Props {
 
 const Tags: FC<Props> = ({ tags }) => {
   return (
-    <div className='bg-white'>
-      <h1 className='text-md text-center py-4 font-bold'>
+    <div className='bg-white rounded'>
+      <h1 className='text-xl text-center py-4'>
         タグ
       </h1>
-      <div className='px-4 flex flex-wrap items-center justify-center'>
+      <div className='px-4 flex flex-wrap items-center justify-between'>
         {tags.map((tag) => (
           <Link
             key={tag.id}
             to={'tag/' + tag.id}
           >
-            <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm mr-2 mb-2 hover:underline cursor-pointer'>
+            <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm mb-2 hover:underline cursor-pointer'>
               {tag.name}
             </p>
           </Link>

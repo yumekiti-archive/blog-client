@@ -10,7 +10,7 @@ export const get = (): Promise<Header> => {
 export const getHeaderMock = (): Header => {
   return {
     header: {
-      title: 'ゆめきちのブログっぽいなにか',
+      title: 'ブログっぽいなにか',
       links: [
         { name: 'Home', path: '/' },
         { name: 'About', path: '/about' }
