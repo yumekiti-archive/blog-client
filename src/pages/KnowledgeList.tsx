@@ -9,6 +9,7 @@ import Knowledge from "../components/Knowledge";
 import Introduce from "../components/Introduce";
 import Categories from "../components/Categories";
 import Tags from "../components/Tags";
+import Search from "../components/Search";
 
 const KnowledgeList: FC = () => {
   return (
@@ -27,6 +28,9 @@ const KnowledgeList: FC = () => {
             <Introduce
               introduce={getIntroduceMock()}
             />
+          </div>
+          <div className='my-12 mx-6'>
+            <Search />
           </div>
           <div className='my-12 mx-6'>
             <Categories

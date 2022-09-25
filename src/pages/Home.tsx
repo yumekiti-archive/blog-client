@@ -5,6 +5,7 @@ import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Reports from '../components/Reports';
 import Knowledge from '../components/Knowledge';
+import Search from '../components/Search';
 
 import { getReportsMock } from '../libs/mocks/reports';
 import { getCategoriesMock } from '../libs/mocks/categories';
@@ -35,6 +36,9 @@ const Home: FC = () => {
             <Introduce
               introduce={getIntroduceMock()}
             />
+          </div>
+          <div className='my-12 mx-6'>
+            <Search />
           </div>
           <div className='my-12 mx-6'>
             <Categories
