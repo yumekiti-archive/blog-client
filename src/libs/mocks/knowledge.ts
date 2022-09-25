@@ -1,12 +1,5 @@
-import client from "./client"
-import { Knowledge } from "../interfaces/knowledge"
+import { Knowledge } from "../../interfaces/knowledge"
 
-// 取得
-export const get = (): Promise<Knowledge> => {
-  return client.get("/")
-}
-
-// モック
 export const getKnowledgeMock = (): Knowledge => {
   return {
     knowledge: [

@@ -1,12 +1,5 @@
-import client from "./client"
-import { Introduce } from "../interfaces/introduce"
+import { Introduce } from "../../interfaces/introduce"
 
-// 取得
-export const get = (): Promise<Introduce> => {
-  return client.get("/")
-}
-
-// モック
 export const getIntroduceMock = (): Introduce => {
   return {
     introduce: {

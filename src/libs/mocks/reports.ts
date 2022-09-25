@@ -1,12 +1,5 @@
-import client from "./client"
-import { Reports } from "../interfaces/reports"
+import { Reports } from "../../interfaces/reports"
 
-// 取得
-export const getReports = (): Promise<Reports> => {
-  return client.get("/")
-}
-
-// モック
 export const getReportsMock = (): Reports => {
   return {
     reports: [

@@ -1,12 +1,5 @@
-import client from "./client"
-import { Tags } from "../interfaces/tags"
+import { Tags } from "../../interfaces/tags"
 
-// 取得
-export const get = (): Promise<Tags> => {
-  return client.get("/")
-}
-
-// モック
 export const getTagsMock = (): Tags => {
   return {
     tags: [

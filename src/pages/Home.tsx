@@ -6,11 +6,11 @@ import Tags from '../components/Tags';
 import Reports from '../components/Reports';
 import Knowledge from '../components/Knowledge';
 
-import { getReportsMock } from '../libs/reports';
-import { getCategoriesMock } from '../libs/categories';
-import { getIntroduceMock } from '../libs/introduce';
-import { getKnowledgeMock } from '../libs/knowledge';
-import { getTagsMock } from '../libs/tags';
+import { getReportsMock } from '../libs/mocks/reports';
+import { getCategoriesMock } from '../libs/mocks/categories';
+import { getIntroduceMock } from '../libs/mocks/introduce';
+import { getKnowledgeMock } from '../libs/mocks/knowledge';
+import { getTagsMock } from '../libs/mocks/tags';
 
 const Home: FC = () => {
   return (
