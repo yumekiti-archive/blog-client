@@ -18,7 +18,7 @@ const Categories: FC<Props> = ({ categories }) => {
         {categories.map((category) => (
           <Link
             key={category.id}
-            to={'category/' + category.id}
+            to={'/category/' + category.id}
             className='block pb-4'
           >
             <p className='text-sm text-center cursor-pointer hover:underline flex items-center justify-center'>

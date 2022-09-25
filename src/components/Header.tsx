@@ -22,7 +22,7 @@ const Header: FC<Props> = ({ header }) => {
           {header.links.map((link) => (
             <Link
               key={link.path}
-              to={link.path}
+              to={`/${link.path}`}
               className='p-4 hover:bg-gray-100'
             >
               {link.name}

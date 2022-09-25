@@ -42,7 +42,7 @@ const Reports: FC<Props> = ({ reports, groupNum }) => {
             report.id !== 0 ? (
               <div key={report.id} className="w-full lg:w-1/2 animate-slide-in-elliptic-top-fwd">
                 <Link
-                  to={'report/' + report.id}
+                  to={'/report/' + report.id}
                   className="hover:opacity-80"
                 >
                   <div className="px-4 pb-6 relative">

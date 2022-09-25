@@ -18,7 +18,7 @@ const Tags: FC<Props> = ({ tags }) => {
         {tags.map((tag) => (
           <Link
             key={tag.id}
-            to={'tag/' + tag.id}
+            to={'/tag/' + tag.id}
           >
             <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm mb-2 hover:underline cursor-pointer'>
               {tag.name}
