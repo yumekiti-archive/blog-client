@@ -14,8 +14,19 @@ const Report: FC = () => {
               <p className="text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2">カテゴリー</p>
             </div>
             {/* markdown */}
-            <div className="p-4">
+            <div className="p-4 min-h-screen">
               asdasd  
+            </div>
+            <div className="flex justify-start items-center flex-wrap bg-white rounded">
+              <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer ml-2 my-2'>
+                タグ
+              </p>
+              <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer ml-2 my-2'>
+                タグ
+              </p>
+              <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer ml-2 my-2'>
+                タグ
+              </p>
             </div>
           </div>
         </div>
