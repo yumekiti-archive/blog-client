@@ -1,24 +1,24 @@
 import { FC } from "react";
 
-import { getReportsMock } from "../libs/mocks/reports";
+import { getKnowledgeMock } from "../libs/mocks/knowledge";
 import { getCategoriesMock } from "../libs/mocks/categories";
 import { getIntroduceMock } from "../libs/mocks/introduce";
 import { getTagsMock } from "../libs/mocks/tags";
 
-import Reports from "../components/Reports";
+import Knowledge from "../components/Knowledge";
 import Introduce from "../components/Introduce";
 import Categories from "../components/Categories";
 import Tags from "../components/Tags";
 
-const ReportList: FC = () => {
+const KnowledgeList: FC = () => {
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports
-              reports={getReportsMock()}
-              groupNum={8}
+            <Knowledge
+              knowledge={getKnowledgeMock()}
+              groupNum={10}
             />
           </div>
         </div>
@@ -44,4 +44,4 @@ const ReportList: FC = () => {
   );
 }
 
-export default ReportList;
+export default KnowledgeList;

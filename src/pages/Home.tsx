@@ -19,13 +19,13 @@ const Home: FC = () => {
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
             <Reports
-              reports={getReportsMock().reports}
+              reports={getReportsMock()}
               groupNum={4}
             />
           </div>
           <div className='my-12 mx-6'>
             <Knowledge
-              knowledge={getKnowledgeMock().knowledge}
+              knowledge={getKnowledgeMock()}
               groupNum={5}
             />
           </div>
@@ -33,17 +33,17 @@ const Home: FC = () => {
         <div className='w-full lg:w-1/4 mx-auto'>
           <div className='my-12 mx-6'>
             <Introduce
-              introduce={getIntroduceMock().introduce}
+              introduce={getIntroduceMock()}
             />
           </div>
           <div className='my-12 mx-6'>
             <Categories
-              categories={getCategoriesMock().categories}
+              categories={getCategoriesMock()}
             />
           </div>
           <div className='my-12 mx-6'>
             <Tags
-              tags={getTagsMock().tags}
+              tags={getTagsMock()}
             />
           </div>
         </div>

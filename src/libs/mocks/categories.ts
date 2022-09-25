@@ -1,9 +1,12 @@
 export const getCategoriesMock = () => {
-  return {
-    categories: [
-      { id: 1, name: 'ここにカテゴリーが入ります。(999)' },
-      { id: 2, name: 'ここにカテゴリーが入ります。(999)' },
-      { id: 3, name: 'ここにカテゴリーが入ります。(999)' },
-    ],
+  const data = [];
+  
+  for (let i = 1; i < 10; i++) {
+    data.push({
+      id: i,
+      name: `category${i}`,
+    });
   }
+
+  return data;
 }

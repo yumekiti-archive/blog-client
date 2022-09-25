@@ -52,7 +52,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
                     <img src={knowledge.img} alt={knowledge.title}
                       className="w-16 h-16 object-cover rounded-full mx-6"
                     />
-                    <div className="text-md text-left truncate w-full">
+                    <div className="text-left truncate w-full">
                       <p className="text-sm">{knowledge.date}</p>
                       <p className="text-xl truncate">
                         {knowledge.title}
@@ -62,13 +62,13 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex justify-end items-center text-sm">
-                    <p className="px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2">
+                  <div className="flex justify-end items-center">
+                    <p className="text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2">
                       {knowledge.category}
                     </p>
                     <div className="overflow-hidden flex">
                       {knowledge.tags.map((tag) => (
-                        <p className='bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2' key={tag.id}>
+                        <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2' key={tag.id}>
                           {tag.name}
                         </p>
                       ))}
@@ -77,10 +77,19 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
                 </a>
               </div>
             ) : (
-              <div key={index} className="w-full mx-6 mb-4">
+              <div key={index} className="w-full mx-6 mb-4 overflow-hidden">
                 <br />
-                <div className="h-16" />
-                <div className="h-6" />
+                <div className="flex items-center">
+                  <div className="w-16 h-16" />
+                  <div className="text-left">
+                    <p className="text-sm">&nbsp;</p>
+                    <p className="text-xl">&nbsp;</p>
+                    <p className="text-md">&nbsp;</p>
+                  </div>
+                </div>
+                <div className="flex justify-end items-center">
+                  <p className="text-sm px-3 py-1 mx-2 my-2">&nbsp;</p>
+                </div>
               </div>
             )
           ))}

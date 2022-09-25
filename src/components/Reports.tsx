@@ -53,7 +53,7 @@ const Reports: FC<Props> = ({ reports, groupNum }) => {
                           {report.title}
                         </p>
                       </div>
-                      <p className="h-6 text-sm text-right pr-2">{report.date}</p>
+                      <p className="text-sm text-right pr-2 pb-1">{report.date}</p>
                       <span className="top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full">
                         {report.category}
                       </span>
@@ -64,9 +64,13 @@ const Reports: FC<Props> = ({ reports, groupNum }) => {
             ) : (
               <div key={index} className="w-full lg:w-1/2">
                 <div className="px-4 pb-6">
-                  <div className="w-full h-48"></div>
-                  <div className="h-20"></div>
-                  <div className="h-6"></div>
+                  <div>
+                    <div className="h-48" />
+                    <div className="px-4 py-2 h-20">
+                      <p className="text-md">&nbsp;</p>
+                    </div>
+                    <p className="text-sm pr-2 pb-1">&nbsp;</p>
+                  </div>
                 </div>
               </div>
             )
