@@ -8,7 +8,7 @@ export const getKnowledgeMock = () => {
     subtitle: 'subtitle',
     date: '2021/01/01', 
     path: 'https://twitter.com/yumekiti1204',
-    category: 'category',
+    category: { id: 1, name: 'category'},
     tags: [{id: 1, name: 'tag1'}, {id: 2, name: 'tag2'}, {id: 3, name: 'tag2'}, {id: 4, name: 'tag2'}, {id: 5, name: 'tag2'}, {id: 6, name: 'tag2'}, {id: 7, name: 'tag2'}]
   });
 
@@ -20,7 +20,7 @@ export const getKnowledgeMock = () => {
       subtitle: `subtitle${i}`,
       date: '2020-01-01',
       path: 'https://twitter.com/yumekiti1204',
-      category: 'category',
+      category: { id: 1, name: 'category'},
       tags: [{ id: 1, name: 'tag1' }, { id: 2, name: 'tag2' }],
     });
   }

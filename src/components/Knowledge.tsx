@@ -1,4 +1,5 @@
 import { FC, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
   knowledge: {
@@ -8,7 +9,10 @@ interface Props {
     img: string;
     date: string;
     path: string;
-    category: string;
+    category: {
+      id: number,
+      name: string,
+    };
     tags: {
       id: number;
       name: string;
@@ -21,7 +25,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
   useEffect(() => {
     if (knowledge.length % groupNum !== 0) {
       for (let i = 0; i < knowledge.length % groupNum; i++) {
-        knowledge.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: "", tags: [] });
+        knowledge.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: {id:0, name:""}, tags: [] });
       }
     }
   }, [knowledge, groupNum]);
@@ -33,7 +37,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
       acc[acc.length - 1].push(cur);
     }
     return acc;
-  }, [] as { id: number; title: string; subtitle: string; img: string; date: string; path: string; category: string; tags: { id: number; name: string; }[]; }[][]);
+  }, [] as { id: number; title: string; subtitle: string; img: string; date: string; path: string; category: { id: number; name: string; }; tags: { id: number; name: string; }[]; }[][]);
 
   const [page, setPage] = useState(1);
   const maxPage = knowledgeGroup.length;
@@ -62,19 +66,25 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
                       </p>
                     </div>
                   </div>
-                  <div className="flex justify-end items-center">
-                    <p className="text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2">
-                      {knowledge.category}
-                    </p>
-                    <div className="overflow-hidden flex">
-                      {knowledge.tags.map((tag) => (
-                        <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2' key={tag.id}>
-                          {tag.name}
-                        </p>
-                      ))}
-                    </div>
-                  </div>
                 </a>
+                <div className="flex justify-end items-center">
+                  <p className="text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer">
+                    <Link to={`/category/${knowledge.category.id}`}>
+                      {knowledge.category.name}
+                    </Link>
+                  </p>
+                  <div className="overflow-hidden flex">
+                    {knowledge.tags.map((tag) => (
+                      <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline key={tag.id}'>
+                        <Link
+                          to={'/tag/' + tag.id}
+                        >
+                          {tag.name}
+                        </Link>
+                      </p>
+                    ))}
+                  </div>
+                </div>
               </div>
             ) : (
               <div key={index} className="w-full mx-6 mb-4 overflow-hidden">
