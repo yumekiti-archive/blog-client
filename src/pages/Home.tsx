@@ -22,6 +22,7 @@ const Home: FC = () => {
             <Reports
               reports={getReportsMock()}
               groupNum={4}
+              findReports={{ category: 0, tag: 0 }}
             />
           </div>
           <div className='my-12 mx-6'>

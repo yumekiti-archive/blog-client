@@ -20,6 +20,7 @@ const ReportList: FC = () => {
             <Reports
               reports={getReportsMock()}
               groupNum={8}
+              findReports={{ category: 0, tag: 0 }}
             />
           </div>
         </div>

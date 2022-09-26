@@ -6,29 +6,56 @@ interface Props {
     id: number;
     img: string;
     title: string;
-    category: string;
     date: string;
+    category: {
+      id: number;
+      name: string;
+    };
+    tags: {
+      id: number;
+      name: string;
+    }[];
   }[];
   groupNum: number;
+  findReports: {
+    category: number;
+    tag: number;
+  }
 }
 
-const Reports: FC<Props> = ({ reports, groupNum }) => {
+const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
+  const [reportsData, setReportsData] = useState(reports);
   useEffect(() => {
-    if(reports.length % groupNum !== 0) {
-      for(let i = 0; i < reports.length % groupNum; i++) {
-        reports.push({ id: 0, img: "", title: "", category: "", date: "" });
+    // find
+    setReportsData(reportsData.filter((report) => {
+      if (findReports.category !== 0) {
+        if (report.category.id === findReports.category) {
+          return report;
+        }
+      } else if (findReports.tag !== 0) {
+        if (report.tags.find((tag) => tag.id === findReports.tag)) {
+          return report;
+        }
+      } else {
+        return report;
+      }
+    }));
+
+    if(reportsData.length % groupNum !== 0) {
+      for(let i = 0; i < reportsData.length % groupNum; i++) {
+        reportsData.push({ id: 0, img: "", title: "", date: "", category: { id: 0, name: "" }, tags: [] });
       }
     }
-  }, [reports, groupNum]);
+  }, [reportsData, groupNum]);
 
-  const reportsGroup = reports.reduce((acc, cur, i) => {
+  const reportsGroup = reportsData.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {
       acc.push([cur]);
     } else {
       acc[acc.length - 1].push(cur);
     }
     return acc;
-  }, [] as { id: number; img: string; title: string; category: string; date: string }[][]);
+  }, [] as { id: number; img: string; title: string; date: string; category: { id: number; name: string; }; tags: { id: number; name: string; }[]; }[][]);
 
   const [page, setPage] = useState(1);
   const maxPage = reportsGroup.length;
@@ -55,7 +82,7 @@ const Reports: FC<Props> = ({ reports, groupNum }) => {
                       </div>
                       <p className="text-sm text-right pr-2 pb-1">{report.date}</p>
                       <span className="top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full">
-                        {report.category}
+                        {report.category.name}
                       </span>
                     </div>
                   </div>
