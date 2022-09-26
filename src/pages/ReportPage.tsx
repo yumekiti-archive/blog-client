@@ -16,7 +16,21 @@ const ReportList: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Report />
+            <Report
+              report={{
+                title: "たいとるだよ",
+                date: "2022/12/12",
+                body: "hoge",
+                category: {
+                  id: 1,
+                  name: "this is category",
+                },
+                tags: [
+                  {id: 1, name: "hoge"},
+                  {id: 2, name: "hoge"},
+                ]
+              }}
+            />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
