@@ -27,27 +27,23 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
   const [reportsData, setReportsData] = useState(reports);
   useEffect(() => {
     // find
-    setReportsData(reportsData.filter((report) => {
-      if (findReports.category !== 0) {
-        if (report.category.id === findReports.category) {
-          return report;
-        }
-      } else if (findReports.tag !== 0) {
-        if (report.tags.find((tag) => tag.id === findReports.tag)) {
-          return report;
-        }
-      } else {
-        return report;
-      }
-    }));
+    if (findReports.category !== 0) {
+      setReportsData(reports.filter((report) => report.category.id === findReports.category));
+    } else if (findReports.tag !== 0) {
+      setReportsData(reports.filter((report) => report.tags.some((tag) => tag.id === findReports.tag)));
+    } else {
+      setReportsData(reports);
+    }
 
+    // pseudo-element
     if(reportsData.length % groupNum !== 0) {
       for(let i = 0; i < reportsData.length % groupNum; i++) {
         reportsData.push({ id: 0, img: "", title: "", date: "", category: { id: 0, name: "" }, tags: [] });
       }
     }
-  }, [reportsData, groupNum]);
+  }, [reports, findReports]);
 
+  // group
   const reportsGroup = reportsData.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {
       acc.push([cur]);
@@ -57,6 +53,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
     return acc;
   }, [] as { id: number; img: string; title: string; date: string; category: { id: number; name: string; }; tags: { id: number; name: string; }[]; }[][]);
 
+  // page
   const [page, setPage] = useState(1);
   const maxPage = reportsGroup.length;
 

@@ -20,6 +20,7 @@ const KnowledgeList: FC = () => {
             <Knowledge
               knowledge={getKnowledgeMock()}
               groupNum={10}
+              findKnowledge={{ category: 0, tag: 0 }}
             />
           </div>
         </div>

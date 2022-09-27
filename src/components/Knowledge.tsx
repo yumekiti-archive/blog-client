@@ -19,18 +19,34 @@ interface Props {
     }[];
   }[];
   groupNum: number;
+  findKnowledge: {
+    category: number;
+    tag: number;
+  }
 }
 
-const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
+const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
+  const [knowledgeData, setKnowledgeData] = useState(knowledge);
+
   useEffect(() => {
-    if (knowledge.length % groupNum !== 0) {
-      for (let i = 0; i < knowledge.length % groupNum; i++) {
-        knowledge.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: {id:0, name:""}, tags: [] });
+    // find
+    if (findKnowledge.category !== 0) {
+      setKnowledgeData(knowledge.filter((report) => report.category.id === findKnowledge.category));
+    } else if (findKnowledge.tag !== 0) {
+      setKnowledgeData(knowledge.filter((report) => report.tags.some((tag) => tag.id === findKnowledge.tag)));
+    } else {
+      setKnowledgeData(knowledge);
+    }
+
+    // pseudo-element
+    if (knowledgeData.length % groupNum !== 0) {
+      for (let i = 0; i < knowledgeData.length % groupNum; i++) {
+        knowledgeData.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: {id:0, name:""}, tags: [] });
       }
     }
-  }, [knowledge, groupNum]);
+  }, [knowledgeData, groupNum]);
 
-  const knowledgeGroup = knowledge.reduce((acc, cur, i) => {
+  const knowledgeGroup = knowledgeData.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {
       acc.push([cur]);
     } else {
@@ -75,7 +91,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum }) => {
                   </p>
                   <div className="overflow-hidden flex">
                     {knowledge.tags.map((tag) => (
-                      <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline key={tag.id}'>
+                      <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline' key={tag.id}>
                         <Link
                           to={'/tag/' + tag.id}
                         >
