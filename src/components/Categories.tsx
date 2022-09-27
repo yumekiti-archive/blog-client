@@ -14,12 +14,12 @@ const Categories: FC<Props> = ({ categories }) => {
       <h1 className='text-xl text-center py-4'>
         カテゴリー
       </h1>
-      <div className='px-4'>
+      <div className='px-4 flex flex-wrap'>
         {categories.map((category) => (
           <Link
             key={category.id}
             to={'/category/' + category.id}
-            className='block pb-4'
+            className='block pb-4 w-1/3 lg:w-full'
           >
             <p className='text-sm text-center cursor-pointer hover:underline flex items-center justify-center'>
               <span className='flex items-center justify-center'>

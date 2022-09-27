@@ -25,6 +25,7 @@ interface Props {
 
 const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
   const [reportsData, setReportsData] = useState(reports);
+
   useEffect(() => {
     // find
     if (findReports.category !== 0) {

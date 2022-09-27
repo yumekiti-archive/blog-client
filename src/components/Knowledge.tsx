@@ -31,9 +31,9 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
   useEffect(() => {
     // find
     if (findKnowledge.category !== 0) {
-      setKnowledgeData(knowledge.filter((report) => report.category.id === findKnowledge.category));
+      setKnowledgeData(knowledge.filter((knowledge) => knowledge.category.id === findKnowledge.category));
     } else if (findKnowledge.tag !== 0) {
-      setKnowledgeData(knowledge.filter((report) => report.tags.some((tag) => tag.id === findKnowledge.tag)));
+      setKnowledgeData(knowledge.filter((knowledge) => knowledge.tags.some((tag) => tag.id === findKnowledge.tag)));
     } else {
       setKnowledgeData(knowledge);
     }
@@ -44,8 +44,9 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
         knowledgeData.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: {id:0, name:""}, tags: [] });
       }
     }
-  }, [knowledgeData, groupNum]);
+  }, [knowledge, findKnowledge]);
 
+  // gorup
   const knowledgeGroup = knowledgeData.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {
       acc.push([cur]);
@@ -55,6 +56,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
     return acc;
   }, [] as { id: number; title: string; subtitle: string; img: string; date: string; path: string; category: { id: number; name: string; }; tags: { id: number; name: string; }[]; }[][]);
 
+  // page
   const [page, setPage] = useState(1);
   const maxPage = knowledgeGroup.length;
 
