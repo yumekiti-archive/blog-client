@@ -1,60 +1,41 @@
 import { FC, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Knowledge from "../libs/interfaces/knowledge";
 
 interface Props {
-  knowledge: {
-    id: number;
-    title: string;
-    subtitle: string;
-    img: string;
-    date: string;
-    path: string;
-    category: {
-      id: number,
-      name: string,
-    };
-    tags: {
-      id: number;
-      name: string;
-    }[];
-  }[];
+  knowledge: Knowledge[];
   groupNum: number;
   findKnowledge: {
+    search: string;
     category: number;
     tag: number;
   }
 }
 
-const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
+const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
   const [knowledgeData, setKnowledgeData] = useState(knowledge);
 
   useEffect(() => {
     // find
-    if (findKnowledge.category !== 0) {
-      setKnowledgeData(knowledge.filter((knowledge) => knowledge.category.id === findKnowledge.category));
-    } else if (findKnowledge.tag !== 0) {
-      setKnowledgeData(knowledge.filter((knowledge) => knowledge.tags.some((tag) => tag.id === findKnowledge.tag)));
-    } else {
-      setKnowledgeData(knowledge);
-    }
+    if (findKnowledge.category !== 0) setKnowledgeData(knowledge.filter((knowledge) => knowledge.category.id === findKnowledge.category));
+    else if (findKnowledge.tag !== 0) setKnowledgeData(knowledge.filter((knowledge) => knowledge.tags.some((tag) => tag.id === findKnowledge.tag)));
+    else if (findKnowledge.search !== '') setKnowledgeData(knowledge.filter((knowledge) => knowledge.title.includes(findKnowledge.search)));
+    else setKnowledgeData(knowledge);
 
     // pseudo-element
     if (knowledgeData.length % groupNum !== 0) {
       for (let i = 0; i < knowledgeData.length % groupNum; i++) {
-        knowledgeData.push({ id: 0, title: "", subtitle: "", img: "", date: "", path: "", category: {id:0, name:""}, tags: [] });
+        knowledgeData.push({ id: 0, title: "", content: "", img: "", date: "", path: "", category: {id:0, name:""}, tags: [] });
       }
     }
   }, [knowledge, findKnowledge]);
 
   // gorup
   const knowledgeGroup = knowledgeData.reduce((acc, cur, i) => {
-    if (i % groupNum === 0) {
-      acc.push([cur]);
-    } else {
-      acc[acc.length - 1].push(cur);
-    }
+    if (i % groupNum === 0) acc.push([cur]);
+    else acc[acc.length - 1].push(cur);
     return acc;
-  }, [] as { id: number; title: string; subtitle: string; img: string; date: string; path: string; category: { id: number; name: string; }; tags: { id: number; name: string; }[]; }[][]);
+  }, [] as Knowledge[][]);
 
   // page
   const [page, setPage] = useState(1);
@@ -80,7 +61,7 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
                         {knowledge.title}
                       </p>
                       <p className="text-md truncate">
-                        {knowledge.subtitle}
+                        {knowledge.content}
                       </p>
                     </div>
                   </div>
@@ -154,4 +135,4 @@ const Knowledge: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
   );
 }
 
-export default Knowledge;
+export default KnowledgeComponent;
