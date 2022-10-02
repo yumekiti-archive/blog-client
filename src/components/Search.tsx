@@ -1,13 +1,11 @@
-import { FC, useState } from "react";
+import { FC, useState } from 'react';
 
 const Search: FC = () => {
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   return (
     <div className='bg-white rounded'>
-      <h1 className='text-xl text-center py-4'>
-        検索
-      </h1>
+      <h1 className='text-xl text-center py-4'>検索</h1>
       <div className='flex justify-center pb-4'>
         <input
           type='text'
@@ -16,7 +14,7 @@ const Search: FC = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           onKeyPress={(e) => {
-            if (e.key === "Enter") {
+            if (e.key === 'Enter') {
               console.log(search);
             }
           }}
@@ -24,6 +22,6 @@ const Search: FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default Search;

@@ -1,15 +1,15 @@
-import { FC } from "react";
+import { FC } from 'react';
 
-import { getReportsMock } from "../libs/mocks/reports";
-import { getCategoriesMock } from "../libs/mocks/categories";
-import { getIntroduceMock } from "../libs/mocks/introduce";
-import { getTagsMock } from "../libs/mocks/tags";
+import { getReportsMock } from '../libs/mocks/reports';
+import { getCategoriesMock } from '../libs/mocks/categories';
+import { getIntroduceMock } from '../libs/mocks/introduce';
+import { getTagsMock } from '../libs/mocks/tags';
 
-import Reports from "../components/Reports";
-import Introduce from "../components/Introduce";
-import Categories from "../components/Categories";
-import Tags from "../components/Tags";
-import Search from "../components/Search";
+import Reports from '../components/Reports';
+import Introduce from '../components/Introduce';
+import Categories from '../components/Categories';
+import Tags from '../components/Tags';
+import Search from '../components/Search';
 
 const ReportList: FC = () => {
   return (
@@ -17,36 +17,26 @@ const ReportList: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports
-              reports={getReportsMock()}
-              groupNum={8}
-              findReports={{ category: 0, tag: 0, search: '' }}
-            />
+            <Reports reports={getReportsMock()} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Introduce
-              introduce={getIntroduceMock()}
-            />
+            <Introduce introduce={getIntroduceMock()} />
           </div>
           <div className='my-12 mx-6'>
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories
-              categories={getCategoriesMock()}
-            />
+            <Categories categories={getCategoriesMock()} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags
-              tags={getTagsMock()}
-            />
+            <Tags tags={getTagsMock()} />
           </div>
         </div>
       </div>
     </>
   );
-}
+};
 
 export default ReportList;

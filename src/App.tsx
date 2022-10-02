@@ -12,17 +12,15 @@ import { getHeaderMock } from './libs/mocks/header';
 const App: FC = () => {
   return (
     <>
-      <Header
-        header={getHeaderMock()}
-      />
+      <Header header={getHeaderMock()} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/reports" element={<ReportList />} />
-        <Route path="/report/:id" element={<ReportPage />} />
-        <Route path="/knowledge" element={<KnowledgeList />} />
+        <Route path='/' element={<Home />} />
+        <Route path='/reports' element={<ReportList />} />
+        <Route path='/report/:id' element={<ReportPage />} />
+        <Route path='/knowledge' element={<KnowledgeList />} />
       </Routes>
     </>
   );
-}
+};
 
 export default App;

@@ -8,10 +8,18 @@ export const getKnowledgeMock = (): Knowledge[] => {
     img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png',
     title: 'titasdasdasdasdasdasdasdasdasdSle',
     content: 'subtitle',
-    date: '2021/01/01', 
+    date: '2021/01/01',
     path: 'https://twitter.com/yumekiti1204',
-    category: { id: 1, name: 'category'},
-    tags: [{id: 1, name: 'tag1'}, {id: 2, name: 'tag2'}, {id: 3, name: 'tag2'}, {id: 4, name: 'tag2'}, {id: 5, name: 'tag2'}, {id: 6, name: 'tag2'}, {id: 7, name: 'tag2'}]
+    category: { id: 1, name: 'category' },
+    tags: [
+      { id: 1, name: 'tag1' },
+      { id: 2, name: 'tag2' },
+      { id: 3, name: 'tag2' },
+      { id: 4, name: 'tag2' },
+      { id: 5, name: 'tag2' },
+      { id: 6, name: 'tag2' },
+      { id: 7, name: 'tag2' },
+    ],
   });
 
   for (let i = 2; i < 100; i++) {
@@ -22,10 +30,13 @@ export const getKnowledgeMock = (): Knowledge[] => {
       content: `subtitle${i}`,
       date: '2020-01-01',
       path: 'https://twitter.com/yumekiti1204',
-      category: { id: 1, name: 'category'},
-      tags: [{ id: 1, name: 'tag1' }, { id: 2, name: 'tag2' }],
+      category: { id: 1, name: 'category' },
+      tags: [
+        { id: 1, name: 'tag1' },
+        { id: 2, name: 'tag2' },
+      ],
     });
   }
 
   return data;
-}
+};

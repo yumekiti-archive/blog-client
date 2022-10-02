@@ -6,7 +6,8 @@ export const getReportsMock = (): Report[] => {
   data.push({
     id: 1,
     img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png',
-    title: 'titasdasdasdasdasdasdasdaasdasdasdasdasdasdasdsdasdSleほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげ',
+    title:
+      'titasdasdasdasdasdasdasdaasdasdasdasdasdasdasdsdasdSleほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげ',
     body: 'body',
     date: '2021/01/01',
     category: {
@@ -24,7 +25,7 @@ export const getReportsMock = (): Report[] => {
       },
     ],
   });
-  
+
   for (let i = 2; i < 20; i++) {
     data.push({
       id: i,
@@ -44,6 +45,6 @@ export const getReportsMock = (): Report[] => {
       ],
     });
   }
-  
+
   return data;
-}
+};

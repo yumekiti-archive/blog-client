@@ -1,4 +1,4 @@
-import Tag from "../interfaces/tag";
+import Tag from '../interfaces/tag';
 
 export const getTagsMock = (): Tag[] => {
   const data = [];
@@ -11,4 +11,4 @@ export const getTagsMock = (): Tag[] => {
   }
 
   return data;
-}
+};

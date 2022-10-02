@@ -1,5 +1,5 @@
-import Category from "./category";
-import Tag from "./tag";
+import Category from './category';
+import Tag from './tag';
 
 export default interface Report {
   id: number;
