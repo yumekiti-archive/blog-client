@@ -28,9 +28,9 @@ const IntroduceComponent: FC<Props> = ({ introduce }) => {
         ))}
       </p>
       <ul className='flex items-center justify-end'>
-        {introduce.links.map((link) => (
-          <a href={link.path} target='_blank' rel='noreferrer'>
-            <li className='mx-2 hover:opacity-50' key={link.path}>
+        {introduce.links.map((link, index) => (
+          <a href={link.path} target='_blank' rel='noreferrer' key={index}>
+            <li className='mx-2 hover:opacity-50'>
               <img
                 src={link.img}
                 alt={link.name}
