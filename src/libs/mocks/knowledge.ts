@@ -1,4 +1,6 @@
-export const getKnowledgeMock = () => {
+import Knowledge from '../interfaces/knowledge';
+
+export const getKnowledgeMock = (): Knowledge[] => {
   const data = [];
 
   data.push({
@@ -20,8 +22,8 @@ export const getKnowledgeMock = () => {
       subtitle: `subtitle${i}`,
       date: '2020-01-01',
       path: 'https://twitter.com/yumekiti1204',
-      category: { id: i, name: 'category'},
-      tags: [{ id: i, name: 'tag1' }],
+      category: { id: 1, name: 'category'},
+      tags: [{ id: 1, name: 'tag1' }, { id: 2, name: 'tag2' }],
     });
   }
 

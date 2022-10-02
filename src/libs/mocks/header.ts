@@ -1,4 +1,6 @@
-export const getHeaderMock = () => {
+import Header from "../interfaces/header";
+
+export const getHeaderMock = (): Header => {
   return {
     title: 'ブログっぽいなにか',
     links: [

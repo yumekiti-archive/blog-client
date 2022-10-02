@@ -1,4 +1,6 @@
-export const getReportsMock = () => {
+import Report from '../interfaces/report';
+
+export const getReportsMock = (): Report[] => {
   const data = [];
 
   data.push({

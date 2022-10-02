@@ -1,4 +1,6 @@
-export const getIntroduceMock = () => {
+import Introduce from '../interfaces/introduce';
+
+export const getIntroduceMock = (): Introduce => {
   return {
     name: 'ゆめきち',
     body: '専門学校生です。\n主にインフラを勉強しています。',

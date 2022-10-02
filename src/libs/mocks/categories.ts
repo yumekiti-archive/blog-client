@@ -1,4 +1,6 @@
-export const getCategoriesMock = () => {
+import Category from "../interfaces/category";
+
+export const getCategoriesMock = (): Category[] => {
   const data = [];
   
   for (let i = 1; i < 10; i++) {
