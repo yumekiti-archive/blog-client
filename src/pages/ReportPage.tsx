@@ -18,9 +18,11 @@ const ReportList: FC = () => {
           <div className='my-12 mx-6'>
             <Report
               report={{
+                id: 1,
+                img: 'https://source.unsplash.com/1600x900/?nature,water',
                 title: "たいとるだよ",
                 date: "2022/12/12",
-                body: "hoge",
+                body: 'body',
                 category: {
                   id: 1,
                   name: "this is category",

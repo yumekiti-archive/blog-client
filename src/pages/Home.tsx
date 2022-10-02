@@ -22,14 +22,14 @@ const Home: FC = () => {
             <Reports
               reports={getReportsMock()}
               groupNum={4}
-              findReports={{ category: 1, tag: 0 }}
+              findReports={{ category: 0, tag: 0, search: '' }}
             />
           </div>
           <div className='my-12 mx-6'>
             <Knowledge
               knowledge={getKnowledgeMock()}
               groupNum={5}
-              findKnowledge={{ category: 0, tag: 0 }}
+              findKnowledge={{ category: 0, tag: 0, search: '' }}
             />
           </div>
         </div>

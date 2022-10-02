@@ -16,14 +16,15 @@ const Tags: FC<Props> = ({ tags }) => {
       </h1>
       <div className='px-4 flex flex-wrap items-center justify-between'>
         {tags.map((tag) => (
-          <Link
-            key={tag.id}
-            to={'/tag/' + tag.id}
-          >
-            <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm mb-2 hover:underline cursor-pointer'>
-              {tag.name}
-            </p>
-          </Link>
+          <div className='p-2' key={tag.id}>
+            <Link
+              to={'/tag/' + tag.id}
+            >
+                <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm hover:underline cursor-pointer'>
+                  {tag.name}
+                </p>
+            </Link>
+          </div>
         ))}
       </div>
     </div>

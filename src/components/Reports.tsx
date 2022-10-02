@@ -1,23 +1,12 @@
 import { FC, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import Report from "../libs/interfaces/report";
 
 interface Props {
-  reports: {
-    id: number;
-    img: string;
-    title: string;
-    date: string;
-    category: {
-      id: number;
-      name: string;
-    };
-    tags: {
-      id: number;
-      name: string;
-    }[];
-  }[];
+  reports: Report[];
   groupNum: number;
   findReports: {
+    search: string;
     category: number;
     tag: number;
   }
@@ -28,18 +17,15 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
 
   useEffect(() => {
     // find
-    if (findReports.category !== 0) {
-      setReportsData(reports.filter((report) => report.category.id === findReports.category));
-    } else if (findReports.tag !== 0) {
-      setReportsData(reports.filter((report) => report.tags.some((tag) => tag.id === findReports.tag)));
-    } else {
-      setReportsData(reports);
-    }
+    if (findReports.category !== 0) setReportsData(reports.filter((report) => report.category.id === findReports.category));
+    else if (findReports.tag !== 0) setReportsData(reports.filter((report) => report.tags.some((tag) => tag.id === findReports.tag)));
+    else if (findReports.search !== '') setReportsData(reports.filter((report) => report.title.includes(findReports.search)));
+    else setReportsData(reports);
 
     // pseudo-element
     if(reportsData.length % groupNum !== 0) {
       for(let i = 0; i < reportsData.length % groupNum; i++) {
-        reportsData.push({ id: 0, img: "", title: "", date: "", category: { id: 0, name: "" }, tags: [] });
+        reportsData.push({ id: 0, img: '', title: '', date: '', body: '', category: { id: 0, name: '' }, tags: [] });
       }
     }
   }, [reports, findReports]);
@@ -52,7 +38,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
       acc[acc.length - 1].push(cur);
     }
     return acc;
-  }, [] as { id: number; img: string; title: string; date: string; category: { id: number; name: string; }; tags: { id: number; name: string; }[]; }[][]);
+  }, [] as Report[][]);
 
   // page
   const [page, setPage] = useState(1);
@@ -73,7 +59,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
                   <div className="px-4 pb-6 relative">
                     <div className="bg-white rounded-lg">
                       <img src={report.img} alt={report.title} className="w-full h-48 object-cover" />
-                      <div className="flex justify-start items-center px-12 py-2 h-20">
+                      <div className="flex justify-start items-center px-6 py-2 h-20">
                         <p className="text-md text-left line-clamp-2">
                           {report.title}
                         </p>
@@ -107,26 +93,28 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
           page > 1 ?
           <button
             onClick={() => setPage(page - 1)}
+            className="mr-2"
           >
-            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2 hover:bg-cyan-100">
+            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100">
               {'<'}
             </p>
           </button>
           :
-          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2"></p>
+          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2" />
         }
           <p className="text-md mr-2">{page} / {maxPage}</p>
         {
           page < maxPage ?
           <button
             onClick={() => setPage(page + 1)}
+            className="mr-2"
           >
-            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2 hover:bg-cyan-100">
+            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100">
               {'>'}
             </p>
           </button>
           :
-          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2"></p>
+          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2" />
         }
       </div>
     </>

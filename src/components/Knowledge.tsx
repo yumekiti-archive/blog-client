@@ -109,26 +109,28 @@ const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) =
           page > 1 ?
           <button
             onClick={() => setPage(page - 1)}
+            className="mr-2"
           >
-            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2 hover:bg-cyan-100">
+            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100">
               {'<'}
             </p>
           </button>
           :
-          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2"></p>
+          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2" />
         }
           <p className="text-md mr-2">{page} / {maxPage}</p>
         {
           page < maxPage ?
           <button
             onClick={() => setPage(page + 1)}
+            className="mr-2"
           >
-            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2 hover:bg-cyan-100">
+            <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100">
               {'>'}
             </p>
           </button>
           :
-          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2"></p>
+          <p className="w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2" />
         }
       </div>
     </>
