@@ -24,8 +24,8 @@ const ReportComponent: FC<Props> = ({ report }) => {
           <div className='p-4 min-h-screen'>{report.body}</div>
           <div className='flex justify-start items-center flex-wrap bg-white'>
             {report.tags.map((tag) => (
-              <div className='p-2'>
-                <Link key={tag.id} to={'/tag/' + tag.id}>
+              <div className='p-2' key={tag.id}>
+                <Link to={'/tag/' + tag.id}>
                   <p className='text-sm bg-gray-200 rounded-full px-3 py-1 cursor-pointer hover:underline'>
                     {tag.name}
                   </p>
