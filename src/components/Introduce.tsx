@@ -1,14 +1,11 @@
 import { FC } from 'react';
+import Introduce from '../libs/interfaces/introduce';
 
 interface Props {
-  introduce: {
-    name: string;
-    body: string;
-    links: { name: string; path: string; img: string }[];
-  };
+  introduce: Introduce;
 }
 
-const Introduce: FC<Props> = ({ introduce }) => {
+const IntroduceComponent: FC<Props> = ({ introduce }) => {
   return (
     <div className='bg-white rounded'>
       <h1 className='text-xl text-center py-4'>
@@ -22,34 +19,32 @@ const Introduce: FC<Props> = ({ introduce }) => {
       <p className='text-center font-bold'>
         {introduce.name}
       </p>
-      <div className='p-4'>
-        <p className='text-center text-sm'>
-          {introduce.body.split('\n').map((line) => (
-            <span key={line}>
-              {line}
-              <br />
-            </span>
-          ))}
-        </p>
-        <ul className='flex items-center justify-end mt-4'>
-          {introduce.links.map((link) => (
+      <p className='text-center text-sm p-4'>
+        {introduce.body.split('\n').map((line) => (
+          <span key={line}>
+            {line}
+            <br />
+          </span>
+        ))}
+      </p>
+      <ul className='flex items-center justify-end'>
+        {introduce.links.map((link) => (
+          <a href={link.path} target='_blank' rel='noreferrer'>
             <li className='mx-2 hover:opacity-50' key={link.path}>
-              <a href={link.path} target='_blank' rel='noreferrer'>
-                <img
-                  src={link.img}
-                  alt={link.name}
-                  className='w-6 h-6 object-cover mx-auto'
-                />
-                <p className='text-xs text-center'>
-                  {link.name}
-                </p>
-              </a>
+              <img
+                src={link.img}
+                alt={link.name}
+                className='w-6 h-6 object-cover mx-auto'
+              />
+              <p className='text-xs text-center'>
+                {link.name}
+              </p>
             </li>
-          ))}
-        </ul>
-      </div>
+          </a>
+        ))}
+      </ul>
     </div>
   );
 }
 
-export default Introduce;
+export default IntroduceComponent;
