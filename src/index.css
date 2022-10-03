@@ -6,3 +6,7 @@ body {
   background-color: #e5e7eb;
   color: #334155;
 }
+
+.overflow-scroll::-webkit-scrollbar {  /* Chrome, Safari 対応 */
+  display:none;
+}

@@ -57,7 +57,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
               <div key={report.id} className='w-full lg:w-1/2 animate-slide-in-elliptic-top-fwd'>
                 <Link to={'/report/' + report.id} className='hover:opacity-80'>
                   <div className='px-4 pb-6 relative'>
-                    <div className='bg-white rounded-lg'>
+                    <div className='bg-white rounded-lg shadow-md'>
                       <img src={report.img} alt={report.title} className='w-full h-48 object-cover' />
                       <div className='flex justify-start items-center px-6 py-2 h-20'>
                         <p className='text-md text-left line-clamp-2'>{report.title}</p>

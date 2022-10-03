@@ -62,7 +62,7 @@ const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) =
             knowledge.title.length !== 0 ? (
               <div
                 key={knowledge.id}
-                className='bg-white w-full mx-6 mb-4 overflow-hidden hover:shadow-lg rounded-lg animate-slide-in-elliptic-top-fwd'
+                className='bg-white w-full mx-6 mb-4 overflow-hidden rounded-lg animate-slide-in-elliptic-top-fwd shadow-md hover:shadow-lg'
               >
                 <a href={knowledge.path} target='_blank' rel='noreferrer'>
                   <br />
@@ -83,7 +83,7 @@ const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) =
                   <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer'>
                     <Link to={`/category/${knowledge.category.id}`}>{knowledge.category.name}</Link>
                   </p>
-                  <div className='overflow-hidden flex'>
+                  <div className='overflow-scroll overflow-hidden flex'>
                     {knowledge.tags.map((tag) => (
                       <p
                         className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
