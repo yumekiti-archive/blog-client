@@ -13,7 +13,7 @@ const Tags: FC<Props> = ({ tags }) => {
     <div className='bg-white rounded'>
       <h1 className='text-xl text-center py-4'>タグ</h1>
       <div className='pb-2 px-4 flex flex-wrap items-center justify-between'>
-        <ul className='flex flex-wrap gap-1'>
+        <ul className='flex flex-wrap gap-2'>
           {tags.map((tag) => (
             <li key={tag.id}>
               <Link to={'/tag/' + tag.id}>

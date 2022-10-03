@@ -22,7 +22,7 @@ const ReportComponent: FC<Props> = ({ report }) => {
           </div>
           {/* markdown */}
           <div className='p-4 min-h-screen'>{report.body}</div>
-          <ul className='p-2 flex justify-start items-center flex-wrap bg-white gap-1'>
+          <ul className='p-2 flex justify-start items-center flex-wrap bg-white gap-2'>
             {report.tags.map((tag) => (
               <li>
                 <Link to={'/tag/' + tag.id} key={tag.id}>
