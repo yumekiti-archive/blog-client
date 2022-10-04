@@ -54,7 +54,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
         <div className='flex items-center justify-between flex-wrap'>
           {reportsGroup[page - 1].map((report, index) =>
             report.id !== 0 ? (
-              <div key={report.id} className='w-full lg:w-1/2 animate-slide-in-elliptic-top-fwd'>
+              <div key={report.id} className='w-full lg:w-1/2 animate-fade-in'>
                 <Link to={'/report/' + report.id} className='hover:opacity-80'>
                   <div className='px-4 pb-6 relative'>
                     <div className='bg-white rounded-lg shadow-md'>
