@@ -19,14 +19,12 @@ const ReportList: FC = () => {
   const reports = useGetReports();
   const report = reports.find((report) => report.id === Number(id));
   return (
-    report && (
+    (report && (
       <>
         <div className='container mx-auto flex flex-wrap'>
           <div className='w-full lg:w-3/4 mx-auto'>
             <div className='my-12 mx-6'>
-              <Report
-                report={report}
-              />
+              <Report report={report} />
             </div>
           </div>
           <div className='w-full lg:w-1/4 mx-auto'>
@@ -45,7 +43,8 @@ const ReportList: FC = () => {
           </div>
         </div>
       </>
-    ) || null
+    )) ||
+    null
   );
 };
 

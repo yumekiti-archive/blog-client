@@ -11,7 +11,7 @@ export const getTagsMock = (): Tag[] => {
         createdAt: '2021-01-01T00:00:00.000Z',
         updatedAt: '2021-01-01T00:00:00.000Z',
         publishedAt: '2021-01-01T00:00:00.000Z',
-      }
+      },
     });
   }
 

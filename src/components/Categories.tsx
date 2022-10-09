@@ -8,7 +8,7 @@ interface Props {
 
 const CategoriesComponent: FC<Props> = ({ categories }) => {
   return (
-    categories.length > 0 && (
+    (categories.length > 0 && (
       <div className='bg-white rounded'>
         <h1 className='text-xl text-center py-4'>カテゴリー</h1>
         <ul className='pb-2 px-2 flex flex-wrap items-center justify-start'>
@@ -26,7 +26,8 @@ const CategoriesComponent: FC<Props> = ({ categories }) => {
           ))}
         </ul>
       </div>
-    ) || null
+    )) ||
+    null
   );
 };
 

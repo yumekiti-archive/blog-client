@@ -20,7 +20,9 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
     if (findKnowledge.category !== 0)
       setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.category.id === findKnowledge.category));
     else if (findKnowledge.tag !== 0)
-      setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledge.tag)));
+      setKnowledges(
+        knowledge.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledge.tag)),
+      );
     else if (findKnowledge.search !== '')
       setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.title.includes(findKnowledge.search)));
     else setKnowledges(knowledge);
@@ -58,7 +60,7 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
   const maxPage = knowledgeGroup.length;
 
   return (
-    knowledgeGroup.length > 0 && (
+    (knowledgeGroup.length > 0 && (
       <>
         <div className='bg-cyan-100 rounded'>
           <h1 className='text-xl text-center py-4'>新規知見</h1>
@@ -86,16 +88,15 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
                   </a>
                   <div className='flex justify-end items-center'>
                     <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
-                      {
-                        knowledge.attributes.category ? (
-                          <Link to={`/category/${knowledge.attributes.category.id}`}>{knowledge.attributes.category.attributes.name}</Link>
-                        ) : null
-                      }
+                      {knowledge.attributes.category ? (
+                        <Link to={`/category/${knowledge.attributes.category.id}`}>
+                          {knowledge.attributes.category.attributes.name}
+                        </Link>
+                      ) : null}
                     </p>
                     <div className='overflow-scroll overflow-hidden flex'>
-                      {
-                        knowledge.attributes.tags ? (
-                          knowledge.attributes.tags.map((tag) => (
+                      {knowledge.attributes.tags
+                        ? knowledge.attributes.tags.map((tag) => (
                             <p
                               className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
                               key={tag.id}
@@ -103,8 +104,7 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
                               <Link to={'/tag/' + tag.id}>{tag.attributes.name}</Link>
                             </p>
                           ))
-                        ) : null
-                      }
+                        : null}
                     </div>
                   </div>
                 </div>
@@ -151,7 +151,8 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
           )}
         </div>
       </>
-    ) || null
+    )) ||
+    null
   );
 };
 

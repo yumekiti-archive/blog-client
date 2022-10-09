@@ -28,7 +28,19 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
     // pseudo-element
     if (reportsData.length % groupNum !== 0) {
       for (let i = 0; i < reportsData.length % groupNum; i++) {
-        reportsData.push({ id: 0, attributes: {img: '', title: '', body: '', category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' }}, tags: [], createdAt: '', updatedAt: '', publishedAt: '' } });
+        reportsData.push({
+          id: 0,
+          attributes: {
+            img: '',
+            title: '',
+            body: '',
+            category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
+            tags: [],
+            createdAt: '',
+            updatedAt: '',
+            publishedAt: '',
+          },
+        });
       }
     }
   }, [reports, findReports]);
@@ -48,7 +60,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
   const maxPage = reportsGroup.length;
 
   return (
-    reportsGroup.length > 0 && (
+    (reportsGroup.length > 0 && (
       <>
         <div className='bg-cyan-100 rounded'>
           <h1 className='text-xl text-center py-4'>新規記事</h1>
@@ -59,16 +71,17 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
                   <Link to={'/report/' + report.id} className='hover:opacity-80'>
                     <div className='px-4 pb-6 relative'>
                       <div className='bg-white rounded-lg shadow-md'>
-                        <img src={`http://192.168.11.58:1337${report.attributes.img}`} alt={report.attributes.title} className='w-full h-48 object-cover' />
+                        <img
+                          src={`http://192.168.11.58:1337${report.attributes.img}`}
+                          alt={report.attributes.title}
+                          className='w-full h-48 object-cover'
+                        />
                         <div className='flex justify-start items-center px-6 py-2 h-20'>
                           <p className='text-md text-left line-clamp-2'>{report.attributes.title}</p>
                         </div>
                         <p className='text-sm text-right pr-2 pb-1'>{report.attributes.createdAt}</p>
                         <span className='top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full'>
-                          {
-                            report.attributes.category &&
-                            report.attributes.category.attributes.name
-                          }
+                          {report.attributes.category && report.attributes.category.attributes.name}
                         </span>
                       </div>
                     </div>
@@ -114,7 +127,8 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
           )}
         </div>
       </>
-    ) || null
+    )) ||
+    null
   );
 };
 

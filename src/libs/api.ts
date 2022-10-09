@@ -30,18 +30,18 @@ export const useGetKnowledge = (): Knowledge[] => {
   const { data, isLoading, isError } = useGet('knowledges');
   if (isLoading || isError) return [];
   return data.data;
-}
+};
 
 // reports
 export const useGetReports = (): Report[] => {
   const { data, isLoading, isError } = useGet('reports');
   if (isLoading || isError) return [];
   return data.data;
-}
+};
 
 // tags
 export const useGetTags = (): Tag[] => {
   const { data, isLoading, isError } = useGet('tags');
   if (isLoading || isError) return [];
   return data.data;
-}
+};

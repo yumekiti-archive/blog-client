@@ -24,11 +24,7 @@ const Home: FC = () => {
             <Reports reports={useGetReports()} groupNum={4} findReports={{ category: 0, tag: 0, search: '' }} />
           </div>
           <div className='my-12 mx-6'>
-            <Knowledge
-              knowledge={useGetKnowledge()}
-              groupNum={5}
-              findKnowledge={{ category: 0, tag: 0, search: '' }}
-            />
+            <Knowledge knowledge={useGetKnowledge()} groupNum={5} findKnowledge={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>

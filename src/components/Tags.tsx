@@ -8,7 +8,7 @@ interface Props {
 
 const Tags: FC<Props> = ({ tags }) => {
   return (
-    tags.length > 0 && (
+    (tags.length > 0 && (
       <div className='bg-white rounded'>
         <h1 className='text-xl text-center py-4'>タグ</h1>
         <div className='pb-2 px-4 flex flex-wrap items-center justify-between'>
@@ -25,7 +25,8 @@ const Tags: FC<Props> = ({ tags }) => {
           </ul>
         </div>
       </div>
-    ) || null
+    )) ||
+    null
   );
 };
 
