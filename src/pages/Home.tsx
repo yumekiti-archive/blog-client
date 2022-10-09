@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
@@ -12,6 +12,8 @@ import { getCategoriesMock } from '../libs/mocks/categories';
 import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getKnowledgeMock } from '../libs/mocks/knowledge';
 import { getTagsMock } from '../libs/mocks/tags';
+
+import { useGetCategories } from '../libs/api';
 
 const Home: FC = () => {
   return (
@@ -37,7 +39,7 @@ const Home: FC = () => {
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories categories={getCategoriesMock()} />
+            <Categories categories={useGetCategories()} />
           </div>
           <div className='my-12 mx-6'>
             <Tags tags={getTagsMock()} />

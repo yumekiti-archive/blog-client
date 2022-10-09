@@ -80,7 +80,7 @@ const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) =
                   </div>
                 </a>
                 <div className='flex justify-end items-center'>
-                  <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer'>
+                  <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
                     <Link to={`/category/${knowledge.category.id}`}>{knowledge.category.attributes.name}</Link>
                   </p>
                   <div className='overflow-scroll overflow-hidden flex'>

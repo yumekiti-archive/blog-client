@@ -1,10 +1,12 @@
 import useSWR from 'swr';
 
+import Category from './interfaces/category';
+
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 // get
-export const get = (url: string) => {
-  const { data, error } = useSWR(url, fetcher);
+const useGet = (url: string) => {
+  const { data, error } = useSWR(`http://192.168.11.58:1337/api/${url}`, fetcher);
 
   return {
     data,
@@ -14,26 +16,28 @@ export const get = (url: string) => {
 };
 
 // categories
-export const getCategories = () => {
-  return get('/api/categories');
+export const useGetCategories = (): Category[] => {
+  const { data, isLoading, isError } = useGet('categories');
+  if (isLoading || isError) return [];
+  return data.data;
 }
 
-// introduce
-export const getIntroduce = () => {
-  return get('/api/introduce');
-}
+// // introduce
+// export const getIntroduce = () => {
+//   return useGet('/api/introduce');
+// }
 
-// knowledge
-export const getKnowledge = () => {
-  return get('/api/knowledge');
-}
+// // knowledge
+// export const getKnowledge = () => {
+//   return useGet('/api/knowledge');
+// }
 
-// reports
-export const getReports = () => {
-  return get('/api/reports');
-}
+// // reports
+// export const getReports = () => {
+//   return useGet('/api/reports');
+// }
 
-// tags
-export const getTags = () => {
-  return get('/api/tags');
-}
+// // tags
+// export const getTags = () => {
+//   return useGet('/api/tags');
+// }
