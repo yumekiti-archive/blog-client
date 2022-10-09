@@ -26,11 +26,11 @@ export const useGetCategories = (): Category[] => {
 };
 
 // knowledges
-// export const useGetKnowledge = (): Knowledge[] => {
-//   const { data, isLoading, isError } = useGet('knowledges');
-//   if (isLoading || isError) return [];
-//   return data.data;
-// }
+export const useGetKnowledge = (): Knowledge[] => {
+  const { data, isLoading, isError } = useGet('knowledges');
+  if (isLoading || isError) return [];
+  return data.data;
+}
 
 // // reports
 // export const useGetReports = () => {

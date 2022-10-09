@@ -13,7 +13,7 @@ import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getTagsMock } from '../libs/mocks/tags';
 
-import { useGetCategories, useGetTags } from '../libs/api';
+import { useGetCategories, useGetTags, useGetKnowledge } from '../libs/api';
 
 const Home: FC = () => {
   return (
@@ -25,7 +25,7 @@ const Home: FC = () => {
           </div>
           <div className='my-12 mx-6'>
             <Knowledge
-              knowledge={getKnowledgeMock()}
+              knowledge={useGetKnowledge()}
               groupNum={5}
               findKnowledge={{ category: 0, tag: 0, search: '' }}
             />

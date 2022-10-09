@@ -13,37 +13,41 @@ interface Props {
 }
 
 const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
-  const [knowledgeData, setKnowledgeData] = useState(knowledge);
+  const [knowledges, setKnowledges] = useState<Knowledge[]>([]);
 
   useEffect(() => {
     // find
     if (findKnowledge.category !== 0)
-      setKnowledgeData(knowledge.filter((knowledge) => knowledge.category.id === findKnowledge.category));
+      setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.category.id === findKnowledge.category));
     else if (findKnowledge.tag !== 0)
-      setKnowledgeData(knowledge.filter((knowledge) => knowledge.tags.some((tag) => tag.id === findKnowledge.tag)));
+      setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledge.tag)));
     else if (findKnowledge.search !== '')
-      setKnowledgeData(knowledge.filter((knowledge) => knowledge.title.includes(findKnowledge.search)));
-    else setKnowledgeData(knowledge);
+      setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.title.includes(findKnowledge.search)));
+    else setKnowledges(knowledge);
 
     // pseudo-element
-    if (knowledgeData.length % groupNum !== 0) {
-      for (let i = 0; i < knowledgeData.length % groupNum; i++) {
-        knowledgeData.push({
+    if (knowledges.length % groupNum !== 0) {
+      for (let i = 0; i < knowledges.length % groupNum; i++) {
+        knowledges.push({
           id: 0,
-          title: '',
-          content: '',
-          img: '',
-          date: '',
-          path: '',
-          category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
-          tags: [],
+          attributes: {
+            title: `dummy${i}`,
+            content: '',
+            img: '',
+            path: '',
+            category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
+            tags: [],
+            createdAt: '',
+            updatedAt: '',
+            publishedAt: '',
+          },
         });
       }
     }
   }, [knowledge, findKnowledge]);
 
   // gorup
-  const knowledgeGroup = knowledgeData.reduce((acc, cur, i) => {
+  const knowledgeGroup = knowledges.reduce((acc, cur, i) => {
     if (i % groupNum === 0) acc.push([cur]);
     else acc[acc.length - 1].push(cur);
     return acc;
@@ -54,50 +58,58 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
   const maxPage = knowledgeGroup.length;
 
   return (
-    knowledge.length > 0 && (
+    knowledgeGroup.length > 0 && (
       <>
         <div className='bg-cyan-100 rounded'>
           <h1 className='text-xl text-center py-4'>新規知見</h1>
           <div className='flex items-center justify-center flex-wrap'>
-            {knowledgeGroup[page - 1].map((knowledge, index) =>
-              knowledge.title.length !== 0 ? (
+            {knowledgeGroup[page - 1].map((knowledge) =>
+              knowledge.id !== 0 ? (
                 <div
                   key={knowledge.id}
                   className='bg-white w-full mx-6 mb-4 overflow-hidden rounded-lg animate-fade-in shadow-md hover:shadow-lg'
                 >
-                  <a href={knowledge.path} target='_blank' rel='noreferrer'>
+                  <a href={knowledge.attributes.path} target='_blank' rel='noreferrer'>
                     <br />
                     <div className='flex items-center'>
                       <img
-                        src={knowledge.img}
-                        alt={knowledge.title}
+                        src={`http://192.168.11.58:1337${knowledge.attributes.img}`}
+                        alt={knowledge.attributes.title}
                         className='w-16 h-16 object-cover rounded-full mx-6'
                       />
                       <div className='text-left truncate w-full'>
-                        <p className='text-sm'>{knowledge.date}</p>
-                        <p className='text-xl truncate'>{knowledge.title}</p>
-                        <p className='text-md truncate'>{knowledge.content}</p>
+                        <p className='text-sm'>{knowledge.attributes.createdAt}</p>
+                        <p className='text-xl truncate'>{knowledge.attributes.title}</p>
+                        <p className='text-md truncate'>{knowledge.attributes.content}</p>
                       </div>
                     </div>
                   </a>
                   <div className='flex justify-end items-center'>
                     <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
-                      <Link to={`/category/${knowledge.category.id}`}>{knowledge.category.attributes.name}</Link>
+                      {
+                        knowledge.attributes.category ? (
+                          <Link to={`/category/${knowledge.attributes.category.id}`}>{knowledge.attributes.category.attributes.name}</Link>
+                        ) : null
+                      }
                     </p>
                     <div className='overflow-scroll overflow-hidden flex'>
-                      {knowledge.tags.map((tag) => (
-                        <p
-                          className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
-                          key={tag.id}
-                        >
-                          <Link to={'/tag/' + tag.id}>{tag.attributes.name}</Link>
-                        </p>
-                      ))}
+                      {
+                        knowledge.attributes.tags ? (
+                          knowledge.attributes.tags.map((tag) => (
+                            <p
+                              className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
+                              key={tag.id}
+                            >
+                              <Link to={'/tag/' + tag.id}>{tag.attributes.name}</Link>
+                            </p>
+                          ))
+                        ) : null
+                      }
                     </div>
                   </div>
                 </div>
               ) : (
-                <div key={index} className='w-full mx-6 mb-4 overflow-hidden'>
+                <div key={knowledge.attributes.title} className='w-full mx-6 mb-4 overflow-hidden'>
                   <br />
                   <div className='flex items-center'>
                     <div className='w-16 h-16' />
