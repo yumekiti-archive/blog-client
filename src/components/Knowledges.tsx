@@ -75,7 +75,7 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
                       <img
                         src={`http://192.168.11.58:1337${knowledge.attributes.img}`}
                         alt={knowledge.attributes.title}
-                        className='w-16 h-16 object-cover rounded-full mx-6'
+                        className='w-16 h-16 object-cover mx-6'
                       />
                       <div className='text-left truncate w-full'>
                         <p className='text-sm'>{knowledge.attributes.createdAt}</p>

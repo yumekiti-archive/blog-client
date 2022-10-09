@@ -5,53 +5,16 @@ export const getReportsMock = (): Report[] => {
 
   data.push({
     id: 1,
-    img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png',
-    title:
-      'titasdasdasdasdasdasdasdaasdasdasdasdasdasdasdsdasdSleほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげ',
-    body: 'body',
-    date: '2021/01/01',
-    category: {
-      id: 1,
-      attributes: {
-        name: 'カテゴリー1',
-        createdAt: '2021-01-01T00:00:00.000Z',
-        updatedAt: '2021-01-01T00:00:00.000Z',
-        publishedAt: '2021-01-01T00:00:00.000Z',
-      },
-    },
-    tags: [
-      {
+    attributes: {
+      img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png',
+      title:
+        'titasdasdasdasdasdasdasdaasdasdasdasdasdasdasdsdasdSleほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげ',
+      body: 'body',
+      date: '2021/01/01',
+      category: {
         id: 1,
         attributes: {
-          name: 'タグ1',
-          createdAt: '2021-01-01T00:00:00.000Z',
-          updatedAt: '2021-01-01T00:00:00.000Z',
-          publishedAt: '2021-01-01T00:00:00.000Z',
-        },
-      },
-      {
-        id: 2,
-        attributes: {
-          name: 'タグ2',
-          createdAt: '2021-01-01T00:00:00.000Z',
-          updatedAt: '2021-01-01T00:00:00.000Z',
-          publishedAt: '2021-01-01T00:00:00.000Z',
-        },
-      },
-    ],
-  });
-
-  for (let i = 2; i < 20; i++) {
-    data.push({
-      id: i,
-      img: 'https://source.unsplash.com/random/100x100',
-      title: `title${i}`,
-      body: 'body',
-      date: '2020-01-01',
-      category: {
-        id: i,
-        attributes: {
-          name: `category${i}`,
+          name: 'カテゴリー1',
           createdAt: '2021-01-01T00:00:00.000Z',
           updatedAt: '2021-01-01T00:00:00.000Z',
           publishedAt: '2021-01-01T00:00:00.000Z',
@@ -59,15 +22,62 @@ export const getReportsMock = (): Report[] => {
       },
       tags: [
         {
-          id: i,
+          id: 1,
           attributes: {
-            name: `tag${i}`,
+            name: 'タグ1',
+            createdAt: '2021-01-01T00:00:00.000Z',
+            updatedAt: '2021-01-01T00:00:00.000Z',
+            publishedAt: '2021-01-01T00:00:00.000Z',
+          },
+        },
+        {
+          id: 2,
+          attributes: {
+            name: 'タグ2',
             createdAt: '2021-01-01T00:00:00.000Z',
             updatedAt: '2021-01-01T00:00:00.000Z',
             publishedAt: '2021-01-01T00:00:00.000Z',
           },
         },
       ],
+      createdAt: '2021-01-01T00:00:00.000Z',
+      updatedAt: '2021-01-01T00:00:00.000Z',
+      publishedAt: '2021-01-01T00:00:00.000Z',
+    },
+  });
+
+  for (let i = 2; i < 20; i++) {
+    data.push({
+      id: i,
+      attributes: {
+        img: 'https://source.unsplash.com/random/100x100',
+        title: `title${i}`,
+        body: 'body',
+        date: '2020-01-01',
+        category: {
+          id: i,
+          attributes: {
+            name: `category${i}`,
+            createdAt: '2021-01-01T00:00:00.000Z',
+            updatedAt: '2021-01-01T00:00:00.000Z',
+            publishedAt: '2021-01-01T00:00:00.000Z',
+          },
+        },
+        tags: [
+          {
+            id: i,
+            attributes: {
+              name: `tag${i}`,
+              createdAt: '2021-01-01T00:00:00.000Z',
+              updatedAt: '2021-01-01T00:00:00.000Z',
+              publishedAt: '2021-01-01T00:00:00.000Z',
+            },
+          },
+        ],
+        createdAt: '2021-01-01T00:00:00.000Z',
+        updatedAt: '2021-01-01T00:00:00.000Z',
+        publishedAt: '2021-01-01T00:00:00.000Z',
+      },
     });
   }
 

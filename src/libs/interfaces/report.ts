@@ -3,10 +3,14 @@ import Tag from './tag';
 
 export default interface Report {
   id: number;
-  img: string;
-  title: string;
-  body: string;
-  date: string;
-  category: Category;
-  tags: Tag[];
+  attributes: {
+    img: string;
+    title: string;
+    body: string;
+    category: Category;
+    tags: Tag[];
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
 }

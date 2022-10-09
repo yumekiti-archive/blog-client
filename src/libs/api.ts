@@ -32,12 +32,12 @@ export const useGetKnowledge = (): Knowledge[] => {
   return data.data;
 }
 
-// // reports
-// export const useGetReports = () => {
-//   const { data, isLoading, isError } = useGet('reports');
-//   if (isLoading || isError) return null;
-//   return data.data;
-// }
+// reports
+export const useGetReports = (): Report[] => {
+  const { data, isLoading, isError } = useGet('reports');
+  if (isLoading || isError) return [];
+  return data.data;
+}
 
 // tags
 export const useGetTags = (): Tag[] => {
