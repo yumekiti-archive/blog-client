@@ -22,11 +22,21 @@ export const getReportsMock = (): Report[] => {
     tags: [
       {
         id: 1,
-        name: 'タグ1',
+        attributes: {
+          name: 'タグ1',
+          createdAt: '2021-01-01T00:00:00.000Z',
+          updatedAt: '2021-01-01T00:00:00.000Z',
+          publishedAt: '2021-01-01T00:00:00.000Z',
+        },
       },
       {
         id: 2,
-        name: 'タグ2',
+        attributes: {
+          name: 'タグ2',
+          createdAt: '2021-01-01T00:00:00.000Z',
+          updatedAt: '2021-01-01T00:00:00.000Z',
+          publishedAt: '2021-01-01T00:00:00.000Z',
+        },
       },
     ],
   });
@@ -50,7 +60,12 @@ export const getReportsMock = (): Report[] => {
       tags: [
         {
           id: i,
-          name: `tag${i}`,
+          attributes: {
+            name: `tag${i}`,
+            createdAt: '2021-01-01T00:00:00.000Z',
+            updatedAt: '2021-01-01T00:00:00.000Z',
+            publishedAt: '2021-01-01T00:00:00.000Z',
+          },
         },
       ],
     });

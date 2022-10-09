@@ -1,4 +1,9 @@
 export default interface Tag {
   id: number;
-  name: string;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+  };
 }

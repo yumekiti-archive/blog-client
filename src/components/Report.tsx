@@ -29,7 +29,7 @@ const ReportComponent: FC<Props> = ({ report }) => {
                   <li>
                     <Link to={'/tag/' + tag.id} key={tag.id}>
                       <p className='text-sm bg-gray-200 rounded-full px-3 py-1 cursor-pointer hover:underline'>
-                        {tag.name}
+                        {tag.attributes.name}
                       </p>
                     </Link>
                   </li>

@@ -1,6 +1,9 @@
 import useSWR from 'swr';
 
 import Category from './interfaces/category';
+import Knowledge from './interfaces/knowledge';
+import Report from './interfaces/report';
+import Tag from './interfaces/tag';
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
@@ -20,24 +23,25 @@ export const useGetCategories = (): Category[] => {
   const { data, isLoading, isError } = useGet('categories');
   if (isLoading || isError) return [];
   return data.data;
-}
+};
 
-// // introduce
-// export const getIntroduce = () => {
-//   return useGet('/api/introduce');
-// }
-
-// // knowledge
-// export const getKnowledge = () => {
-//   return useGet('/api/knowledge');
+// knowledges
+// export const useGetKnowledge = (): Knowledge[] => {
+//   const { data, isLoading, isError } = useGet('knowledges');
+//   if (isLoading || isError) return [];
+//   return data.data;
 // }
 
 // // reports
-// export const getReports = () => {
-//   return useGet('/api/reports');
+// export const useGetReports = () => {
+//   const { data, isLoading, isError } = useGet('reports');
+//   if (isLoading || isError) return null;
+//   return data.data;
 // }
 
-// // tags
-// export const getTags = () => {
-//   return useGet('/api/tags');
-// }
+// tags
+export const useGetTags = (): Tag[] => {
+  const { data, isLoading, isError } = useGet('tags');
+  if (isLoading || isError) return [];
+  return data.data;
+}

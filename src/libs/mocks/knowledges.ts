@@ -12,13 +12,9 @@ export const getKnowledgeMock = (): Knowledge[] => {
     path: 'https://twitter.com/yumekiti1204',
     category: { id: 1, attributes: { name: 'Category 1', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
     tags: [
-      { id: 1, name: 'tag1' },
-      { id: 2, name: 'tag2' },
-      { id: 3, name: 'tag2' },
-      { id: 4, name: 'tag2' },
-      { id: 5, name: 'tag2' },
-      { id: 6, name: 'tag2' },
-      { id: 7, name: 'tag2' },
+      { id: 1, attributes: { name: 'tag1', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
+      { id: 2, attributes: { name: 'tag2', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
+      { id: 3, attributes: { name: 'tag3', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
     ],
   });
 
@@ -32,8 +28,9 @@ export const getKnowledgeMock = (): Knowledge[] => {
       path: 'https://twitter.com/yumekiti1204',
       category: { id: 1, attributes: {name: 'category', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
       tags: [
-        { id: 1, name: 'tag1' },
-        { id: 2, name: 'tag2' },
+        { id: 1, attributes: { name: 'tag1', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
+        { id: 2, attributes: { name: 'tag2', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
+        { id: 3, attributes: { name: 'tag3', createdAt: '2021-01-01T00:00:00.000Z', updatedAt: '2021-01-01T00:00:00.000Z', publishedAt: '2021-01-01T00:00:00.000Z' } },
       ],
     });
   }

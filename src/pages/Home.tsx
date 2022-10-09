@@ -4,16 +4,16 @@ import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Reports from '../components/Reports';
-import Knowledge from '../components/Knowledge';
+import Knowledge from '../components/Knowledges';
 import Search from '../components/Search';
 
 import { getReportsMock } from '../libs/mocks/reports';
 import { getCategoriesMock } from '../libs/mocks/categories';
 import { getIntroduceMock } from '../libs/mocks/introduce';
-import { getKnowledgeMock } from '../libs/mocks/knowledge';
+import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getTagsMock } from '../libs/mocks/tags';
 
-import { useGetCategories } from '../libs/api';
+import { useGetCategories, useGetTags } from '../libs/api';
 
 const Home: FC = () => {
   return (
@@ -42,7 +42,7 @@ const Home: FC = () => {
             <Categories categories={useGetCategories()} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags tags={getTagsMock()} />
+            <Tags tags={useGetTags()} />
           </div>
         </div>
       </div>

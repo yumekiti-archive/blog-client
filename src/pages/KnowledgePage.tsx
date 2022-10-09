@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
-import { getKnowledgeMock } from '../libs/mocks/knowledge';
+import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getCategoriesMock } from '../libs/mocks/categories';
 import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getTagsMock } from '../libs/mocks/tags';
 
-import Knowledge from '../components/Knowledge';
+import Knowledge from '../components/Knowledges';
 import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
