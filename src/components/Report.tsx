@@ -19,7 +19,7 @@ const ReportComponent: FC<Props> = ({ report }) => {
             <div className='bg-white min-h-screen rounded'>
               <div className='w-full flex justify-end items-center p-2'>
                 <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full hover:bg-cyan-200 cursor-pointer'>
-                  <Link to={`/category/${report.category.id}`}>{report.category.name}</Link>
+                  <Link to={`/category/${report.category.id}`}>{report.category.attributes.name}</Link>
                 </p>
               </div>
               {/* markdown */}

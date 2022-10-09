@@ -12,7 +12,12 @@ export const getReportsMock = (): Report[] => {
     date: '2021/01/01',
     category: {
       id: 1,
-      name: 'カテゴリー1',
+      attributes: {
+        name: 'カテゴリー1',
+        createdAt: '2021-01-01T00:00:00.000Z',
+        updatedAt: '2021-01-01T00:00:00.000Z',
+        publishedAt: '2021-01-01T00:00:00.000Z',
+      },
     },
     tags: [
       {
@@ -35,7 +40,12 @@ export const getReportsMock = (): Report[] => {
       date: '2020-01-01',
       category: {
         id: i,
-        name: `category${i}`,
+        attributes: {
+          name: `category${i}`,
+          createdAt: '2021-01-01T00:00:00.000Z',
+          updatedAt: '2021-01-01T00:00:00.000Z',
+          publishedAt: '2021-01-01T00:00:00.000Z',
+        },
       },
       tags: [
         {

@@ -18,7 +18,7 @@ const CategoriesComponent: FC<Props> = ({ categories }) => {
                 <div className='flex items-center justify-center'>
                   <span className='w-3 h-3 bg-cyan-100 rounded-full mr-2' />
                 </div>
-                <span>{category.name}</span>
+                <span>{category.attributes.name}</span>
               </Link>
             </div>
           </li>

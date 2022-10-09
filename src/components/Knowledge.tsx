@@ -35,7 +35,7 @@ const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) =
           img: '',
           date: '',
           path: '',
-          category: { id: 0, name: '' },
+          category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
           tags: [],
         });
       }
@@ -81,7 +81,7 @@ const KnowledgeComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) =
                 </a>
                 <div className='flex justify-end items-center'>
                   <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer'>
-                    <Link to={`/category/${knowledge.category.id}`}>{knowledge.category.name}</Link>
+                    <Link to={`/category/${knowledge.category.id}`}>{knowledge.category.attributes.name}</Link>
                   </p>
                   <div className='overflow-scroll overflow-hidden flex'>
                     {knowledge.tags.map((tag) => (

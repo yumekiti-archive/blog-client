@@ -28,7 +28,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
     // pseudo-element
     if (reportsData.length % groupNum !== 0) {
       for (let i = 0; i < reportsData.length % groupNum; i++) {
-        reportsData.push({ id: 0, img: '', title: '', date: '', body: '', category: { id: 0, name: '' }, tags: [] });
+        reportsData.push({ id: 0, img: '', title: '', date: '', body: '', category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' }}, tags: [] });
       }
     }
   }, [reports, findReports]);
@@ -64,7 +64,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
                       </div>
                       <p className='text-sm text-right pr-2 pb-1'>{report.date}</p>
                       <span className='top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full'>
-                        {report.category.name}
+                        {report.category.attributes.name}
                       </span>
                     </div>
                   </div>
