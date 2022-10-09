@@ -12,3 +12,28 @@ export const get = (url: string) => {
     isError: error,
   };
 };
+
+// categories
+export const getCategories = () => {
+  return get('/api/categories');
+}
+
+// introduce
+export const getIntroduce = () => {
+  return get('/api/introduce');
+}
+
+// knowledge
+export const getKnowledge = () => {
+  return get('/api/knowledge');
+}
+
+// reports
+export const getReports = () => {
+  return get('/api/reports');
+}
+
+// tags
+export const getTags = () => {
+  return get('/api/tags');
+}
