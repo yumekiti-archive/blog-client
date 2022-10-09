@@ -1,6 +1,8 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import Report from '../libs/interfaces/report';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from 'remark-gfm'
 
 interface Props {
   report: Report | undefined;
@@ -27,7 +29,11 @@ const ReportComponent: FC<Props> = ({ report }) => {
                 </p>
               </div>
               {/* markdown */}
-              <div className='p-4 min-h-screen'>{report.attributes.body}</div>
+              <div className='markdown p-4 min-h-screen'>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                  {report.attributes.body}
+                </ReactMarkdown>
+              </div>
               <ul className='p-2 flex justify-start items-center flex-wrap bg-white gap-2'>
                 {
                   report.attributes.tags && (
