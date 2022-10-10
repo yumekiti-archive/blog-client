@@ -8,7 +8,7 @@ interface Props {
 
 const HeaderComponent: FC<Props> = ({ header }) => {
   return (
-    <div className='flex w-full items-center bg-white'>
+    <div className='flex w-full items-center card-color'>
       <Link to='/' className='p-4'>
         {header.title}
       </Link>

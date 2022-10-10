@@ -9,7 +9,7 @@ interface Props {
 const Tags: FC<Props> = ({ tags }) => {
   return (
     (tags.length > 0 && (
-      <div className='bg-white rounded'>
+      <div className='card-color rounded'>
         <h1 className='text-xl text-center py-4'>タグ</h1>
         <div className='pb-2 px-4 flex flex-wrap items-center justify-between'>
           <ul className='flex flex-wrap gap-2'>

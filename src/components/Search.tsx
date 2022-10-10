@@ -4,7 +4,7 @@ const Search: FC = () => {
   const [search, setSearch] = useState('');
 
   return (
-    <div className='bg-white rounded'>
+    <div className='card-color rounded'>
       <h1 className='text-xl text-center py-4'>検索</h1>
       <div className='flex justify-center pb-4'>
         <input

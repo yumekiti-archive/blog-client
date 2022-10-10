@@ -62,7 +62,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
   return (
     (reportsGroup.length > 0 && (
       <>
-        <div className='bg-cyan-100 rounded'>
+        <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>新規記事</h1>
           <div className='flex items-center justify-between flex-wrap'>
             {reportsGroup[page - 1].map((report) =>

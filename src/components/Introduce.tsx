@@ -7,7 +7,7 @@ interface Props {
 
 const IntroduceComponent: FC<Props> = ({ introduce }) => {
   return (
-    <div className='bg-white rounded'>
+    <div className='card-color rounded'>
       <h1 className='text-xl text-center py-4'>自己紹介</h1>
       <img
         src='https://pbs.twimg.com/profile_images/1492151996857860097/MRnAqw5h_400x400.png'

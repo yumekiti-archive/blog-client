@@ -5,11 +5,15 @@
 @import url(markdown.css);
 
 body {
-  background-color: #e5e7eb;
-  color: #334155;
+  background-color: #d8eefe;
+  color: #094067;
 }
 
 .overflow-scroll::-webkit-scrollbar {
   /* Chrome, Safari 対応 */
   display: none;
+}
+
+.card-color {
+  background-color: #fffffe;
 }

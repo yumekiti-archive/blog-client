@@ -12,7 +12,7 @@ const ReportComponent: FC<Props> = ({ report }) => {
   return (
     <>
       {report && (
-        <div className='bg-cyan-100 rounded'>
+        <div className='card-color rounded'>
           <div className='block p-4 text-center'>
             <h1 className='text-2xl'>{report.attributes.title}</h1>
             <p className='text-xs'>{report.attributes.createdAt}</p>

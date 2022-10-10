@@ -62,7 +62,7 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
   return (
     (knowledgeGroup.length > 0 && (
       <>
-        <div className='bg-cyan-100 rounded'>
+        <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>新規知見</h1>
           <div className='flex items-center justify-center flex-wrap'>
             {knowledgeGroup[page - 1].map((knowledge) =>
