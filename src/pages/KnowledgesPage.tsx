@@ -13,7 +13,7 @@ import Search from '../components/Search';
 
 import { useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
 
-const KnowledgeList: FC = () => {
+const KnowledgesList: FC = () => {
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
@@ -45,4 +45,4 @@ const KnowledgeList: FC = () => {
   );
 };
 
-export default KnowledgeList;
+export default KnowledgesList;
