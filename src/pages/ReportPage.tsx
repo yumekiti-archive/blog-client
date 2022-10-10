@@ -6,23 +6,33 @@ import { getCategoriesMock } from '../libs/mocks/categories';
 import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getTagsMock } from '../libs/mocks/tags';
 
+import Report from '../libs/interfaces/report';
+import Category from '../libs/interfaces/category';
+import Tag from '../libs/interfaces/tag';
+import Knowledge from '../libs/interfaces/knowledge';
+
 import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Search from '../components/Search';
-import Report from '../components/Report';
+import ReportDetail from '../components/ReportDetail';
 
 import { useGetReports, useGetCategories, useGetTags } from '../libs/api';
 
-const ReportList: FC = () => {
+interface Props {
+  reports: Report[];
+  categories: Category[];
+  tags: Tag[];
+}
+
+const ReportList: FC<Props> = ({ reports, categories, tags }) => {
   const { id } = useParams<{ id: string }>();
-  const reports = useGetReports();
   const report = reports.find((report) => report.id === Number(id));
   return (
     <div className='container mx-auto flex flex-wrap'>
       <div className='w-full lg:w-3/4 mx-auto'>
         <div className='my-12 mx-6'>
-          <Report report={report} />
+          <ReportDetail report={report} />
         </div>
       </div>
       <div className='w-full lg:w-1/4 mx-auto'>
@@ -33,10 +43,10 @@ const ReportList: FC = () => {
           <Search />
         </div>
         <div className='my-12 mx-6'>
-          <Categories data={useGetCategories()} />
+          <Categories data={categories} />
         </div>
         <div className='my-12 mx-6'>
-          <Tags data={useGetTags()} />
+          <Tags data={tags} />
         </div>
       </div>
     </div>

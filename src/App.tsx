@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -9,15 +9,22 @@ import ReportPage from './pages/ReportPage';
 
 import { getHeaderMock } from './libs/mocks/header';
 
+import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from './libs/api';
+
 const App: FC = () => {
+  const reports = useGetReports();
+  const categories = useGetCategories();
+  const tags = useGetTags();
+  const knowledges = useGetKnowledges();
+
   return (
     <>
       <Header header={getHeaderMock()} />
       <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/reports' element={<ReportList />} />
-        <Route path='/report/:id' element={<ReportPage />} />
-        <Route path='/knowledge' element={<KnowledgesList />} />
+        <Route path='/' element={<Home reports={reports} knowledges={knowledges} categories={categories} tags={tags} />} />
+        <Route path='/reports' element={<ReportList reports={reports} categories={categories} tags={tags} />} />
+        <Route path='/report/:id' element={<ReportPage reports={reports} categories={categories} tags={tags} />} />
+        <Route path='/knowledge' element={<KnowledgesList knowledges={knowledges} categories={categories} tags={tags} />} />
       </Routes>
     </>
   );

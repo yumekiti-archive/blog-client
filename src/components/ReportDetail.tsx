@@ -8,7 +8,7 @@ interface Props {
   report: Report | undefined;
 }
 
-const ReportComponent: FC<Props> = ({ report }) => {
+const ReportDetailComponent: FC<Props> = ({ report }) => {
   return (
     <>
       {report && (
@@ -54,4 +54,4 @@ const ReportComponent: FC<Props> = ({ report }) => {
   );
 };
 
-export default ReportComponent;
+export default ReportDetailComponent;

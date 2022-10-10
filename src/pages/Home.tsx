@@ -7,24 +7,34 @@ import Reports from '../components/Reports';
 import Knowledges from '../components/Knowledges';
 import Search from '../components/Search';
 
+import Report from '../libs/interfaces/report';
+import Category from '../libs/interfaces/category';
+import Tag from '../libs/interfaces/tag';
+import Knowledge from '../libs/interfaces/knowledge';
+
 import { getReportsMock } from '../libs/mocks/reports';
 import { getCategoriesMock } from '../libs/mocks/categories';
 import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getTagsMock } from '../libs/mocks/tags';
 
-import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
+interface Props {
+  reports: Report[];
+  categories: Category[];
+  tags: Tag[];
+  knowledges: Knowledge[];
+}
 
-const Home: FC = () => {
+const Home: FC<Props> = ({ reports, categories, tags, knowledges }) => {
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports data={useGetReports()} groupNum={4} findReports={{ category: 0, tag: 0, search: '' }} />
+            <Reports data={reports} groupNum={4} findReports={{ category: 0, tag: 0, search: '' }} />
           </div>
           <div className='my-12 mx-6'>
-            <Knowledges data={useGetKnowledges()} groupNum={5} findKnowledges={{ category: 0, tag: 0, search: '' }} />
+            <Knowledges data={knowledges} groupNum={5} findKnowledges={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
@@ -35,10 +45,10 @@ const Home: FC = () => {
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories data={useGetCategories()} />
+            <Categories data={categories} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags data={useGetTags()} />
+            <Tags data={tags} />
           </div>
         </div>
       </div>
