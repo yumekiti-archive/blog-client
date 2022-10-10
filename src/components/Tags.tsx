@@ -15,7 +15,7 @@ const Tags: FC<Props> = ({ data }) => {
           <ul className='flex flex-wrap gap-2'>
             {data.map((tag) => (
               <li key={tag.id}>
-                <Link to={'/tag/' + tag.id}>
+                <Link to={'/tags/' + tag.id}>
                   <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm hover:underline cursor-pointer'>
                     {tag.attributes.name}
                   </p>
