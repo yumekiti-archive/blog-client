@@ -18,9 +18,11 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
   useEffect(() => {
     // find
     if (findKnowledges.category !== 0)
-      setKnowledges(data.filter((knowledge) => knowledge.attributes.category.id === findKnowledges.category));
+      setKnowledges(data.filter((knowledge) => knowledge.attributes.category.data.id === findKnowledges.category));
     else if (findKnowledges.tag !== 0)
-      setKnowledges(data.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledges.tag)));
+      setKnowledges(
+        data.filter((knowledge) => knowledge.attributes.tags.data.some((tag) => tag.id === findKnowledges.tag)),
+      );
     else if (findKnowledges.search !== '')
       setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledges.search)));
     else setKnowledges(data);
@@ -35,10 +37,10 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
         attributes: {
           title: `dummy${i}`,
           content: '',
-          img: '',
+          img: { data: { id: 1, attributes: { name: '', url: '' } } },
           path: '',
-          category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
-          tags: [],
+          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+          tags: { data: [] },
           createdAt: '',
           updatedAt: '',
           publishedAt: '',
@@ -88,14 +90,14 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                   <div className='flex justify-end items-center'>
                     <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
                       {knowledge.attributes.category ? (
-                        <Link to={`/category/${knowledge.attributes.category.id}`}>
-                          {knowledge.attributes.category.attributes.name}
+                        <Link to={`/category/${knowledge.attributes.category.data.id}`}>
+                          {knowledge.attributes.category.data.attributes.name}
                         </Link>
                       ) : null}
                     </p>
                     <div className='overflow-scroll overflow-hidden flex'>
                       {knowledge.attributes.tags
-                        ? knowledge.attributes.tags.map((tag) => (
+                        ? knowledge.attributes.tags.data.map((tag) => (
                             <p
                               className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
                               key={tag.id}

@@ -4,13 +4,15 @@ import Tag from './tag';
 export default interface Report {
   id: number;
   attributes: {
-    img: { data: {
-      id: number;
-      attributes: {
-        name: string;
-        url: string;
-      }
-    } };
+    img: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+          url: string;
+        };
+      };
+    };
     title: string;
     body: string;
     category: { data: Category };

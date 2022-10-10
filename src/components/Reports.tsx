@@ -33,7 +33,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
       reportsWithoutDummy.push({
         id: 0,
         attributes: {
-          img: { data: {id: 0, attributes: {name: '', url: ''}} },
+          img: { data: { id: 0, attributes: { name: '', url: '' } } },
           title: `dummy${i}`,
           body: '',
           category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
