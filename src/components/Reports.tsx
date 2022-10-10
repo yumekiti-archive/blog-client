@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Report from '../libs/interfaces/report';
 
 interface Props {
-  reports: Report[];
+  data: Report[];
   groupNum: number;
   findReports: {
     search: string;
@@ -12,18 +12,18 @@ interface Props {
   };
 }
 
-const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
-  const [reportsData, setReportsData] = useState(reports);
+const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
+  const [reportsData, setReportsData] = useState<Report[]>([]);
 
   useEffect(() => {
     // find
     if (findReports.category !== 0)
-      setReportsData(reports.filter((report) => report.attributes.category.id === findReports.category));
+      setReportsData(data.filter((report) => report.attributes.category.id === findReports.category));
     else if (findReports.tag !== 0)
-      setReportsData(reports.filter((report) => report.attributes.tags.some((tag) => tag.id === findReports.tag)));
+      setReportsData(data.filter((report) => report.attributes.tags.some((tag) => tag.id === findReports.tag)));
     else if (findReports.search !== '')
-      setReportsData(reports.filter((report) => report.attributes.title.includes(findReports.search)));
-    else setReportsData(reports);
+      setReportsData(data.filter((report) => report.attributes.title.includes(findReports.search)));
+    else setReportsData(data);
 
     // pseudo-element
     if (reportsData.length % groupNum !== 0) {
@@ -43,7 +43,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
         });
       }
     }
-  }, [reports, findReports]);
+  }, [data, findReports]);
 
   // group
   const reportsGroup = reportsData.reduce((acc, cur, i) => {

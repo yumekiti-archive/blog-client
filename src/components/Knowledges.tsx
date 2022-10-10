@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Knowledge from '../libs/interfaces/knowledge';
 
 interface Props {
-  knowledge: Knowledge[];
+  data: Knowledge[];
   groupNum: number;
   findKnowledge: {
     search: string;
@@ -12,20 +12,20 @@ interface Props {
   };
 }
 
-const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) => {
+const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledge }) => {
   const [knowledges, setKnowledges] = useState<Knowledge[]>([]);
 
   useEffect(() => {
     // find
     if (findKnowledge.category !== 0)
-      setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.category.id === findKnowledge.category));
+      setKnowledges(data.filter((knowledge) => knowledge.attributes.category.id === findKnowledge.category));
     else if (findKnowledge.tag !== 0)
       setKnowledges(
-        knowledge.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledge.tag)),
+        data.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledge.tag)),
       );
     else if (findKnowledge.search !== '')
-      setKnowledges(knowledge.filter((knowledge) => knowledge.attributes.title.includes(findKnowledge.search)));
-    else setKnowledges(knowledge);
+      setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledge.search)));
+    else setKnowledges(data);
 
     // pseudo-element
     if (knowledges.length % groupNum !== 0) {
@@ -46,7 +46,7 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
         });
       }
     }
-  }, [knowledge, findKnowledge]);
+  }, [data, findKnowledge]);
 
   // gorup
   const knowledgeGroup = knowledges.reduce((acc, cur, i) => {

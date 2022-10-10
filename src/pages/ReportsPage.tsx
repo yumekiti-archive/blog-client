@@ -19,21 +19,21 @@ const ReportList: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports reports={useGetReports()} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} />
+            <Reports data={useGetReports()} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Introduce introduce={getIntroduceMock()} />
+            <Introduce data={getIntroduceMock()} />
           </div>
           <div className='my-12 mx-6'>
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories categories={useGetCategories()} />
+            <Categories data={useGetCategories()} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags tags={useGetTags()} />
+            <Tags data={useGetTags()} />
           </div>
         </div>
       </div>

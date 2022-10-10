@@ -3,16 +3,16 @@ import { Link } from 'react-router-dom';
 import Category from '../libs/interfaces/category';
 
 interface Props {
-  categories: Category[];
+  data: Category[];
 }
 
-const CategoriesComponent: FC<Props> = ({ categories }) => {
+const CategoriesComponent: FC<Props> = ({ data }) => {
   return (
-    (categories.length > 0 && (
+    (data.length > 0 && (
       <div className='card-color rounded'>
         <h1 className='text-xl text-center py-4'>カテゴリー</h1>
         <ul className='pb-2 px-2 flex flex-wrap items-center justify-start'>
-          {categories.map((category) => (
+          {data.map((category) => (
             <li className='py-2 w-1/2 lg:w-full' key={category.id}>
               <div className='flex items-center justify-center'>
                 <Link to={'/category/' + category.id} className='cursor-pointer hover:underline flex'>
