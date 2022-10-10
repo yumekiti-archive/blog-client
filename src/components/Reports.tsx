@@ -13,23 +13,24 @@ interface Props {
 }
 
 const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
-  const [reportsData, setReportsData] = useState<Report[]>([]);
+  const [reports, setReports] = useState<Report[]>([]);
 
   useEffect(() => {
     // find
     if (findReports.category !== 0)
-      setReportsData(data.filter((report) => report.attributes.category.id === findReports.category));
+      setReports(data.filter((report) => report.attributes.category.id === findReports.category));
     else if (findReports.tag !== 0)
-      setReportsData(data.filter((report) => report.attributes.tags.some((tag) => tag.id === findReports.tag)));
+      setReports(data.filter((report) => report.attributes.tags.some((tag) => tag.id === findReports.tag)));
     else if (findReports.search !== '')
-      setReportsData(data.filter((report) => report.attributes.title.includes(findReports.search)));
-    else setReportsData(data);
+      setReports(data.filter((report) => report.attributes.title.includes(findReports.search)));
+    else setReports(data);
   }, [data, findReports]);
 
   // pseudo-element
-  if (reportsData.length % groupNum !== 0) {
-    for (let i = (reportsData.length - 1); i < (reportsData.length % groupNum); i++) {
-      reportsData.push({
+  const reportsWithoutDummy = reports.filter((report) => report.id !== 0);
+  if (reportsWithoutDummy.length % groupNum !== 0) {
+    for (let i = reportsWithoutDummy.length - 1; i < reportsWithoutDummy.length % groupNum; i++) {
+      reportsWithoutDummy.push({
         id: 0,
         attributes: {
           img: '',
@@ -46,7 +47,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
   }
 
   // group
-  const reportsGroup = reportsData.reduce((acc, cur, i) => {
+  const reportsGroup = reportsWithoutDummy.reduce((acc, cur, i) => {
     if (i % groupNum === 0) {
       acc.push([cur]);
     } else {

@@ -20,18 +20,17 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
     if (findKnowledges.category !== 0)
       setKnowledges(data.filter((knowledge) => knowledge.attributes.category.id === findKnowledges.category));
     else if (findKnowledges.tag !== 0)
-      setKnowledges(
-        data.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledges.tag)),
-      );
+      setKnowledges(data.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledges.tag)));
     else if (findKnowledges.search !== '')
       setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledges.search)));
     else setKnowledges(data);
   }, [data, findKnowledges]);
 
   // pseudo-element
-  if (knowledges.length % groupNum !== 0) {
-    for (let i = (knowledges.length - 1); i < knowledges.length % groupNum; i++) {
-      knowledges.push({
+  const knowledgesWithoutDummy = knowledges.filter((knowledge) => knowledge.id !== 0);
+  if (knowledgesWithoutDummy.length % groupNum !== 0) {
+    for (let i = knowledgesWithoutDummy.length - 1; i < knowledgesWithoutDummy.length % groupNum; i++) {
+      knowledgesWithoutDummy.push({
         id: 0,
         attributes: {
           title: `dummy${i}`,
@@ -49,7 +48,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
   }
 
   // gorup
-  const knowledgeGroup = knowledges.reduce((acc, cur, i) => {
+  const knowledgeGroup = knowledgesWithoutDummy.reduce((acc, cur, i) => {
     if (i % groupNum === 0) acc.push([cur]);
     else acc[acc.length - 1].push(cur);
     return acc;

@@ -27,11 +27,7 @@ const KnowledgesList: FC<Props> = ({ categories, tags, knowledges }) => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Knowledges
-              data={knowledges}
-              groupNum={10}
-              findKnowledges={{ category: 0, tag: 0, search: '' }}
-            />
+            <Knowledges data={knowledges} groupNum={10} findKnowledges={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>

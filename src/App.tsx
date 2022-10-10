@@ -21,10 +21,16 @@ const App: FC = () => {
     <>
       <Header header={getHeaderMock()} />
       <Routes>
-        <Route path='/' element={<Home reports={reports} knowledges={knowledges} categories={categories} tags={tags} />} />
+        <Route
+          path='/'
+          element={<Home reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
+        />
         <Route path='/reports' element={<ReportList reports={reports} categories={categories} tags={tags} />} />
         <Route path='/report/:id' element={<ReportPage reports={reports} categories={categories} tags={tags} />} />
-        <Route path='/knowledge' element={<KnowledgesList knowledges={knowledges} categories={categories} tags={tags} />} />
+        <Route
+          path='/knowledge'
+          element={<KnowledgesList knowledges={knowledges} categories={categories} tags={tags} />}
+        />
       </Routes>
     </>
   );
