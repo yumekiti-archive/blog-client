@@ -26,27 +26,27 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
     else if (findKnowledges.search !== '')
       setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledges.search)));
     else setKnowledges(data);
-
-    // pseudo-element
-    if (knowledges.length % groupNum !== 0) {
-      for (let i = 0; i < knowledges.length % groupNum; i++) {
-        knowledges.push({
-          id: 0,
-          attributes: {
-            title: `dummy${i}`,
-            content: '',
-            img: '',
-            path: '',
-            category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
-            tags: [],
-            createdAt: '',
-            updatedAt: '',
-            publishedAt: '',
-          },
-        });
-      }
-    }
   }, [data, findKnowledges]);
+
+  // pseudo-element
+  if (knowledges.length % groupNum !== 0) {
+    for (let i = (knowledges.length - 1); i < knowledges.length % groupNum; i++) {
+      knowledges.push({
+        id: 0,
+        attributes: {
+          title: `dummy${i}`,
+          content: '',
+          img: '',
+          path: '',
+          category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
+          tags: [],
+          createdAt: '',
+          updatedAt: '',
+          publishedAt: '',
+        },
+      });
+    }
+  }
 
   // gorup
   const knowledgeGroup = knowledges.reduce((acc, cur, i) => {

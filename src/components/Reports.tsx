@@ -24,26 +24,26 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
     else if (findReports.search !== '')
       setReportsData(data.filter((report) => report.attributes.title.includes(findReports.search)));
     else setReportsData(data);
-
-    // pseudo-element
-    if (reportsData.length % groupNum !== 0) {
-      for (let i = 0; i < reportsData.length % groupNum; i++) {
-        reportsData.push({
-          id: 0,
-          attributes: {
-            img: '',
-            title: `dummy${i}`,
-            body: '',
-            category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
-            tags: [],
-            createdAt: '',
-            updatedAt: '',
-            publishedAt: '',
-          },
-        });
-      }
-    }
   }, [data, findReports]);
+
+  // pseudo-element
+  if (reportsData.length % groupNum !== 0) {
+    for (let i = (reportsData.length - 1); i < (reportsData.length % groupNum); i++) {
+      reportsData.push({
+        id: 0,
+        attributes: {
+          img: '',
+          title: `dummy${i}`,
+          body: '',
+          category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
+          tags: [],
+          createdAt: '',
+          updatedAt: '',
+          publishedAt: '',
+        },
+      });
+    }
+  }
 
   // group
   const reportsGroup = reportsData.reduce((acc, cur, i) => {
