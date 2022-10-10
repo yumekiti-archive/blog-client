@@ -73,7 +73,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                     <div className='px-4 pb-6 relative'>
                       <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
                         <img
-                          src={`http://192.168.11.58:1337${report.attributes.img.data.attributes.url}`}
+                          src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
                           alt={report.attributes.title}
                           className='w-full h-48 object-cover'
                         />
