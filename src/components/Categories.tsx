@@ -15,7 +15,7 @@ const CategoriesComponent: FC<Props> = ({ data }) => {
           {data.map((category) => (
             <li className='py-2 w-1/2 lg:w-full' key={category.id}>
               <div className='flex items-center justify-center'>
-                <Link to={'/category/' + category.id} className='cursor-pointer hover:underline flex'>
+                <Link to={'/categories/' + category.id} className='cursor-pointer hover:underline flex'>
                   <div className='flex items-center justify-center'>
                     <span className='w-3 h-3 bg-[#3da9fc] rounded-full mr-2' />
                   </div>
