@@ -19,32 +19,27 @@ const ReportList: FC = () => {
   const reports = useGetReports();
   const report = reports.find((report) => report.id === Number(id));
   return (
-    (report && (
-      <>
-        <div className='container mx-auto flex flex-wrap'>
-          <div className='w-full lg:w-3/4 mx-auto'>
-            <div className='my-12 mx-6'>
-              <Report report={report} />
-            </div>
-          </div>
-          <div className='w-full lg:w-1/4 mx-auto'>
-            <div className='my-12 mx-6'>
-              <Introduce introduce={getIntroduceMock()} />
-            </div>
-            <div className='my-12 mx-6'>
-              <Search />
-            </div>
-            <div className='my-12 mx-6'>
-              <Categories categories={getCategoriesMock()} />
-            </div>
-            <div className='my-12 mx-6'>
-              <Tags tags={getTagsMock()} />
-            </div>
-          </div>
+    <div className='container mx-auto flex flex-wrap'>
+      <div className='w-full lg:w-3/4 mx-auto'>
+        <div className='my-12 mx-6'>
+          <Report report={report} />
         </div>
-      </>
-    )) ||
-    null
+      </div>
+      <div className='w-full lg:w-1/4 mx-auto'>
+        <div className='my-12 mx-6'>
+          <Introduce introduce={getIntroduceMock()} />
+        </div>
+        <div className='my-12 mx-6'>
+          <Search />
+        </div>
+        <div className='my-12 mx-6'>
+          <Categories categories={useGetCategories()} />
+        </div>
+        <div className='my-12 mx-6'>
+          <Tags tags={useGetTags()} />
+        </div>
+      </div>
+    </div>
   );
 };
 

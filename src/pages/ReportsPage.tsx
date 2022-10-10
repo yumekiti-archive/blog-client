@@ -11,13 +11,15 @@ import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Search from '../components/Search';
 
+import { useGetReports, useGetCategories, useGetTags } from '../libs/api';
+
 const ReportList: FC = () => {
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports reports={getReportsMock()} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} />
+            <Reports reports={useGetReports()} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
@@ -28,10 +30,10 @@ const ReportList: FC = () => {
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories categories={getCategoriesMock()} />
+            <Categories categories={useGetCategories()} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags tags={getTagsMock()} />
+            <Tags tags={useGetTags()} />
           </div>
         </div>
       </div>

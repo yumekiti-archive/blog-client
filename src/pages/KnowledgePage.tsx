@@ -11,6 +11,8 @@ import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Search from '../components/Search';
 
+import { useGetCategories, useGetTags, useGetKnowledge } from '../libs/api';
+
 const KnowledgeList: FC = () => {
   return (
     <>
@@ -18,7 +20,7 @@ const KnowledgeList: FC = () => {
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
             <Knowledge
-              knowledge={getKnowledgeMock()}
+              knowledge={useGetKnowledge()}
               groupNum={10}
               findKnowledge={{ category: 0, tag: 0, search: '' }}
             />
@@ -32,10 +34,10 @@ const KnowledgeList: FC = () => {
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories categories={getCategoriesMock()} />
+            <Categories categories={useGetCategories()} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags tags={getTagsMock()} />
+            <Tags tags={useGetTags()} />
           </div>
         </div>
       </div>
