@@ -13,7 +13,7 @@ import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getTagsMock } from '../libs/mocks/tags';
 
-import { useGetReports, useGetCategories, useGetTags, useGetKnowledge } from '../libs/api';
+import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
 
 const Home: FC = () => {
   return (
@@ -24,7 +24,7 @@ const Home: FC = () => {
             <Reports data={useGetReports()} groupNum={4} findReports={{ category: 0, tag: 0, search: '' }} />
           </div>
           <div className='my-12 mx-6'>
-            <Knowledges data={useGetKnowledge()} groupNum={5} findKnowledge={{ category: 0, tag: 0, search: '' }} />
+            <Knowledges data={useGetKnowledges()} groupNum={5} findKnowledges={{ category: 0, tag: 0, search: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>

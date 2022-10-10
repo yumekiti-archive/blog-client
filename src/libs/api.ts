@@ -26,7 +26,7 @@ export const useGetCategories = (): Category[] => {
 };
 
 // knowledges
-export const useGetKnowledge = (): Knowledge[] => {
+export const useGetKnowledges = (): Knowledge[] => {
   const { data, isLoading, isError } = useGet('knowledges');
   if (isLoading || isError) return [];
   return data.data;

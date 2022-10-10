@@ -5,26 +5,26 @@ import Knowledge from '../libs/interfaces/knowledge';
 interface Props {
   data: Knowledge[];
   groupNum: number;
-  findKnowledge: {
+  findKnowledges: {
     search: string;
     category: number;
     tag: number;
   };
 }
 
-const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledge }) => {
+const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
   const [knowledges, setKnowledges] = useState<Knowledge[]>([]);
 
   useEffect(() => {
     // find
-    if (findKnowledge.category !== 0)
-      setKnowledges(data.filter((knowledge) => knowledge.attributes.category.id === findKnowledge.category));
-    else if (findKnowledge.tag !== 0)
+    if (findKnowledges.category !== 0)
+      setKnowledges(data.filter((knowledge) => knowledge.attributes.category.id === findKnowledges.category));
+    else if (findKnowledges.tag !== 0)
       setKnowledges(
-        data.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledge.tag)),
+        data.filter((knowledge) => knowledge.attributes.tags.some((tag) => tag.id === findKnowledges.tag)),
       );
-    else if (findKnowledge.search !== '')
-      setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledge.search)));
+    else if (findKnowledges.search !== '')
+      setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledges.search)));
     else setKnowledges(data);
 
     // pseudo-element
@@ -46,7 +46,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledge }) => {
         });
       }
     }
-  }, [data, findKnowledge]);
+  }, [data, findKnowledges]);
 
   // gorup
   const knowledgeGroup = knowledges.reduce((acc, cur, i) => {
