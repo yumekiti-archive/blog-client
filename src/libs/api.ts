@@ -9,7 +9,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 // get
 const useGet = (url: string) => {
-  const { data, error } = useSWR(`https://strapi.yumekiti.net/api/${url}?populate=*`, fetcher);
+  const { data, error } = useSWR(`${window.location.origin}/api/${url}?populate=*`, fetcher);
 
   return {
     data,

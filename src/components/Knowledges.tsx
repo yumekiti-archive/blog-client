@@ -76,7 +76,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                     <br />
                     <div className='flex items-center'>
                       <img
-                        src={`https://strapi.yumekiti.net${knowledge.attributes.img}`}
+                        src={`${window.location.origin}${knowledge.attributes.img}`}
                         alt={knowledge.attributes.title}
                         className='w-16 h-16 object-cover mx-6'
                       />
