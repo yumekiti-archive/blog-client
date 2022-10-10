@@ -32,7 +32,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
           id: 0,
           attributes: {
             img: '',
-            title: '',
+            title: `dummy${i}`,
             body: '',
             category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
             tags: [],
@@ -65,7 +65,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
         <div className='bg-cyan-100 rounded'>
           <h1 className='text-xl text-center py-4'>新規記事</h1>
           <div className='flex items-center justify-between flex-wrap'>
-            {reportsGroup[page - 1].map((report, index) =>
+            {reportsGroup[page - 1].map((report) =>
               report.id !== 0 ? (
                 <div key={report.id} className='w-full lg:w-1/2 animate-fade-in'>
                   <Link to={'/report/' + report.id} className='hover:opacity-80'>
@@ -88,7 +88,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
                   </Link>
                 </div>
               ) : (
-                <div key={index} className='w-full lg:w-1/2'>
+                <div key={report.attributes.title} className='w-full lg:w-1/2'>
                   <div className='px-4 pb-6'>
                     <div>
                       <div className='h-48' />

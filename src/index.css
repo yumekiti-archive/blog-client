@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url(markdown.css);
+
 body {
   background-color: #e5e7eb;
   color: #334155;
