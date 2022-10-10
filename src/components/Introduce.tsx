@@ -14,7 +14,7 @@ const IntroduceComponent: FC<Props> = ({ introduce }) => {
         alt='アイコン'
         className='w-32 h-32 mx-auto rounded-full object-cover'
       />
-      <p className='text-center font-bold'>{introduce.name}</p>
+      <p className='text-lg text-center font-bold'>{introduce.name}</p>
       <p className='text-center text-sm p-4'>
         {introduce.body.split('\n').map((line) => (
           <span key={line}>

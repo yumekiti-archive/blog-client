@@ -17,7 +17,7 @@ const CategoriesComponent: FC<Props> = ({ categories }) => {
               <div className='flex items-center justify-center'>
                 <Link to={'/category/' + category.id} className='cursor-pointer hover:underline flex'>
                   <div className='flex items-center justify-center'>
-                    <span className='w-3 h-3 bg-[#094067] rounded-full mr-2' />
+                    <span className='w-3 h-3 bg-[#3da9fc] rounded-full mr-2' />
                   </div>
                   <span>{category.attributes.name}</span>
                 </Link>

@@ -14,11 +14,11 @@ const ReportComponent: FC<Props> = ({ report }) => {
       {report && (
         <div className='card-color rounded'>
           <div className='block p-4 text-center'>
-            <h1 className='text-2xl'>{report.attributes.title}</h1>
+            <h1 className='text-4xl'>{report.attributes.title}</h1>
             <p className='text-xs'>{report.attributes.createdAt}</p>
           </div>
           <div className='px-4 pb-4'>
-            <div className='bg-white min-h-screen rounded'>
+            <div className='min-h-screen rounded'>
               <div className='w-full flex justify-end items-center p-2'>
                 <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full hover:bg-cyan-200 cursor-pointer'>
                   {(report.attributes.category && (
@@ -33,7 +33,7 @@ const ReportComponent: FC<Props> = ({ report }) => {
               <div className='markdown p-4 min-h-screen'>
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{report.attributes.body}</ReactMarkdown>
               </div>
-              <ul className='p-2 flex justify-start items-center flex-wrap bg-white gap-2'>
+              <ul className='p-2 flex justify-start items-center flex-wrap gap-2'>
                 {(report.attributes.tags &&
                   report.attributes.tags.map((tag) => (
                     <li>

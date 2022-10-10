@@ -69,7 +69,7 @@ const KnowledgesComponent: FC<Props> = ({ knowledge, groupNum, findKnowledge }) 
               knowledge.id !== 0 ? (
                 <div
                   key={knowledge.id}
-                  className='bg-white w-full mx-6 mb-4 overflow-hidden rounded-lg animate-fade-in shadow-md hover:shadow-lg'
+                  className='bg-white w-full mx-6 mb-4 overflow-hidden rounded-lg animate-fade-in shadow-md hover:shadow-lg border-2 border-[#094067]'
                 >
                   <a href={knowledge.attributes.path} target='_blank' rel='noreferrer'>
                     <br />

@@ -70,7 +70,7 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
                 <div key={report.id} className='w-full lg:w-1/2 animate-fade-in'>
                   <Link to={'/report/' + report.id} className='hover:opacity-80'>
                     <div className='px-4 pb-6 relative'>
-                      <div className='bg-white rounded-lg shadow-md'>
+                      <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
                         <img
                           src={`http://192.168.11.58:1337${report.attributes.img}`}
                           alt={report.attributes.title}
@@ -106,24 +106,24 @@ const Reports: FC<Props> = ({ reports, groupNum, findReports }) => {
         <div className='flex items-center justify-center mt-4'>
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
-              <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
+              <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
                 {'<'}
               </p>
             </button>
           ) : (
-            <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2' />
+            <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
           )}
           <p className='text-md mr-2'>
             {page} / {maxPage}
           </p>
           {page < maxPage ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
-              <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
+              <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
                 {'>'}
               </p>
             </button>
           ) : (
-            <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2' />
+            <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
           )}
         </div>
       </>

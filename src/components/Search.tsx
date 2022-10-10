@@ -9,7 +9,7 @@ const Search: FC = () => {
       <div className='flex justify-center pb-4'>
         <input
           type='text'
-          className='w-3/4 border-2 border-gray-300 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-cyan-50'
+          className='w-3/4 border-2 border-[#094067] rounded py-2 px-4 text-gray-700 leading-tight'
           placeholder='キーワードを入力'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
