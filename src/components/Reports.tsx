@@ -18,9 +18,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
   useEffect(() => {
     // find
     if (findReports.category !== 0)
-      setReports(data.filter((report) => report.attributes.category.id === findReports.category));
+      setReports(data.filter((report) => report.attributes.category.data.id === findReports.category));
     else if (findReports.tag !== 0)
-      setReports(data.filter((report) => report.attributes.tags.some((tag) => tag.id === findReports.tag)));
+      setReports(data.filter((report) => report.attributes.tags.data.some((tag) => tag.id === findReports.tag)));
     else if (findReports.search !== '')
       setReports(data.filter((report) => report.attributes.title.includes(findReports.search)));
     else setReports(data);
@@ -33,11 +33,11 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
       reportsWithoutDummy.push({
         id: 0,
         attributes: {
-          img: '',
+          img: { data: {id: 0, attributes: {name: '', url: ''}} },
           title: `dummy${i}`,
           body: '',
-          category: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } },
-          tags: [],
+          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+          tags: { data: [] },
           createdAt: '',
           updatedAt: '',
           publishedAt: '',
@@ -73,7 +73,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                     <div className='px-4 pb-6 relative'>
                       <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
                         <img
-                          src={`http://192.168.11.58:1337${report.attributes.img}`}
+                          src={`http://192.168.11.58:1337${report.attributes.img.data.attributes.url}`}
                           alt={report.attributes.title}
                           className='w-full h-48 object-cover'
                         />
@@ -82,7 +82,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                         </div>
                         <p className='text-sm text-right pr-2 pb-1'>{report.attributes.createdAt}</p>
                         <span className='top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full'>
-                          {report.attributes.category && report.attributes.category.attributes.name}
+                          {report.attributes.category && report.attributes.category.data.attributes.name}
                         </span>
                       </div>
                     </div>

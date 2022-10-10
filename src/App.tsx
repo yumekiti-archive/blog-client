@@ -26,7 +26,7 @@ const App: FC = () => {
           path='/'
           element={<Home reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
         />
-        <Route path='/reports' element={<ReportList reports={reports} categories={categories} tags={tags} />} />
+        {/* <Route path='/reports' element={<ReportList reports={reports} categories={categories} tags={tags} />} />
         <Route path='/report/:id' element={<ReportPage reports={reports} categories={categories} tags={tags} />} />
         <Route
           path='/knowledge'
@@ -35,7 +35,7 @@ const App: FC = () => {
         <Route
           path='/categories/:id'
           element={<CategoriesPage reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
-        />
+        /> */}
       </Routes>
     </>
   );

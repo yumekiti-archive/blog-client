@@ -6,21 +6,23 @@ export const getReportsMock = (): Report[] => {
   data.push({
     id: 1,
     attributes: {
-      img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png',
+      img: { data: {id: 1, attributes: {name: 'geh', url: 'https://img.icons8.com/ios-filled/50/000000/twitter.png'}} },
       title:
         'titasdasdasdasdasdasdasdaasdasdasdasdasdasdasdsdasdSleほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげほげ',
       body: 'body',
       date: '2021/01/01',
       category: {
-        id: 1,
-        attributes: {
-          name: 'カテゴリー1',
-          createdAt: '2021-01-01T00:00:00.000Z',
-          updatedAt: '2021-01-01T00:00:00.000Z',
-          publishedAt: '2021-01-01T00:00:00.000Z',
-        },
+        data: {
+          id: 1,
+          attributes: {
+            name: 'カテゴリー1',
+            createdAt: '2021-01-01T00:00:00.000Z',
+            updatedAt: '2021-01-01T00:00:00.000Z',
+            publishedAt: '2021-01-01T00:00:00.000Z',
+          },
+        }
       },
-      tags: [
+      tags: {data: [
         {
           id: 1,
           attributes: {
@@ -39,7 +41,7 @@ export const getReportsMock = (): Report[] => {
             publishedAt: '2021-01-01T00:00:00.000Z',
           },
         },
-      ],
+      ]},
       createdAt: '2021-01-01T00:00:00.000Z',
       updatedAt: '2021-01-01T00:00:00.000Z',
       publishedAt: '2021-01-01T00:00:00.000Z',
@@ -50,11 +52,11 @@ export const getReportsMock = (): Report[] => {
     data.push({
       id: i,
       attributes: {
-        img: 'https://source.unsplash.com/random/100x100',
+        img: { data: {id: 1, attributes: {name: '', url: 'https://source.unsplash.com/random/100x100'}}},
         title: `title${i}`,
         body: 'body',
         date: '2020-01-01',
-        category: {
+        category: {data: {
           id: i,
           attributes: {
             name: `category${i}`,
@@ -62,8 +64,8 @@ export const getReportsMock = (): Report[] => {
             updatedAt: '2021-01-01T00:00:00.000Z',
             publishedAt: '2021-01-01T00:00:00.000Z',
           },
-        },
-        tags: [
+        }},
+        tags: {data: [
           {
             id: i,
             attributes: {
@@ -73,7 +75,7 @@ export const getReportsMock = (): Report[] => {
               publishedAt: '2021-01-01T00:00:00.000Z',
             },
           },
-        ],
+        ]},
         createdAt: '2021-01-01T00:00:00.000Z',
         updatedAt: '2021-01-01T00:00:00.000Z',
         publishedAt: '2021-01-01T00:00:00.000Z',

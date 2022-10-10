@@ -22,8 +22,8 @@ const ReportDetailComponent: FC<Props> = ({ report }) => {
               <div className='w-full flex justify-end items-center p-2'>
                 <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full hover:bg-cyan-200 cursor-pointer'>
                   {(report.attributes.category && (
-                    <Link to={`/category/${report.attributes.category.id}`}>
-                      {report.attributes.category.attributes.name}
+                    <Link to={`/category/${report.attributes.category.data.id}`}>
+                      {report.attributes.category.data.attributes.name}
                     </Link>
                   )) ||
                     null}
@@ -35,7 +35,7 @@ const ReportDetailComponent: FC<Props> = ({ report }) => {
               </div>
               <ul className='p-2 flex justify-start items-center flex-wrap gap-2'>
                 {(report.attributes.tags &&
-                  report.attributes.tags.map((tag) => (
+                  report.attributes.tags.data.map((tag) => (
                     <li>
                       <Link to={'/tag/' + tag.id} key={tag.id}>
                         <p className='text-sm bg-gray-200 rounded-full px-3 py-1 cursor-pointer hover:underline'>

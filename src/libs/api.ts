@@ -9,7 +9,7 @@ const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 // get
 const useGet = (url: string) => {
-  const { data, error } = useSWR(`http://192.168.11.58:1337/api/${url}`, fetcher);
+  const { data, error } = useSWR(`http://192.168.11.58:1337/api/${url}?populate=*`, fetcher);
 
   return {
     data,
