@@ -14,7 +14,7 @@ const ReportDetailComponent: FC<Props> = ({ report }) => {
       {report && (
         <div className='card-color rounded'>
           <div className='block p-4 text-center'>
-            <h1 className='text-2xl'>{report.attributes.title}</h1>
+            <h1 className='text-2xl lg:text-4xl'>{report.attributes.title}</h1>
             <p className='text-xs'>{report.attributes.createdAt}</p>
           </div>
           <div className='px-4 pb-4'>
@@ -34,10 +34,10 @@ const ReportDetailComponent: FC<Props> = ({ report }) => {
                 <ReactMarkdown remarkPlugins={[remarkGfm]}>{report.attributes.body}</ReactMarkdown>
               </div>
               <ul className='p-2 flex justify-start items-center flex-wrap gap-2'>
-                {(report.attributes.tags &&
+                {(report.attributes.tags.data &&
                   report.attributes.tags.data.map((tag) => (
-                    <li>
-                      <Link to={'/tags/' + tag.id} key={tag.id}>
+                    <li key={tag.id}>
+                      <Link to={'/tags/' + tag.id}>
                         <p className='text-sm bg-gray-200 rounded-full px-3 py-1 cursor-pointer hover:underline'>
                           {tag.attributes.name}
                         </p>
