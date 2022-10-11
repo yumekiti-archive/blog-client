@@ -24,7 +24,11 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
         data.filter((knowledge) => knowledge.attributes.tags.data.some((tag) => tag.id === findKnowledges.tag)),
       );
     else if (findKnowledges.search !== '')
-      setKnowledges(data.filter((knowledge) => knowledge.attributes.title.includes(findKnowledges.search)));
+      setKnowledges(
+        data.filter((knowledge) =>
+          knowledge.attributes.title.toLowerCase().includes(findKnowledges.search.toLowerCase()),
+        ),
+      );
     else setKnowledges(data);
   }, [data, findKnowledges]);
 
@@ -90,7 +94,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                   <div className='flex justify-end items-center'>
                     <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
                       {knowledge.attributes.category ? (
-                        <Link to={`/category/${knowledge.attributes.category.data.id}`}>
+                        <Link to={`/categories/${knowledge.attributes.category.data.id}`}>
                           {knowledge.attributes.category.data.attributes.name}
                         </Link>
                       ) : null}
@@ -102,7 +106,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                               className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
                               key={tag.id}
                             >
-                              <Link to={'/tag/' + tag.id}>{tag.attributes.name}</Link>
+                              <Link to={'/tags/' + tag.id}>{tag.attributes.name}</Link>
                             </p>
                           ))
                         : null}

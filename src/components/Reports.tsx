@@ -22,7 +22,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
     else if (findReports.tag !== 0)
       setReports(data.filter((report) => report.attributes.tags.data.some((tag) => tag.id === findReports.tag)));
     else if (findReports.search !== '')
-      setReports(data.filter((report) => report.attributes.title.includes(findReports.search)));
+      setReports(
+        data.filter((report) => report.attributes.title.toLowerCase().includes(findReports.search.toLowerCase())),
+      );
     else setReports(data);
   }, [data, findReports]);
 
