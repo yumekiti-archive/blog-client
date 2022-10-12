@@ -84,7 +84,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                         </div>
                         <p className='text-sm text-right pr-2 pb-1'>{report.attributes.createdAt.split('T')[0].split('-').join('/')}</p>
                         <span className='top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full'>
-                          {report.attributes.category && report.attributes.category.data.attributes.name}
+                          {report.attributes.category.data && report.attributes.category.data.attributes.name}
                         </span>
                       </div>
                     </div>
