@@ -71,7 +71,7 @@
 }
 
 .markdown pre code {
-  @apply block bg-transparent p-0 overflow-visible rounded-none overflow-scroll;
+  @apply block bg-transparent p-0 overflow-visible rounded-none overflow-scroll scrollbar-none;
 }
 
 .markdown ul {
