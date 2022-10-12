@@ -63,7 +63,12 @@
 }
 
 .markdown code {
-  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05 overflow-scroll;
+  @apply font-mono text-sm inline bg-gray-200 rounded px-1 py-05;
+}
+
+.markdown code::-webkit-scrollbar {
+  /* Chrome, Safari 対応 */
+  display: none;
 }
 
 .markdown pre {
