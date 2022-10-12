@@ -30,31 +30,34 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
         ),
       );
     else setKnowledges(data);
-  }, [data, findKnowledges]);
 
-  // pseudo-element
-  const knowledgesWithoutDummy = knowledges.filter((knowledge) => knowledge.id !== 0);
-  if (knowledgesWithoutDummy.length % groupNum !== 0) {
-    for (let i = knowledgesWithoutDummy.length; i < knowledgesWithoutDummy.length % groupNum; i++) {
-      knowledgesWithoutDummy.push({
-        id: 0,
-        attributes: {
-          title: `dummy${i}`,
-          content: '',
-          img: { data: { id: 1, attributes: { name: '', url: '' } } },
-          path: '',
-          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
-          tags: { data: [] },
-          createdAt: '',
-          updatedAt: '',
-          publishedAt: '',
-        },
-      });
-    }
-  }
+    // pseudo-element
+    setKnowledges((prev) => {
+      const knowledgesWithoutDummy = prev.filter((knowledge) => knowledge.id !== 0);
+      if (knowledgesWithoutDummy.length % groupNum !== 0) {
+        for (let i = knowledgesWithoutDummy.length - 1; i < knowledgesWithoutDummy.length % groupNum; i++) {
+          knowledgesWithoutDummy.push({
+            id: 0,
+            attributes: {
+              title: `dummy${i}`,
+              content: '',
+              img: { data: { id: 1, attributes: { name: '', url: '' } } },
+              path: '',
+              category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+              tags: { data: [] },
+              createdAt: '',
+              updatedAt: '',
+              publishedAt: '',
+            },
+          });
+        }
+      }
+      return knowledgesWithoutDummy;
+    });
+  }, [data, findKnowledges, groupNum]);
 
   // gorup
-  const knowledgeGroup = knowledgesWithoutDummy.reduce((acc, cur, i) => {
+  const knowledgeGroup = knowledges.reduce((acc, cur, i) => {
     if (i % groupNum === 0) acc.push([cur]);
     else acc[acc.length - 1].push(cur);
     return acc;

@@ -26,35 +26,35 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
         data.filter((report) => report.attributes.title.toLowerCase().includes(findReports.search.toLowerCase())),
       );
     else setReports(data);
-  }, [data, findReports]);
 
-  // pseudo-element
-  const reportsWithoutDummy = reports.filter((report) => report.id !== 0);
-  if (reportsWithoutDummy.length % groupNum !== 0) {
-    for (let i = reportsWithoutDummy.length; i < reportsWithoutDummy.length % groupNum; i++) {
-      reportsWithoutDummy.push({
-        id: 0,
-        attributes: {
-          img: { data: { id: 0, attributes: { name: '', url: '' } } },
-          title: `dummy${i}`,
-          body: '',
-          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
-          tags: { data: [] },
-          createdAt: '',
-          updatedAt: '',
-          publishedAt: '',
-        },
-      });
-    }
-  }
+    // pseudo-element
+    setReports((prev) => {
+      const reportsWithoutDummy = prev.filter((report) => report.id !== 0);
+      if (reportsWithoutDummy.length % groupNum !== 0) {
+        for (let i = reportsWithoutDummy.length - 1; i < reportsWithoutDummy.length % groupNum; i++) {
+          reportsWithoutDummy.push({
+            id: 0,
+            attributes: {
+              img: { data: { id: 0, attributes: { name: '', url: '' } } },
+              title: `dummy${i}`,
+              body: '',
+              category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+              tags: { data: [] },
+              createdAt: '',
+              updatedAt: '',
+              publishedAt: '',
+            },
+          });
+        }
+      }
+      return reportsWithoutDummy;
+    });
+  }, [data, findReports, groupNum]);
 
   // group
-  const reportsGroup = reportsWithoutDummy.reduce((acc, cur, i) => {
-    if (i % groupNum === 0) {
-      acc.push([cur]);
-    } else {
-      acc[acc.length - 1].push(cur);
-    }
+  const reportsGroup = reports.reduce((acc, cur, i) => {
+    if (i % groupNum === 0) acc.push([cur]);
+    else acc[acc.length - 1].push(cur);
     return acc;
   }, [] as Report[][]);
 
