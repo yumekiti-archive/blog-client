@@ -31,7 +31,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
     setReports((prev) => {
       const reportsWithoutDummy = prev.filter((report) => report.id !== 0);
       if (reportsWithoutDummy.length % groupNum !== 0) {
-        for (let i = reportsWithoutDummy.length - 1; i < reportsWithoutDummy.length % groupNum; i++) {
+        for (let i = 0; i < reportsWithoutDummy.length % groupNum; i++) {
           reportsWithoutDummy.push({
             id: 0,
             attributes: {

@@ -35,7 +35,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
     setKnowledges((prev) => {
       const knowledgesWithoutDummy = prev.filter((knowledge) => knowledge.id !== 0);
       if (knowledgesWithoutDummy.length % groupNum !== 0) {
-        for (let i = knowledgesWithoutDummy.length - 1; i < knowledgesWithoutDummy.length % groupNum; i++) {
+        for (let i = 0; i < knowledgesWithoutDummy.length % groupNum; i++) {
           knowledgesWithoutDummy.push({
             id: 0,
             attributes: {
