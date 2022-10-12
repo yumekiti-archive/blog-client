@@ -16,7 +16,7 @@ const Tags: FC<Props> = ({ data }) => {
             {data.map((tag) => (
               <li key={tag.id}>
                 <Link to={'/tags/' + tag.id}>
-                  <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm hover:underline cursor-pointer'>
+                  <p className='bg-gray-200 inline-block rounded-full px-3 py-1 text-sm hover:underline cursor-pointer whitespace-nowrap'>
                     {tag.attributes.name}
                   </p>
                 </Link>

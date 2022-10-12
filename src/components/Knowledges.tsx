@@ -93,23 +93,22 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                   </a>
                   <div className='flex justify-end items-center'>
                     <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
-                      {knowledge.attributes.category ? (
+                      {knowledge.attributes.category.data && (
                         <Link to={`/categories/${knowledge.attributes.category.data.id}`}>
                           {knowledge.attributes.category.data.attributes.name}
                         </Link>
-                      ) : null}
+                      )}
                     </p>
                     <div className='overflow-scroll overflow-hidden flex'>
-                      {knowledge.attributes.tags
-                        ? knowledge.attributes.tags.data.map((tag) => (
-                            <p
-                              className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline'
-                              key={tag.id}
-                            >
-                              <Link to={'/tags/' + tag.id}>{tag.attributes.name}</Link>
-                            </p>
-                          ))
-                        : null}
+                      {knowledge.attributes.tags.data &&
+                        knowledge.attributes.tags.data.map((tag) => (
+                          <p
+                            className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline whitespace-nowrap'
+                            key={tag.id}
+                          >
+                            <Link to={'/tags/' + tag.id}>{tag.attributes.name}</Link>
+                          </p>
+                        ))}
                     </div>
                   </div>
                 </div>

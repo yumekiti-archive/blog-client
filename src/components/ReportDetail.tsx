@@ -21,7 +21,7 @@ const ReportDetailComponent: FC<Props> = ({ report }) => {
             <div className='min-h-screen rounded'>
               <div className='w-full flex justify-end items-center p-2'>
                 <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full hover:bg-cyan-200 cursor-pointer'>
-                  {(report.attributes.category && (
+                  {(report.attributes.category.data && (
                     <Link to={`/categories/${report.attributes.category.data.id}`}>
                       {report.attributes.category.data.attributes.name}
                     </Link>
