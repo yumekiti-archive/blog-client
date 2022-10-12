@@ -79,11 +79,15 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                   <a href={knowledge.attributes.path} target='_blank' rel='noreferrer'>
                     <br />
                     <div className='flex items-center'>
-                      <img
-                        src={`${window.location.origin}${knowledge.attributes.img.data.attributes.url}`}
-                        alt={knowledge.attributes.title}
-                        className='w-16 h-16 object-cover mx-6'
-                      />
+                      {knowledge.attributes.img.data ? (
+                        <img
+                          src={`${window.location.origin}${knowledge.attributes.img.data.attributes.url}`}
+                          alt={knowledge.attributes.title}
+                          className='w-16 h-16 object-cover mx-6'
+                        />
+                      ) : (
+                        <div className='w-16 h-16 object-cover mx-6'></div>
+                      )}
                       <div className='text-left truncate w-full'>
                         <p className='text-sm truncate'>
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
