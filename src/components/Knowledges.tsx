@@ -101,7 +101,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         </Link>
                       )}
                     </p>
-                    <div className='scrollbar-none overflow-scroll overflow-hidden flex'>
+                    <div className='overflow-scroll overflow-hidden flex'>
                       {knowledge.attributes.tags.data &&
                         knowledge.attributes.tags.data.map((tag) => (
                           <p

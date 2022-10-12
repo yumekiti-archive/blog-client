@@ -11,7 +11,7 @@ body {
   font-family: 'Proxima Nova', sans-serif;
 }
 
-.scrollbar-none::-webkit-scrollbar {
+.overflow-scroll::-webkit-scrollbar {
   /* Chrome, Safari 対応 */
   display: none;
 }
