@@ -74,15 +74,21 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                   <Link to={'/report/' + report.id} className='hover:opacity-80'>
                     <div className='px-4 pb-6 relative'>
                       <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
-                        <img
-                          src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
-                          alt={report.attributes.title}
-                          className='w-full h-48 object-cover'
-                        />
+                        {report.attributes.img.data ? (
+                          <img
+                            src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
+                            alt={report.attributes.title}
+                            className='w-full h-48 object-cover'
+                          />
+                        ) : (
+                          <div className='w-full h-48 bg-gray-200'></div>
+                        )}
                         <div className='flex justify-start items-center px-6 py-2 h-20'>
                           <p className='text-md text-left line-clamp-2'>{report.attributes.title}</p>
                         </div>
-                        <p className='text-sm text-right pr-2 pb-1'>{report.attributes.createdAt.split('T')[0].split('-').join('/')}</p>
+                        <p className='text-sm text-right pr-2 pb-1'>
+                          {report.attributes.createdAt.split('T')[0].split('-').join('/')}
+                        </p>
                         <span className='top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full'>
                           {report.attributes.category.data && report.attributes.category.data.attributes.name}
                         </span>
