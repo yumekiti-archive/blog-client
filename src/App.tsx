@@ -1,4 +1,4 @@
-import { FC, useRef, useEffect } from 'react';
+import { FC } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -19,22 +19,6 @@ const App: FC = () => {
   const categories = useGetCategories();
   const tags = useGetTags();
   const knowledges = useGetKnowledges();
-
-  const router = useRef<any>(null);
-
-  // gtag react-router
-  useEffect(() => {
-    const handleRouteChange = (url: any) => {
-      (window as any).gtag('config', 'G-XXXXXXXXXX', {
-        page_path: url,
-      });
-    };
-    router.current = handleRouteChange;
-  }, []);
-
-  useEffect(() => {
-    if (router.current) router.current(window.location.pathname);
-  }, [router]);
 
   return (
     <>
