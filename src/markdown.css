@@ -107,3 +107,7 @@
 .markdown .highlight pre {
   @apply bg-gray-100 !important;
 }
+
+.markdown img {
+  @apply max-h-96;
+}

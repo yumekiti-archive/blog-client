@@ -13,7 +13,7 @@ const ReportDetailComponent: FC<Props> = ({ report }) => {
     <>
       {report && (
         <div className='card-color rounded'>
-          <div className='block p-4 text-center'>
+          <div className='block px-4 py-12 text-center'>
             <h1 className='text-2xl'>{report.attributes.title}</h1>
             <p className='text-xs'>{report.attributes.createdAt.split('T')[0].split('-').join('/')}</p>
           </div>
