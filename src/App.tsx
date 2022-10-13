@@ -22,18 +22,19 @@ const App: FC = () => {
 
   const router = useRef<any>(null);
 
+  // gtag react-router
   useEffect(() => {
-    // gtag
     const handleRouteChange = (url: any) => {
-      (window as any).gtag('config', 'G-WWTDS2ZG8V', {
+      (window as any).gtag('config', 'G-XXXXXXXXXX', {
         page_path: url,
       });
     };
-    router.current?.addEventListener('routeChangeComplete', handleRouteChange);
-    return () => {
-      router.current?.removeEventListener('routeChangeComplete', handleRouteChange);
-    };
-  }, [router.current]);
+    router.current = handleRouteChange;
+  }, []);
+
+  useEffect(() => {
+    if (router.current) router.current(window.location.pathname);
+  }, [router]);
 
   return (
     <>
