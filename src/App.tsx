@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useRef, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import Header from './components/Header';
@@ -19,6 +19,16 @@ const App: FC = () => {
   const categories = useGetCategories();
   const tags = useGetTags();
   const knowledges = useGetKnowledges();
+
+  const router = useRef<any>(null);
+
+  useEffect(() => {
+    router.current.history.listen((location: any) => {
+      (window as any).gtag('config', 'G-WWTDS2ZG8V', {
+        'page_path': location.pathname
+      });
+    });
+  });
 
   return (
     <>
