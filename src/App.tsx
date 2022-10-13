@@ -23,12 +23,17 @@ const App: FC = () => {
   const router = useRef<any>(null);
 
   useEffect(() => {
-    router.current.history.listen((location: any) => {
+    // gtag
+    const handleRouteChange = (url: any) => {
       (window as any).gtag('config', 'G-WWTDS2ZG8V', {
-        'page_path': location.pathname
+        page_path: url,
       });
-    });
-  });
+    };
+    router.current?.addEventListener('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.current?.removeEventListener('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.current]);
 
   return (
     <>
