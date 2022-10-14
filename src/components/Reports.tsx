@@ -82,6 +82,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                   <Link to={'/report/' + report.id} className='hover:opacity-80'>
                     <div className='px-4 pb-6 relative'>
                       <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
+                        <div className='bg-cyan-100 text-xs px-2 py-1 rounded-full m-2'>
+                          {report.attributes.category.data && report.attributes.category.data.attributes.name}
+                        </div>
                         {report.attributes.img.data ? (
                           <img
                             src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
@@ -97,9 +100,6 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                         <p className='text-sm text-right pr-2 pb-1'>
                           {report.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
-                        <span className='top-2 left-6 absolute bg-cyan-100 text-xs px-2 py-1 rounded-full'>
-                          {report.attributes.category.data && report.attributes.category.data.attributes.name}
-                        </span>
                       </div>
                     </div>
                   </Link>
