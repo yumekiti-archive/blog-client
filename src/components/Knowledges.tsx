@@ -75,9 +75,10 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
       <>
         <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>
-            <span className='flex justify-center items-center'>
-              <i className='las la-paperclip text-center mx-auto'></i>新規知見
-            </span>
+            <div className='flex justify-center items-center'>
+              <i className='las la-paperclip'></i>
+              <span className='mx-2'>新規知見</span>
+            </div>
           </h1>
           <div className='flex items-center justify-center flex-wrap'>
             {knowledgeGroup[page - 1].map((knowledge) =>
@@ -151,9 +152,9 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
               <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <span className='flex justify-center items-center'>
-                  <i className='las la-angle-left text-center mx-auto'></i>
-                </span>
+                <div className='flex justify-center items-center'>
+                  <i className='las la-angle-left'></i>
+                </div>
               </p>
             </button>
           ) : (
@@ -165,9 +166,9 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
           {page < maxPage ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <span className='flex justify-center items-center'>
-                  <i className='las la-angle-right text-center mx-auto'></i>
-                </span>
+                <div className='flex justify-center items-center'>
+                  <i className='las la-angle-right'></i>
+                </div>
               </p>
             </button>
           ) : (
