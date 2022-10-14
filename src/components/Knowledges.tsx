@@ -74,7 +74,9 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
     (knowledgeGroup.length > 0 && (
       <>
         <div className='card-color rounded'>
-          <h1 className='text-xl text-center py-4'>新規知見</h1>
+          <h1 className='text-xl text-center py-4'>
+            <i className='las la-paperclip'></i>新規知見
+          </h1>
           <div className='flex items-center justify-center flex-wrap'>
             {knowledgeGroup[page - 1].map((knowledge) =>
               knowledge.id !== 0 ? (
@@ -147,7 +149,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
               <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                {'<'}
+                <i className='las la-angle-left'></i>
               </p>
             </button>
           ) : (
@@ -159,7 +161,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
           {page < maxPage ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                {'>'}
+                <i className='las la-angle-right'></i>
               </p>
             </button>
           ) : (

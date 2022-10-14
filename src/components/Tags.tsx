@@ -10,7 +10,9 @@ const Tags: FC<Props> = ({ data }) => {
   return (
     (data.length > 0 && (
       <div className='card-color rounded'>
-        <h1 className='text-xl text-center py-4'>タグ</h1>
+        <h1 className='text-xl text-center py-4'>
+          <i className='las la-tags'></i>タグ
+        </h1>
         <div className='pb-2 px-4 flex flex-wrap items-center justify-between'>
           <ul className='flex flex-wrap gap-2'>
             {data.map((tag) => (

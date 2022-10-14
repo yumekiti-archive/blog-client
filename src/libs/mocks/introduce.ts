@@ -6,14 +6,19 @@ export const getIntroduceMock = (): Introduce => {
     body: '専門学校生です。\n主にインフラを勉強しています。',
     links: [
       {
+        name: 'Portfolio',
+        path: 'https://portfolio.yumekiti.net/',
+        icon: 'la-user',
+      },
+      {
         name: 'Twitter',
         path: 'https://twitter.com/yumekiti1204',
-        img: 'https://img.icons8.com/ios-filled/50/000000/twitter.png',
+        icon: 'la-twitter',
       },
       {
         name: 'GitHub',
         path: 'https://github.com/yumekiti',
-        img: 'https://img.icons8.com/ios-filled/50/000000/github.png',
+        icon: 'la-github',
       },
     ],
   };
