@@ -27,7 +27,7 @@ const IntroduceComponent: FC<Props> = ({ data }) => {
         {data.links.map((link, index) => (
           <a href={link.path} target='_blank' rel='noreferrer' key={index}>
             <li className='mx-2 hover:opacity-50'>
-              <i className={`w-6 h-6 mx-auto ${link.icon} text-2xl`}></i>
+              <i className={`${link.icon} w-6 h-6 text-4xl text-center`}></i>
               <p className='text-xs text-center'>{link.name}</p>
             </li>
           </a>

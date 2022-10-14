@@ -70,7 +70,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
       <>
         <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>
-            <i className='las la-file-alt mx-auto'></i>新規記事
+            <i className='las la-file-alt w-6 h-6 text-4xl text-center'></i>新規記事
           </h1>
           <div className='flex items-center justify-between flex-wrap'>
             {reportsGroup[page - 1].map((report) =>
@@ -121,7 +121,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <i className='mx-auto las la-angle-left text-center'></i>
+                <i className='las la-angle-left w-6 h-6 text-4xl text-center'></i>
               </p>
             </button>
           ) : (
@@ -133,7 +133,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page < maxPage ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <i className='mx-auto las la-angle-right text-center'></i>
+                <i className='las la-angle-right w-6 h-6 text-4xl text-center'></i>
               </p>
             </button>
           ) : (
