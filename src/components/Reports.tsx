@@ -86,7 +86,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                           <img
                             src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
                             alt={report.attributes.title}
-                            className='w-full h-48 object-cover'
+                            className='w-full h-48 object-contain'
                           />
                         ) : (
                           <div className='w-full h-48 bg-gray-200'></div>
