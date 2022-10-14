@@ -11,7 +11,7 @@ const CategoriesComponent: FC<Props> = ({ data }) => {
     (data.length > 0 && (
       <div className='card-color rounded'>
         <h1 className='text-xl text-center py-4'>
-          <i className="las la-bars text-center"></i>カテゴリー
+          <i className="las la-bars text-center mx-auto"></i>カテゴリー
         </h1>
         <ul className='pb-2 px-2 flex flex-wrap items-center justify-start'>
           {data.map((category) => (
