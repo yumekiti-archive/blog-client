@@ -6,7 +6,7 @@ const Search: FC = () => {
   return (
     <div className='card-color rounded'>
       <h1 className='text-xl text-center py-4'>
-        <i className='las la-search'></i>検索
+        <i className='las la-search mx-auto'></i>検索
       </h1>
       <div className='flex justify-center pb-4'>
         <input
