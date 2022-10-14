@@ -31,6 +31,9 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
       );
     else setKnowledges(data);
 
+    // sort id desc
+    setKnowledges((prev) => prev.sort((a, b) => (a.id > b.id ? -1 : 1)));
+
     // pseudo-element
     setKnowledges((prev) => {
       const knowledgesWithoutDummy = prev.filter((knowledge) => knowledge.id !== 0);

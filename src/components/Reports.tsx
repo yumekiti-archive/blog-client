@@ -27,6 +27,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
       );
     else setReports(data);
 
+    // sort id desc
+    setReports((prev) => prev.sort((a, b) => (a.id > b.id ? -1 : 1)));
+
     // pseudo-element
     setReports((prev) => {
       const reportsWithoutDummy = prev.filter((report) => report.id !== 0);
