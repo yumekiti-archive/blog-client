@@ -11,7 +11,7 @@ const Tags: FC<Props> = ({ data }) => {
     (data.length > 0 && (
       <div className='card-color rounded'>
         <h1 className='text-xl text-center py-4'>
-          <i className='las la-tags w-6 h-6 text-4xl text-center'></i>タグ
+          <i className='las la-tags text-center'></i>タグ
         </h1>
         <div className='pb-2 px-4 flex flex-wrap items-center justify-between'>
           <ul className='flex flex-wrap gap-2'>

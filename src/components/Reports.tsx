@@ -121,7 +121,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <i className='las la-angle-left w-6 h-6 text-4xl text-center'></i>
+                <i className='las la-angle-left text-center'></i>
               </p>
             </button>
           ) : (
@@ -133,7 +133,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page < maxPage ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <i className='las la-angle-right w-6 h-6 text-4xl text-center'></i>
+                <i className='las la-angle-right text-center'></i>
               </p>
             </button>
           ) : (
