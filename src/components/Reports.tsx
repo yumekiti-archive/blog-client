@@ -70,7 +70,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
       <>
         <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>
-            <i className='las la-file-alt text-center mx-auto'></i>新規記事
+            <span className='flex justify-center items-center'>
+              <i className='las la-file-alt text-center mx-auto'></i>新規記事
+            </span>
           </h1>
           <div className='flex items-center justify-between flex-wrap'>
             {reportsGroup[page - 1].map((report) =>
@@ -121,7 +123,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <i className='las la-angle-left text-center mx-auto'></i>
+                <span className='flex justify-center items-center'>
+                  <i className='las la-angle-left text-center mx-auto'></i>
+                </span>
               </p>
             </button>
           ) : (
@@ -133,7 +137,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page < maxPage ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <i className='las la-angle-right text-center mx-auto'></i>
+                <span className='flex justify-center items-center'>
+                  <i className='las la-angle-right text-center mx-auto'></i>
+                </span>
               </p>
             </button>
           ) : (
