@@ -8,17 +8,17 @@ export const getIntroduceMock = (): Introduce => {
       {
         name: 'Portfolio',
         path: 'https://portfolio.yumekiti.net/',
-        icon: 'user',
+        icon: 'las la-user',
       },
       {
         name: 'Twitter',
         path: 'https://twitter.com/yumekiti1204',
-        icon: 'twitter',
+        icon: 'lab la-twitter',
       },
       {
         name: 'GitHub',
         path: 'https://github.com/yumekiti',
-        icon: 'github',
+        icon: 'lab la-github',
       },
     ],
   };
