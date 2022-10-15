@@ -133,7 +133,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                 <div key={knowledge.attributes.title} className='w-full mx-6 mb-4 overflow-hidden'>
                   <br />
                   <div className='flex items-center'>
-                    <div className='w-16 h-16' />
+                    <div className='w-16 h-16 mx-6' />
                     <div className='text-left'>
                       <p className='text-sm'>&nbsp;</p>
                       <p className='text-xl'>&nbsp;</p>
