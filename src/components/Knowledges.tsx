@@ -94,10 +94,10 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         <img
                           src={`${window.location.origin}${knowledge.attributes.img.data.attributes.url}`}
                           alt={knowledge.attributes.title}
-                          className='w-16 h-16 object-cover mx-6'
+                          className='w-16 h-16 object-contain mx-6'
                         />
                       ) : (
-                        <div className='w-16 h-16 object-cover mx-6'></div>
+                        <div className='w-16 h-16 object-contain mx-6'></div>
                       )}
                       <div className='text-left truncate w-full'>
                         <p className='text-sm overflow-scroll overflow-hidden'>
