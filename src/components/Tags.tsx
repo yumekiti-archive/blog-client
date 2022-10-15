@@ -16,8 +16,8 @@ const Tags: FC<Props> = ({ data }) => {
             <span className='mx-2'>タグ</span>
           </div>
         </h1>
-        <div className='pb-2 px-4 flex flex-wrap items-center justify-between'>
-          <ul className='flex flex-wrap gap-2'>
+        <div className='pb-2 px-4 flex flex-wrap items-center'>
+          <ul className='flex flex-wrap items-center justify-between gap-2'>
             {data.map((tag) => (
               <li key={tag.id}>
                 <Link to={'/tags/' + tag.id}>
