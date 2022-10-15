@@ -103,8 +103,8 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         <p className='text-sm truncate'>
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
-                        <p className='text-xl truncate'>{knowledge.attributes.title}</p>
-                        <p className='text-md truncate'>{knowledge.attributes.content}</p>
+                        <p className='text-xl overflow-scroll overflow-hidden'>{knowledge.attributes.title}</p>
+                        <p className='text-md overflow-scroll overflow-hidden'>{knowledge.attributes.content}</p>
                       </div>
                     </div>
                   </a>
