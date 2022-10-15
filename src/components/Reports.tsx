@@ -94,7 +94,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
                             className='w-full h-48 object-contain p-2'
                           />
                         ) : (
-                          <div className='w-full h-48 bg-gray-200'></div>
+                          <div className='w-full h-48 bg-gray-200 p-2'></div>
                         )}
                         <div className='flex justify-start items-center px-6 py-2 h-20'>
                           <p className='text-md text-left line-clamp-2'>{report.attributes.title}</p>
@@ -109,7 +109,9 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
               ) : (
                 <div key={report.attributes.title} className='w-full lg:w-1/2'>
                   <div className='px-4 pb-6'>
-                    <div className='mt-2 ml-2' />
+                    <div className='mt-2 ml-2'>
+                      <div className='text-xs px-2 py-1' />
+                    </div>
                     <div className='border-2 opacity-0'>
                       <div className='h-48 p-2' />
                       <div className='px-4 py-2 h-20'>
