@@ -99,7 +99,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                       ) : (
                         <div className='w-16 h-16 object-cover mx-6'></div>
                       )}
-                      <div className='text-left w-full'>
+                      <div className='text-left truncate w-full'>
                         <p className='text-sm overflow-scroll overflow-hidden'>
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
