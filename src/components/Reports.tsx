@@ -109,10 +109,10 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
               ) : (
                 <div key={report.attributes.title} className='w-full lg:w-1/2'>
                   <div className='px-4 pb-6'>
-                    <div className='mt-2 ml-2'>
-                      <div className='text-xs px-2 py-1' />
-                    </div>
                     <div className='border-2 opacity-0'>
+                      <div className='mt-2 ml-2'>
+                        <div className='text-xs px-2 py-1'>&nbsp;</div>
+                      </div>
                       <div className='h-48 p-2' />
                       <div className='px-4 py-2 h-20'>
                         <p className='text-md'>&nbsp;</p>
