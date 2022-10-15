@@ -103,8 +103,8 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         <p className='text-sm truncate'>
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
-                        <p className='text-xl overflow-scroll overflow-hidden scroll-smooth'>{knowledge.attributes.title}</p>
-                        <p className='text-md overflow-scroll overflow-hidden scroll-smooth'>{knowledge.attributes.content}</p>
+                        <p className='text-xl truncate overflow-scroll overflow-hidden'>{knowledge.attributes.title}</p>
+                        <p className='text-xs truncate overflow-scroll overflow-hidden'>{knowledge.attributes.content}</p>
                       </div>
                     </div>
                   </a>
@@ -116,7 +116,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         </Link>
                       )}
                     </p>
-                    <div className='overflow-scroll overflow-hidden flex scroll-smooth'>
+                    <div className='overflow-scroll overflow-hidden flex'>
                       {knowledge.attributes.tags.data &&
                         knowledge.attributes.tags.data.map((tag) => (
                           <p
