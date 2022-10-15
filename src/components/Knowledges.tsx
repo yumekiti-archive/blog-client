@@ -100,11 +100,11 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         <div className='w-16 h-16 object-cover mx-6'></div>
                       )}
                       <div className='text-left w-full'>
-                        <p className='text-sm overflow-scroll'>
+                        <p className='text-sm overflow-scroll overflow-hidden'>
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
-                        <p className='text-xl overflow-scroll'>{knowledge.attributes.title}</p>
-                        <p className='text-sm overflow-scroll'>{knowledge.attributes.content}</p>
+                        <p className='text-xl overflow-scroll overflow-hidden'>{knowledge.attributes.title}</p>
+                        <p className='text-sm overflow-scroll overflow-hidden'>{knowledge.attributes.content}</p>
                       </div>
                     </div>
                   </a>
@@ -116,7 +116,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                         </Link>
                       )}
                     </p>
-                    <div className='overflow-scroll flex'>
+                    <div className='overflow-scroll overflow-hidden flex'>
                       {knowledge.attributes.tags.data &&
                         knowledge.attributes.tags.data.map((tag) => (
                           <p
@@ -130,7 +130,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
                   </div>
                 </div>
               ) : (
-                <div key={knowledge.attributes.title} className='w-full mx-6 mb-4 border-2 opacity-0'>
+                <div key={knowledge.attributes.title} className='w-full mx-6 mb-4 overflow-hidden border-2 opacity-0'>
                   <br />
                   <div className='flex items-center'>
                     <div className='w-16 h-16 mx-6' />
