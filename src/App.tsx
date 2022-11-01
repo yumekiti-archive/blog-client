@@ -15,10 +15,10 @@ import { getHeaderMock } from './libs/mocks/header';
 import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from './libs/api';
 
 const App: FC = () => {
-  const reports = useGetReports();
-  const categories = useGetCategories();
-  const tags = useGetTags();
-  const knowledges = useGetKnowledges();
+  const reports = useGetReports(1, 4);
+  const categories = useGetCategories(1, 25);
+  const tags = useGetTags(1, 100);
+  const knowledges = useGetKnowledges(1, 5);
 
   return (
     <>
