@@ -12,39 +12,32 @@ import SearchPage from './pages/SearchPage';
 
 import { getHeaderMock } from './libs/mocks/header';
 
-import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from './libs/api';
-
 const App: FC = () => {
-  const reports = useGetReports(1, 4);
-  const categories = useGetCategories(1, 25);
-  const tags = useGetTags(1, 100);
-  const knowledges = useGetKnowledges(1, 5);
-
   return (
     <>
       <Header header={getHeaderMock()} />
       <Routes>
         <Route
           path='/'
-          element={<Home reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
+          element={<Home />}
         />
-        <Route path='/reports' element={<ReportList reports={reports} categories={categories} tags={tags} />} />
-        <Route path='/report/:id' element={<ReportPage reports={reports} categories={categories} tags={tags} />} />
+        <Route path='/reports' element={<ReportList />} />
+        <Route path='/report/:id' element={<ReportPage />} />
         <Route
           path='/knowledge'
-          element={<KnowledgesList knowledges={knowledges} categories={categories} tags={tags} />}
+          element={<KnowledgesList />}
         />
         <Route
           path='/categories/:id'
-          element={<CategoriesPage reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
+          element={<CategoriesPage />}
         />
         <Route
           path='/tags/:id'
-          element={<TagsPage reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
+          element={<TagsPage />}
         />
         <Route
           path='/search'
-          element={<SearchPage reports={reports} knowledges={knowledges} categories={categories} tags={tags} />}
+          element={<SearchPage />}
         />
       </Routes>
     </>

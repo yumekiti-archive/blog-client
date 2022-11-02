@@ -17,17 +17,16 @@ import Tags from '../components/Tags';
 import Search from '../components/Search';
 import ReportDetail from '../components/ReportDetail';
 
-import { useGetReports, useGetCategories, useGetTags } from '../libs/api';
+import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
 
-interface Props {
-  reports: Report[];
-  categories: Category[];
-  tags: Tag[];
-}
+const ReportList: FC = () => {
+  const reports = useGetReports(1, 4);
+  const categories = useGetCategories(1, 25);
+  const tags = useGetTags(1, 100);
 
-const ReportList: FC<Props> = ({ reports, categories, tags }) => {
   const { id } = useParams<{ id: string }>();
   const report = reports.find((report) => report.id === Number(id));
+
   return (
     <div className='container mx-auto flex flex-wrap'>
       <div className='w-full lg:w-3/4 mx-auto'>

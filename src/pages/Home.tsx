@@ -18,14 +18,14 @@ import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getTagsMock } from '../libs/mocks/tags';
 
-interface Props {
-  reports: Report[];
-  categories: Category[];
-  tags: Tag[];
-  knowledges: Knowledge[];
-}
+import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
 
-const Home: FC<Props> = ({ reports, categories, tags, knowledges }) => {
+const Home: FC = () => {
+  const reports = useGetReports(1, 4);
+  const categories = useGetCategories(1, 25);
+  const tags = useGetTags(1, 100);
+  const knowledges = useGetKnowledges(1, 5);
+
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>

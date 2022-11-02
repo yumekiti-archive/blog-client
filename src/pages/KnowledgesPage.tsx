@@ -15,13 +15,13 @@ import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Search from '../components/Search';
 
-interface Props {
-  categories: Category[];
-  tags: Tag[];
-  knowledges: Knowledge[];
-}
+import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
 
-const KnowledgesList: FC<Props> = ({ categories, tags, knowledges }) => {
+const KnowledgesList: FC = () => {
+  const categories = useGetCategories(1, 25);
+  const tags = useGetTags(1, 100);
+  const knowledges = useGetKnowledges(1, 5);
+
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
