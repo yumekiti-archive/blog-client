@@ -27,7 +27,7 @@ const ReportList: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports data={reports} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} />
+            {/* <Reports data={reports} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} /> */}
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
@@ -37,12 +37,8 @@ const ReportList: FC = () => {
           <div className='my-12 mx-6'>
             <Search />
           </div>
-          <div className='my-12 mx-6'>
-            <Categories data={categories} />
-          </div>
-          <div className='my-12 mx-6'>
-            <Tags data={tags} />
-          </div>
+          <div className='my-12 mx-6'>{/* <Categories data={categories} /> */}</div>
+          <div className='my-12 mx-6'>{/* <Tags data={tags} /> */}</div>
         </div>
       </div>
     </>

@@ -18,38 +18,25 @@ import { getIntroduceMock } from '../libs/mocks/introduce';
 import { getKnowledgeMock } from '../libs/mocks/knowledges';
 import { getTagsMock } from '../libs/mocks/tags';
 
-import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
-
 const Home: FC = () => {
-  const reports = useGetReports(1, 4);
-  const categories = useGetCategories(1, 25);
-  const tags = useGetTags(1, 100);
-  const knowledges = useGetKnowledges(1, 5);
-
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports data={getReportsMock()} groupNum={4} findReports={{ category: 0, tag: 0, search: '' }} />
+            <Reports pageSize={4} findReports={{ categoryId: 0, tagId: 0, search: '' }} />
           </div>
           <div className='my-12 mx-6'>
-            <Knowledges data={getKnowledgeMock()} groupNum={5} findKnowledges={{ category: 0, tag: 0, search: '' }} />
+            {/* <Knowledges groupNum={5} findKnowledges={{ category: 0, tag: 0, search: '' }} /> */}
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
-          <div className='my-12 mx-6'>
-            <Introduce data={getIntroduceMock()} />
-          </div>
+          <div className='my-12 mx-6'>{/* <Introduce /> */}</div>
           <div className='my-12 mx-6'>
             <Search />
           </div>
-          <div className='my-12 mx-6'>
-            <Categories data={getCategoriesMock()} />
-          </div>
-          <div className='my-12 mx-6'>
-            <Tags data={getTagsMock()} />
-          </div>
+          <div className='my-12 mx-6'>{/* <Categories /> */}</div>
+          <div className='my-12 mx-6'>{/* <Tags /> */}</div>
         </div>
       </div>
     </>

@@ -17,22 +17,13 @@ import Tags from '../components/Tags';
 import Search from '../components/Search';
 import ReportDetail from '../components/ReportDetail';
 
-import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
-
 const ReportList: FC = () => {
-  const reports = useGetReports(1, 4);
-  const categories = useGetCategories(1, 25);
-  const tags = useGetTags(1, 100);
-
   const { id } = useParams<{ id: string }>();
-  const report = reports.find((report) => report.id === Number(id));
 
   return (
     <div className='container mx-auto flex flex-wrap'>
       <div className='w-full lg:w-3/4 mx-auto'>
-        <div className='my-12 mx-6'>
-          <ReportDetail report={report} />
-        </div>
+        <div className='my-12 mx-6'>{/* <ReportDetail report={report} /> */}</div>
       </div>
       <div className='w-full lg:w-1/4 mx-auto'>
         <div className='my-12 mx-6'>
@@ -41,12 +32,8 @@ const ReportList: FC = () => {
         <div className='my-12 mx-6'>
           <Search />
         </div>
-        <div className='my-12 mx-6'>
-          <Categories data={categories} />
-        </div>
-        <div className='my-12 mx-6'>
-          <Tags data={tags} />
-        </div>
+        <div className='my-12 mx-6'>{/* <Categories data={categories} /> */}</div>
+        <div className='my-12 mx-6'>{/* <Tags data={tags} /> */}</div>
       </div>
     </div>
   );

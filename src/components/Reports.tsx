@@ -2,39 +2,52 @@ import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Report from '../libs/interfaces/report';
 
+import { useGetReports } from '../libs/api';
+
 interface Props {
-  data: Report[];
-  groupNum: number;
+  pageSize: number;
   findReports: {
     search: string;
-    category: number;
-    tag: number;
+    categoryId: number;
+    tagId: number;
   };
 }
 
-const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
-  const [reports, setReports] = useState<Report[]>([]);
+const Reports: FC<Props> = ({ pageSize, findReports }) => {
+  const [reports, setReports] = useState<Report['data']>([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+
+  const { search, categoryId, tagId } = findReports;
+  const filter = {
+    field: '',
+    value: '',
+  };
+  if (categoryId !== 0) {
+    filter.field = '[category][id][$in]';
+    filter.value = categoryId.toString();
+  } else if (tagId !== 0) {
+    filter.field = '[tags][id][$in]';
+    filter.value = tagId.toString();
+  } else if (search !== '') {
+    filter.field = '[title][$containsi]';
+    filter.value = search;
+  }
+
+  const { data, meta } = useGetReports(page, pageSize, filter.field, filter.value);
+
+  if (loading && data.length > 0) setLoading(false);
 
   useEffect(() => {
-    // find
-    if (findReports.category !== 0)
-      setReports(data.filter((report) => report.attributes.category.data.id === findReports.category));
-    else if (findReports.tag !== 0)
-      setReports(data.filter((report) => report.attributes.tags.data.some((tag) => tag.id === findReports.tag)));
-    else if (findReports.search !== '')
-      setReports(
-        data.filter((report) => report.attributes.title.toLowerCase().includes(findReports.search.toLowerCase())),
-      );
-    else setReports(data);
+    setLoading(true);
+    if (!data) return;
 
-    // sort id desc
-    setReports((prev) => prev.sort((a, b) => (a.id > b.id ? -1 : 1)));
-
-    // pseudo-element
+    setReports(data);
     setReports((prev) => {
       const reportsWithoutDummy = prev.filter((report) => report.id !== 0);
-      if (reportsWithoutDummy.length % groupNum !== 0) {
-        for (let i = 0; i < reportsWithoutDummy.length % groupNum; i++) {
+      if (reportsWithoutDummy.length % pageSize !== 0) {
+        for (let i = 0; i < reportsWithoutDummy.length % pageSize; i++) {
           reportsWithoutDummy.push({
             id: 0,
             attributes: {
@@ -52,21 +65,11 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
       }
       return reportsWithoutDummy;
     });
-  }, [data, findReports, groupNum]);
-
-  // group
-  const reportsGroup = reports.reduce((acc, cur, i) => {
-    if (i % groupNum === 0) acc.push([cur]);
-    else acc[acc.length - 1].push(cur);
-    return acc;
-  }, [] as Report[][]);
-
-  // page
-  const [page, setPage] = useState(1);
-  const maxPage = reportsGroup.length;
+    setTotal(meta.pagination.pageCount);
+  }, [loading, page]);
 
   return (
-    (reportsGroup.length > 0 && (
+    (reports.length > 0 && (
       <>
         <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>
@@ -76,7 +79,7 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
             </div>
           </h1>
           <div className='flex items-center justify-between flex-wrap'>
-            {reportsGroup[page - 1].map((report) =>
+            {reports.map((report) =>
               report.id !== 0 ? (
                 <div key={report.id} className='w-full lg:w-1/2 animate-fade-in'>
                   <Link to={'/report/' + report.id} className='hover:opacity-80'>
@@ -129,23 +132,23 @@ const Reports: FC<Props> = ({ data, groupNum, findReports }) => {
           {page > 1 ? (
             <button onClick={() => setPage(page - 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <div className='flex justify-center items-center'>
+                <span className='flex justify-center items-center'>
                   <i className='las la-angle-left'></i>
-                </div>
+                </span>
               </p>
             </button>
           ) : (
             <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
           )}
           <p className='text-md mr-2'>
-            {page} / {maxPage}
+            {page} / {total}
           </p>
-          {page < maxPage ? (
+          {page < total ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <div className='flex justify-center items-center'>
+                <span className='flex justify-center items-center'>
                   <i className='las la-angle-right'></i>
-                </div>
+                </span>
               </p>
             </button>
           ) : (

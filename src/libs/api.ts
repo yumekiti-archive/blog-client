@@ -8,40 +8,39 @@ import Tag from './interfaces/tag';
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
 // get
-const useGet = (url: string, page: number, pageSize: number) => {
-  const { data, error } = useSWR(`${window.location.origin}/api/${url}?pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`, fetcher);
-
-  return {
-    data,
-    isLoading: !error && !data,
-    isError: error,
-  };
+const useGet = (pluralApiId: string, page: number, pageSize: number, field?: string, value?: string) => {
+  const filters = value ? `filters${field}=${value}&` : '';
+  return useSWR(
+    `https://blog.yumekiti.net/api/${pluralApiId}?sort=id%3Adesc&${filters}pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`,
+    fetcher,
+  );
+  // return useSWR(`${window.location.origin}/api/${pluralApiId}?sort=id%3Adesc?${filters}pagination[page]=${page}&pagination[pageSize]=${pageSize}&populate=*`, fetcher);
 };
 
 // categories
-export const useGetCategories = (page:number, pageSize:number): Category[] => {
-  const { data, isLoading, isError } = useGet('categories', page, pageSize);
-  if (isLoading || isError) return [];
-  return data.data;
+export const useGetCategories = (page: number, pageSize: number, field?: string, value?: string): Category[] => {
+  const { data, error } = useGet('categories', page, pageSize, field, value);
+  if (error || !data) return [];
+  return data;
 };
 
 // knowledges
-export const useGetKnowledges = (page:number, pageSize:number): Knowledge[] => {
-  const { data, isLoading, isError } = useGet('knowledges', page, pageSize);
-  if (isLoading || isError) return [];
-  return data.data;
+export const useGetKnowledges = (page: number, pageSize: number, field?: string, value?: string): Knowledge[] => {
+  const { data, error } = useGet('knowledges', page, pageSize, field, value);
+  if (error || !data) return [];
+  return data;
 };
 
 // reports
-export const useGetReports = (page:number, pageSize:number): Report[] => {
-  const { data, isLoading, isError } = useGet('reports', page, pageSize);
-  if (isLoading || isError) return [];
-  return data.data;
+export const useGetReports = (page: number, pageSize: number, field?: string, value?: string): Report => {
+  const { data, error } = useGet('reports', page, pageSize, field, value);
+  if (error || !data) return { data: [], meta: { pagination: { page: 0, pageSize: 0, pageCount: 0, total: 0 } } };
+  return data;
 };
 
 // tags
-export const useGetTags = (page:number, pageSize:number): Tag[] => {
-  const { data, isLoading, isError } = useGet('tags', page, pageSize);
-  if (isLoading || isError) return [];
-  return data.data;
+export const useGetTags = (page: number, pageSize: number, field?: string, value?: string): Tag[] => {
+  const { data, error } = useGet('tags', page, pageSize, field, value);
+  if (error || !data) return [];
+  return data;
 };

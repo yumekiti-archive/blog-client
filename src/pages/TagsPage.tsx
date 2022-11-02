@@ -33,10 +33,10 @@ const TagsList: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports data={reports} groupNum={4} findReports={{ category: 0, tag: Number(id), search: '' }} />
+            {/* <Reports data={reports} groupNum={4} findReports={{ category: 0, tag: Number(id), search: '' }} /> */}
           </div>
           <div className='my-12 mx-6'>
-            <Knowledges data={knowledges} groupNum={5} findKnowledges={{ category: 0, tag: Number(id), search: '' }} />
+            {/* <Knowledges data={knowledges} groupNum={5} findKnowledges={{ category: 0, tag: Number(id), search: '' }} /> */}
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
@@ -46,12 +46,8 @@ const TagsList: FC = () => {
           <div className='my-12 mx-6'>
             <Search />
           </div>
-          <div className='my-12 mx-6'>
-            <Categories data={categories} />
-          </div>
-          <div className='my-12 mx-6'>
-            <Tags data={tags} />
-          </div>
+          <div className='my-12 mx-6'>{/* <Categories data={categories} /> */}</div>
+          <div className='my-12 mx-6'>{/* <Tags data={tags} /> */}</div>
         </div>
       </div>
     </>
