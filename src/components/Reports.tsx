@@ -7,9 +7,8 @@ import { useGetReports } from '../libs/api';
 interface Props {
   pageSize: number;
   findReports: {
-    search: string;
-    categoryId: number;
-    tagId: number;
+    type: number;
+    value: string;
   };
 }
 
@@ -18,25 +17,16 @@ const Reports: FC<Props> = ({ pageSize, findReports }) => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
+  
+  const { type, value } = findReports;
+  const filter = [
+    "",
+    "[category][id][$in]",  // category id in
+    "[tags][id][$in]",      // tag id in
+    "[title][$containsi]",  // title contains
+  ]
 
-  const { search, categoryId, tagId } = findReports;
-  const filter = {
-    field: '',
-    value: '',
-  };
-  if (categoryId !== 0) {
-    filter.field = '[category][id][$in]';
-    filter.value = categoryId.toString();
-  } else if (tagId !== 0) {
-    filter.field = '[tags][id][$in]';
-    filter.value = tagId.toString();
-  } else if (search !== '') {
-    filter.field = '[title][$containsi]';
-    filter.value = search;
-  }
-
-  const { data, meta } = useGetReports(page, pageSize, filter.field, filter.value);
-
+  const { data, meta } = useGetReports(page, pageSize, filter[type], value);
   if (loading && data.length > 0) setLoading(false);
 
   useEffect(() => {

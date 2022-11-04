@@ -24,7 +24,7 @@ const Home: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports pageSize={4} findReports={{ categoryId: 0, tagId: 0, search: '' }} />
+            <Reports pageSize={4} findReports={{ type: 0, value: '' }} />
           </div>
           <div className='my-12 mx-6'>
             {/* <Knowledges groupNum={5} findKnowledges={{ category: 0, tag: 0, search: '' }} /> */}
