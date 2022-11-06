@@ -2,43 +2,35 @@ import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Knowledge from '../libs/interfaces/knowledge';
 
+import { useGetKnowledges } from '../libs/api';
+
 interface Props {
-  data: Knowledge[];
-  groupNum: number;
-  findKnowledges: {
-    search: string;
-    category: number;
-    tag: number;
+  pageSize: number;
+  find: {
+    type: number;
+    value: string;
   };
 }
 
-const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
-  const [knowledges, setKnowledges] = useState<Knowledge[]>([]);
+const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
+  const [knowledges, setKnowledges] = useState<Knowledge['data']>([]);
+  const [page, setPage] = useState(1);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const { type, value } = find;
+  const { data, meta } = useGetKnowledges(page, pageSize, type, value);
+
+  if (loading && data.length > 0) setLoading(false);
 
   useEffect(() => {
-    // find
-    if (findKnowledges.category !== 0)
-      setKnowledges(data.filter((knowledge) => knowledge.attributes.category.data.id === findKnowledges.category));
-    else if (findKnowledges.tag !== 0)
-      setKnowledges(
-        data.filter((knowledge) => knowledge.attributes.tags.data.some((tag) => tag.id === findKnowledges.tag)),
-      );
-    else if (findKnowledges.search !== '')
-      setKnowledges(
-        data.filter((knowledge) =>
-          knowledge.attributes.title.toLowerCase().includes(findKnowledges.search.toLowerCase()),
-        ),
-      );
-    else setKnowledges(data);
+    setLoading(true);
+    if (!data) return;
 
-    // sort id desc
-    setKnowledges((prev) => prev.sort((a, b) => (a.id > b.id ? -1 : 1)));
-
-    // pseudo-element
+    setKnowledges(data);
     setKnowledges((prev) => {
       const knowledgesWithoutDummy = prev.filter((knowledge) => knowledge.id !== 0);
-      if (knowledgesWithoutDummy.length % groupNum !== 0) {
-        for (let i = 0; i < knowledgesWithoutDummy.length % groupNum; i++) {
+      if (knowledgesWithoutDummy.length % pageSize !== 0) {
+        for (let i = 0; i < knowledgesWithoutDummy.length % pageSize; i++) {
           knowledgesWithoutDummy.push({
             id: 0,
             attributes: {
@@ -57,21 +49,11 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
       }
       return knowledgesWithoutDummy;
     });
-  }, [data, findKnowledges, groupNum]);
-
-  // gorup
-  const knowledgeGroup = knowledges.reduce((acc, cur, i) => {
-    if (i % groupNum === 0) acc.push([cur]);
-    else acc[acc.length - 1].push(cur);
-    return acc;
-  }, [] as Knowledge[][]);
-
-  // page
-  const [page, setPage] = useState(1);
-  const maxPage = knowledgeGroup.length;
+    setTotal(meta.pagination.pageCount);
+  }, [loading, page]);
 
   return (
-    (knowledgeGroup.length > 0 && (
+    (knowledges.length > 0 && (
       <>
         <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>
@@ -81,7 +63,7 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
             </div>
           </h1>
           <div className='flex items-center justify-center flex-wrap'>
-            {knowledgeGroup[page - 1].map((knowledge) =>
+            {knowledges.map((knowledge) =>
               knowledge.id !== 0 ? (
                 <div
                   key={knowledge.id}
@@ -161,9 +143,9 @@ const KnowledgesComponent: FC<Props> = ({ data, groupNum, findKnowledges }) => {
             <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm mr-2' />
           )}
           <p className='text-md mr-2'>
-            {page} / {maxPage}
+            {page} / {total}
           </p>
-          {page < maxPage ? (
+          {page < total ? (
             <button onClick={() => setPage(page + 1)} className='mr-2'>
               <p className='w-8 h-8 bg-white rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
                 <div className='flex justify-center items-center'>

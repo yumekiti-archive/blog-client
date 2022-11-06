@@ -32,9 +32,9 @@ export const useGetCategories = (page: number, pageSize: number, type: number, v
 };
 
 // knowledges
-export const useGetKnowledges = (page: number, pageSize: number, type: number, value: string): Knowledge[] => {
+export const useGetKnowledges = (page: number, pageSize: number, type: number, value: string): Knowledge => {
   const { data, error } = useGet('knowledges', page, pageSize, type, value);
-  if (error || !data) return [];
+  if (error || !data) return { data: [], meta: { pagination: { page: 0, pageSize: 0, pageCount: 0, total: 0 } } };
   return data;
 };
 
