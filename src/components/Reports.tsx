@@ -19,14 +19,8 @@ const Reports: FC<Props> = ({ pageSize, findReports }) => {
   const [loading, setLoading] = useState(true);
   
   const { type, value } = findReports;
-  const filter = [
-    "",
-    "[category][id][$in]",  // category id in
-    "[tags][id][$in]",      // tag id in
-    "[title][$containsi]",  // title contains
-  ]
 
-  const { data, meta } = useGetReports(page, pageSize, filter[type], value);
+  const { data, meta } = useGetReports(page, pageSize, type, value);
   if (loading && data.length > 0) setLoading(false);
 
   useEffect(() => {
