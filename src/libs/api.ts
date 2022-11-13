@@ -6,11 +6,11 @@ import Report from './interfaces/report';
 import Tag from './interfaces/tag';
 
 const filter = [
-  "",                     // none filter
-  "[category][id][$in]",  // category id in
-  "[tags][id][$in]",      // tag id in
-  "[title][$containsi]",  // title contains
-]
+  '', // none filter
+  '[category][id][$in]', // category id in
+  '[tags][id][$in]', // tag id in
+  '[title][$containsi]', // title contains
+];
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
 

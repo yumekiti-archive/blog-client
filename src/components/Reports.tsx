@@ -6,21 +6,20 @@ import { useGetReports } from '../libs/api';
 
 interface Props {
   pageSize: number;
-  findReports: {
+  find: {
     type: number;
     value: string;
   };
 }
 
-const Reports: FC<Props> = ({ pageSize, findReports }) => {
+const Reports: FC<Props> = ({ pageSize, find }) => {
   const [reports, setReports] = useState<Report['data']>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(true);
-  
-  const { type, value } = findReports;
-
+  const { type, value } = find;
   const { data, meta } = useGetReports(page, pageSize, type, value);
+
   if (loading && data.length > 0) setLoading(false);
 
   useEffect(() => {
