@@ -18,7 +18,7 @@ const App: FC = () => {
       <Header header={getHeaderMock()} />
       <Routes>
         <Route path='/' element={<Home />} />
-        {/* <Route path='/reports' element={<ReportList />} />
+        <Route path='/reports' element={<ReportList />} />
         <Route path='/report/:id' element={<ReportPage />} />
         <Route
           path='/knowledge'
@@ -35,7 +35,7 @@ const App: FC = () => {
         <Route
           path='/search'
           element={<SearchPage />}
-        /> */}
+        />
       </Routes>
     </>
   );
