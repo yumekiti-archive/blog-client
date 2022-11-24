@@ -13,7 +13,7 @@ const ReportList: FC = () => {
   return (
     <div className='container mx-auto flex flex-wrap'>
       <div className='w-full lg:w-3/4 mx-auto'>
-        <div className='my-12 mx-6'>{/* <ReportDetail report={report} /> */}</div>
+        <div className='my-12 mx-6'><ReportDetail id={Number(id)} /></div>
       </div>
       <div className='w-full lg:w-1/4 mx-auto'>
         <div className='my-12 mx-6'>

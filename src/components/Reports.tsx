@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Report from '../libs/interfaces/report';
+import { Report } from '../libs/interfaces/report';
 
 import { useGetReports } from '../libs/api';
 

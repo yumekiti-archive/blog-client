@@ -1,7 +1,7 @@
 import { CategoryRelation } from './category';
 import { TagRelation } from './tag';
 
-export default interface Report {
+export interface Report {
   data: {
     id: number;
     attributes: {
@@ -31,4 +31,28 @@ export default interface Report {
       total: number;
     };
   };
+}
+
+export interface ReportDetail {
+  data: {
+    id: number;
+    attributes: {
+      img: {
+        data: {
+          id: number;
+          attributes: {
+            name: string;
+            url: string;
+          };
+        };
+      };
+      title: string;
+      body: string;
+      category: CategoryRelation;
+      tags: TagRelation;
+      createdAt: string;
+      updatedAt: string;
+      publishedAt: string;
+    };
+  }
 }
