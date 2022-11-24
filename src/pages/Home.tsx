@@ -8,7 +8,6 @@ import Knowledges from '../components/Knowledges';
 import Search from '../components/Search';
 
 import Report from '../libs/interfaces/report';
-import Category from '../libs/interfaces/category';
 import Tag from '../libs/interfaces/tag';
 import Knowledge from '../libs/interfaces/knowledge';
 
@@ -35,7 +34,7 @@ const Home: FC = () => {
           <div className='my-12 mx-6'>
             <Search />
           </div>
-          <div className='my-12 mx-6'>{/* <Categories /> */}</div>
+          <div className='my-12 mx-6'><Categories pageSize={10} find={{ type: 0, value: '' }} /></div>
           <div className='my-12 mx-6'>{/* <Tags /> */}</div>
         </div>
       </div>

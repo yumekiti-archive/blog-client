@@ -1,4 +1,4 @@
-import Category from './category';
+import { CategoryRelation } from './category';
 import Tag from './tag';
 
 export default interface Report {
@@ -16,7 +16,7 @@ export default interface Report {
       };
       title: string;
       body: string;
-      category: { data: Category };
+      category: CategoryRelation;
       tags: { data: Tag[] };
       createdAt: string;
       updatedAt: string;

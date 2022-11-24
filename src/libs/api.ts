@@ -1,6 +1,6 @@
 import useSWR from 'swr';
 
-import Category from './interfaces/category';
+import { Category } from './interfaces/category';
 import Knowledge from './interfaces/knowledge';
 import Report from './interfaces/report';
 import Tag from './interfaces/tag';
@@ -25,9 +25,9 @@ const useGet = (pluralApiId: string, page: number, pageSize: number, type: numbe
 };
 
 // categories
-export const useGetCategories = (page: number, pageSize: number, type: number, value: string): Category[] => {
+export const useGetCategories = (page: number, pageSize: number, type: number, value: string): Category => {
   const { data, error } = useGet('categories', page, pageSize, type, value);
-  if (error || !data) return [];
+  if (error || !data) return { data: [], meta: { pagination: { page: 0, pageSize: 0, pageCount: 0, total: 0 } } };
   return data;
 };
 
