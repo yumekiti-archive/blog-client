@@ -1,44 +1,29 @@
 import { FC } from 'react';
 
-import { getReportsMock } from '../libs/mocks/reports';
-import { getCategoriesMock } from '../libs/mocks/categories';
-import { getIntroduceMock } from '../libs/mocks/introduce';
-import { getTagsMock } from '../libs/mocks/tags';
-
-import Report from '../libs/interfaces/report';
-import Category from '../libs/interfaces/category';
-import Tag from '../libs/interfaces/tag';
-
 import Reports from '../components/Reports';
 import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
 import Tags from '../components/Tags';
 import Search from '../components/Search';
 
-import { useGetReports, useGetCategories, useGetTags, useGetKnowledges } from '../libs/api';
-
 const ReportList: FC = () => {
-  const reports = useGetReports(1, 4);
-  const categories = useGetCategories(1, 25);
-  const tags = useGetTags(1, 100);
-
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            {/* <Reports data={reports} groupNum={8} findReports={{ category: 0, tag: 0, search: '' }} /> */}
+            <Reports pageSize={8} find={{ type: 0, value: '' }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Introduce data={getIntroduceMock()} />
+            <Introduce />
           </div>
           <div className='my-12 mx-6'>
             <Search />
           </div>
-          <div className='my-12 mx-6'>{/* <Categories data={categories} /> */}</div>
-          <div className='my-12 mx-6'>{/* <Tags data={tags} /> */}</div>
+          <div className='my-12 mx-6'><Categories pageSize={10} find={{ type: 0, value: '' }} /></div>
+          <div className='my-12 mx-6'><Tags pageSize={100} find={{ type: 0, value: '' }} /></div>
         </div>
       </div>
     </>
