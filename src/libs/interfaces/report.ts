@@ -1,5 +1,5 @@
 import { CategoryRelation } from './category';
-import Tag from './tag';
+import { TagRelation } from './tag';
 
 export default interface Report {
   data: {
@@ -17,7 +17,7 @@ export default interface Report {
       title: string;
       body: string;
       category: CategoryRelation;
-      tags: { data: Tag[] };
+      tags: TagRelation;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;

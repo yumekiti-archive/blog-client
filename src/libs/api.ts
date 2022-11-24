@@ -3,7 +3,7 @@ import useSWR from 'swr';
 import { Category } from './interfaces/category';
 import Knowledge from './interfaces/knowledge';
 import Report from './interfaces/report';
-import Tag from './interfaces/tag';
+import { Tag } from './interfaces/tag';
 
 const filter = [
   '', // none filter
@@ -46,8 +46,8 @@ export const useGetReports = (page: number, pageSize: number, type: number, valu
 };
 
 // tags
-export const useGetTags = (page: number, pageSize: number, type: number, value: string): Tag[] => {
+export const useGetTags = (page: number, pageSize: number, type: number, value: string): Tag => {
   const { data, error } = useGet('tags', page, pageSize, type, value);
-  if (error || !data) return [];
+  if (error || !data) return { data: [], meta: { pagination: { page: 0, pageSize: 0, pageCount: 0, total: 0 } } };
   return data;
 };

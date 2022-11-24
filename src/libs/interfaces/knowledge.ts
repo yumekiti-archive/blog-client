@@ -1,5 +1,5 @@
 import { CategoryRelation } from './category';
-import Tag from './tag';
+import { TagRelation } from './tag';
 
 export default interface Knowledge {
   data: {
@@ -18,7 +18,7 @@ export default interface Knowledge {
       content: string;
       path: string;
       category: CategoryRelation;
-      tags: { data: Tag[] };
+      tags: TagRelation;
       createdAt: string;
       updatedAt: string;
       publishedAt: string;
