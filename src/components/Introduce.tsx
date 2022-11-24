@@ -1,11 +1,10 @@
 import { FC } from 'react';
 import Introduce from '../libs/interfaces/introduce';
+import { getIntroduceMock } from '../libs/mocks/introduce';
 
-interface Props {
-  data: Introduce;
-}
+const IntroduceComponent: FC = () => {
+  const introduce: Introduce = getIntroduceMock();
 
-const IntroduceComponent: FC<Props> = ({ data }) => {
   return (
     <div className='card-color rounded'>
       <h1 className='text-xl text-center py-4'>
@@ -17,9 +16,9 @@ const IntroduceComponent: FC<Props> = ({ data }) => {
         alt='アイコン'
         className='w-32 h-32 mx-auto rounded-full object-cover'
       />
-      <p className='text-lg text-center'>{data.name}</p>
+      <p className='text-lg text-center'>{introduce.name}</p>
       <p className='text-center text-sm p-4'>
-        {data.body.split('\n').map((line) => (
+        {introduce.body.split('\n').map((line) => (
           <span key={line}>
             {line}
             <br />
@@ -27,7 +26,7 @@ const IntroduceComponent: FC<Props> = ({ data }) => {
         ))}
       </p>
       <ul className='flex items-center justify-end'>
-        {data.links.map((link, index) => (
+        {introduce.links.map((link, index) => (
           <a href={link.path} target='_blank' rel='noreferrer' key={index}>
             <li className='mx-2 hover:opacity-50'>
               <div className='flex justify-center items-center'>

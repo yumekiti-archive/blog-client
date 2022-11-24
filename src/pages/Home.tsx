@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 
 import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
@@ -6,15 +6,6 @@ import Tags from '../components/Tags';
 import Reports from '../components/Reports';
 import Knowledges from '../components/Knowledges';
 import Search from '../components/Search';
-
-import Report from '../libs/interfaces/report';
-import Knowledge from '../libs/interfaces/knowledge';
-
-import { getReportsMock } from '../libs/mocks/reports';
-import { getCategoriesMock } from '../libs/mocks/categories';
-import { getIntroduceMock } from '../libs/mocks/introduce';
-import { getKnowledgeMock } from '../libs/mocks/knowledges';
-import { getTagsMock } from '../libs/mocks/tags';
 
 const Home: FC = () => {
   return (
@@ -29,7 +20,7 @@ const Home: FC = () => {
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
-          <div className='my-12 mx-6'>{/* <Introduce /> */}</div>
+          <div className='my-12 mx-6'><Introduce /></div>
           <div className='my-12 mx-6'>
             <Search />
           </div>
