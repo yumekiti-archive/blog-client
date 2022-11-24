@@ -20,22 +20,10 @@ const App: FC = () => {
         <Route path='/' element={<Home />} />
         <Route path='/reports' element={<ReportList />} />
         <Route path='/report/:id' element={<ReportPage />} />
-        <Route
-          path='/knowledge'
-          element={<KnowledgesList />}
-        />
-        <Route
-          path='/categories/:id'
-          element={<CategoriesPage />}
-        />
-        <Route
-          path='/tags/:id'
-          element={<TagsPage />}
-        />
-        <Route
-          path='/search'
-          element={<SearchPage />}
-        />
+        <Route path='/knowledge' element={<KnowledgesList />} />
+        <Route path='/categories/:id' element={<CategoriesPage />} />
+        <Route path='/tags/:id' element={<TagsPage />} />
+        <Route path='/search' element={<SearchPage />} />
       </Routes>
     </>
   );

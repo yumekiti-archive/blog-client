@@ -10,7 +10,7 @@ const filter = [
   '[category][id][$in]', // category id in
   '[tags][id][$in]', // tag id in
   '[title][$containsi]', // title contains
-  ''
+  '',
 ];
 
 const fetcher = (url: string) => fetch(url).then((res) => res.json());
@@ -56,6 +56,21 @@ export const useGetTags = (page: number, pageSize: number, type: number, value: 
 // report
 export const useGetReport = (id: number): ReportDetail => {
   const { data } = useSWR(`https://blog.yumekiti.net/api/reports/${id}?populate=*`, fetcher);
-  if (!data) return { data: { id: 0, attributes: { img: { data: { id: 0, attributes: { name: '', url: '' } } }, title: '', body: '', category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: ''} } }, tags: { data: [] }, createdAt: '', updatedAt: '', publishedAt: '' } } };
+  if (!data)
+    return {
+      data: {
+        id: 0,
+        attributes: {
+          img: { data: { id: 0, attributes: { name: '', url: '' } } },
+          title: '',
+          body: '',
+          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+          tags: { data: [] },
+          createdAt: '',
+          updatedAt: '',
+          publishedAt: '',
+        },
+      },
+    };
   return data;
 };

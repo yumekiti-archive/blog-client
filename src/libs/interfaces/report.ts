@@ -54,5 +54,5 @@ export interface ReportDetail {
       updatedAt: string;
       publishedAt: string;
     };
-  }
+  };
 }

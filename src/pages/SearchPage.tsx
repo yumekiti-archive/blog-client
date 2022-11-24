@@ -30,8 +30,12 @@ const SearchPage: FC = () => {
           <div className='my-12 mx-6'>
             <Search />
           </div>
-          <div className='my-12 mx-6'><Categories pageSize={10} find={{ type: 0, value: '' }} /></div>
-          <div className='my-12 mx-6'><Tags pageSize={100} find={{ type: 0, value: '' }} /></div>
+          <div className='my-12 mx-6'>
+            <Categories pageSize={10} find={{ type: 0, value: '' }} />
+          </div>
+          <div className='my-12 mx-6'>
+            <Tags pageSize={100} find={{ type: 0, value: '' }} />
+          </div>
         </div>
       </div>
     </>

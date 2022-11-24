@@ -11,7 +11,7 @@ interface Props {
 
 const ReportDetailComponent: FC<Props> = ({ id }) => {
   const { data } = useGetReport(id);
-  
+
   return (
     <>
       {data && (
