@@ -12,6 +12,29 @@ interface Props {
   };
 }
 
+// 疑似要素
+const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
+  const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
+  if (reportsWithoutDummy.length % pageSize !== 0) {
+    for (let i = 0; i < reportsWithoutDummy.length % pageSize; i++) {
+      reportsWithoutDummy.push({
+        id: 0,
+        attributes: {
+          img: { data: { id: 0, attributes: { name: '', url: '' } } },
+          title: `dummy${i}`,
+          body: '',
+          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+          tags: { data: [] },
+          createdAt: '',
+          updatedAt: '',
+          publishedAt: '',
+        },
+      });
+    }
+  }
+  return reportsWithoutDummy;
+};
+
 const Reports: FC<Props> = ({ pageSize, find }) => {
   const [reports, setReports] = useState<Report['data']>([]);
   const [page, setPage] = useState(1);
@@ -27,27 +50,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
     if (!data) return;
 
     setReports(data);
-    setReports((prev) => {
-      const reportsWithoutDummy = prev.filter((report) => report.id !== 0);
-      if (reportsWithoutDummy.length % pageSize !== 0) {
-        for (let i = 0; i < reportsWithoutDummy.length % pageSize; i++) {
-          reportsWithoutDummy.push({
-            id: 0,
-            attributes: {
-              img: { data: { id: 0, attributes: { name: '', url: '' } } },
-              title: `dummy${i}`,
-              body: '',
-              category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
-              tags: { data: [] },
-              createdAt: '',
-              updatedAt: '',
-              publishedAt: '',
-            },
-          });
-        }
-      }
-      return reportsWithoutDummy;
-    });
+    setReports(generateReportsDummy(data, pageSize));
     setTotal(meta.pagination.pageCount);
   }, [loading, page]);
 
