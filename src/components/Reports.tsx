@@ -47,6 +47,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
+    setReports(data);
     if (!data) return;
 
     setReports(data);

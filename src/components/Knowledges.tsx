@@ -24,6 +24,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
+    setKnowledges(data);
     if (!data) return;
 
     setKnowledges(data);
