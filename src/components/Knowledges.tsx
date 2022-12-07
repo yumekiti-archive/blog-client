@@ -75,16 +75,16 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
                     <br />
                     <div className='flex items-center'>
                       {knowledge.attributes.img.data ? (
-                        <div>
+                        <div className='mx-6'>
                           <img
                             src={`${window.location.origin}${knowledge.attributes.img.data.attributes.url}`}
                             alt={knowledge.attributes.title}
-                            className='w-16 h-16 object-contain mx-6'
+                            className='w-16 h-16 object-contain'
                           />
                         </div>
                       ) : (
-                        <div>
-                          <div className='w-16 h-16 object-contain mx-6 bg-gray-200 rounded-full' />
+                        <div className='mx-6'>
+                          <div className='w-16 h-16 object-contain bg-gray-200 rounded-full' />
                         </div>
                       )}
                       <div className='text-left truncate w-full'>
