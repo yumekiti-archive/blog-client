@@ -12,6 +12,29 @@ interface Props {
   };
 }
 
+const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: number): Knowledge['data'] => {
+  const knowledgesWithoutDummy = prevKnowledges.filter((knowledge) => knowledge.id !== 0);
+  if (knowledgesWithoutDummy.length % pageSize !== 0) {
+    for (let i = 0; i < knowledgesWithoutDummy.length % pageSize; i++) {
+      knowledgesWithoutDummy.push({
+        id: 0,
+        attributes: {
+          title: `dummy${i}`,
+          content: '',
+          img: { data: { id: 1, attributes: { name: '', url: '' } } },
+          path: '',
+          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+          tags: { data: [] },
+          createdAt: '',
+          updatedAt: '',
+          publishedAt: '',
+        },
+      });
+    }
+  }
+  return knowledgesWithoutDummy;
+};
+
 const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
   const [knowledges, setKnowledges] = useState<Knowledge['data']>([]);
   const [page, setPage] = useState(1);
@@ -27,28 +50,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
     if (!knowledges) return;
 
     setKnowledges(data);
-    setKnowledges((prev) => {
-      const knowledgesWithoutDummy = prev.filter((knowledge) => knowledge.id !== 0);
-      if (knowledgesWithoutDummy.length % pageSize !== 0) {
-        for (let i = 0; i < knowledgesWithoutDummy.length % pageSize; i++) {
-          knowledgesWithoutDummy.push({
-            id: 0,
-            attributes: {
-              title: `dummy${i}`,
-              content: '',
-              img: { data: { id: 1, attributes: { name: '', url: '' } } },
-              path: '',
-              category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
-              tags: { data: [] },
-              createdAt: '',
-              updatedAt: '',
-              publishedAt: '',
-            },
-          });
-        }
-      }
-      return knowledgesWithoutDummy;
-    });
+    setKnowledges(generateKnowledgesDummy(data, pageSize));
     setTotal(meta.pagination.pageCount);
   }, [find, loading, page]);
 
