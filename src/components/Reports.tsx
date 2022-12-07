@@ -47,13 +47,12 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
-    setReports(data);
-    if (!data) return;
+    if (!reports) return;
 
     setReports(data);
     setReports(generateReportsDummy(data, pageSize));
     setTotal(meta.pagination.pageCount);
-  }, [loading, page]);
+  }, [find, loading, page]);
 
   return (
     (reports.length > 0 && (

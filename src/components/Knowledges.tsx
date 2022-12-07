@@ -24,8 +24,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
-    setKnowledges(data);
-    if (!data) return;
+    if (!knowledges) return;
 
     setKnowledges(data);
     setKnowledges((prev) => {
@@ -51,7 +50,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
       return knowledgesWithoutDummy;
     });
     setTotal(meta.pagination.pageCount);
-  }, [loading, page]);
+  }, [find, loading, page]);
 
   return (
     (knowledges.length > 0 && (
