@@ -73,29 +73,39 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
                     <br />
                     <div className='flex items-center'>
                       {knowledge.attributes.img.data ? (
-                        <img
-                          src={`${window.location.origin}${knowledge.attributes.img.data.attributes.url}`}
-                          alt={knowledge.attributes.title}
-                          className='w-16 h-16 object-contain mx-6'
-                        />
+                        <div>
+                          <img
+                            src={`${window.location.origin}${knowledge.attributes.img.data.attributes.url}`}
+                            alt={knowledge.attributes.title}
+                            className='w-16 h-16 object-contain mx-6'
+                          />
+                        </div>
                       ) : (
-                        <div className='w-16 h-16 object-contain mx-6'></div>
+                        <div>
+                          <div className='w-16 h-16 object-contain mx-6 bg-gray-200 rounded-full' />
+                        </div>
                       )}
                       <div className='text-left truncate w-full'>
                         <p className='text-sm overflow-scroll overflow-hidden'>
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
-                        <p className='text-xl overflow-scroll overflow-hidden'>{knowledge.attributes.title}</p>
-                        <p className='text-sm overflow-scroll overflow-hidden'>{knowledge.attributes.content}</p>
+                        <p className='text-xl overflow-scroll overflow-hidden'>{knowledge.attributes.title}</p> 
+                        {knowledge.attributes.content ? (
+                          <p className='text-sm overflow-scroll overflow-hidden'>{knowledge.attributes.content}</p>
+                        ) : (
+                          <p className='text-sm overflow-scroll overflow-hidden'>未開拓</p>
+                        )}
                       </div>
                     </div>
                   </a>
                   <div className='flex justify-end items-center'>
                     <p className='text-sm px-3 py-1 bg-cyan-100 rounded-full mx-2 my-2 hover:bg-cyan-200 cursor-pointer whitespace-nowrap'>
-                      {knowledge.attributes.category.data && (
+                      {knowledge.attributes.category.data ? (
                         <Link to={`/categories/${knowledge.attributes.category.data.id}`}>
                           {knowledge.attributes.category.data.attributes.name}
                         </Link>
+                      ) : (
+                        <p>未分類</p>
                       )}
                     </p>
                     <div className='overflow-scroll overflow-hidden flex'>
