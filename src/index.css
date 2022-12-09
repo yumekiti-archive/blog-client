@@ -3,12 +3,11 @@
 @tailwind utilities;
 
 @import url(markdown.css);
-@import url('https://fonts.cdnfonts.com/css/proxima-nova-2');
 
 body {
   background-color: #d8eefe;
   color: #094067;
-  font-family: 'Proxima Nova', sans-serif;
+  font-family: 'Noto Sans JP', sans-serif;
 }
 
 .overflow-scroll::-webkit-scrollbar {
