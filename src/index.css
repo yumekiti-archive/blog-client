@@ -6,8 +6,16 @@
 
 body {
   background-color: #d8eefe;
-  color: #094067;
+  color: #5f6c7b;
   font-family: 'Noto Sans JP', sans-serif;
+}
+
+h1 {
+  color: #094067;
+}
+
+h2 {
+  color: #094067;
 }
 
 .overflow-scroll::-webkit-scrollbar {
