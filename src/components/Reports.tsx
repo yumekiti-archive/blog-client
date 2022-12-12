@@ -47,7 +47,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
-    if (!reports) return;
+    if (!data.length) return;
 
     setReports(data);
     setReports(generateReportsDummy(data, pageSize));
@@ -55,7 +55,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
   }, [find, loading, page]);
 
   return (
-    (reports.length > 0 && (
+    (
       <>
         <div className='card-color rounded'>
           <h1 className='text-xl text-center py-4'>
@@ -64,55 +64,78 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
               <span className='mx-2'>新規記事</span>
             </div>
           </h1>
-          <div className='flex items-center justify-between flex-wrap'>
-            {reports.map((report) =>
-              report.id !== 0 ? (
-                <div key={report.id} className='w-full lg:w-1/2 animate-fade-in'>
-                  <Link to={'/report/' + report.id} className='hover:opacity-80'>
-                    <div className='px-4 pb-6 relative'>
-                      <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
-                        <div className='mt-2 ml-2'>
-                          <div className='bg-cyan-100 text-xs px-2 py-1 rounded-full inline'>
-                            {report.attributes.category.data && report.attributes.category.data.attributes.name}
+          { !loading ? (
+            <div className='flex items-center justify-between flex-wrap'>
+              {reports.map((report) =>
+                report.id !== 0 ? (
+                  <div key={report.id} className='w-full lg:w-1/2 animate-fade-in'>
+                    <Link to={'/report/' + report.id} className='hover:opacity-80'>
+                      <div className='px-4 pb-6 relative'>
+                        <div className='card-color rounded-lg shadow-md border-2 border-[#094067]'>
+                          <div className='mt-2 ml-2'>
+                            <div className='bg-cyan-100 text-xs px-2 py-1 rounded-full inline'>
+                              {report.attributes.category.data && report.attributes.category.data.attributes.name}
+                            </div>
                           </div>
+                          {report.attributes.img.data ? (
+                            <img
+                              src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
+                              alt={report.attributes.title}
+                              className='w-full h-48 object-contain p-2'
+                            />
+                          ) : (
+                            <div className='w-full h-48 bg-gray-200 p-2'></div>
+                          )}
+                          <div className='flex justify-start items-center px-6 py-2 h-20'>
+                            <p className='text-md text-left line-clamp-2'>{report.attributes.title}</p>
+                          </div>
+                          <p className='text-sm text-right pr-2 pb-1'>
+                            {report.attributes.createdAt.split('T')[0].split('-').join('/')}
+                          </p>
                         </div>
-                        {report.attributes.img.data ? (
-                          <img
-                            src={`${window.location.origin}${report.attributes.img.data.attributes.url}`}
-                            alt={report.attributes.title}
-                            className='w-full h-48 object-contain p-2'
-                          />
-                        ) : (
-                          <div className='w-full h-48 bg-gray-200 p-2'></div>
-                        )}
-                        <div className='flex justify-start items-center px-6 py-2 h-20'>
-                          <p className='text-md text-left line-clamp-2'>{report.attributes.title}</p>
+                      </div>
+                    </Link>
+                  </div>
+                ) : (
+                  <div key={report.attributes.title} className='w-full lg:w-1/2'>
+                    <div className='px-4 pb-6'>
+                      <div className='border-2 opacity-0'>
+                        <div className='mt-2 ml-2'>
+                          <div className='text-xs px-2 py-1'>&nbsp;</div>
                         </div>
-                        <p className='text-sm text-right pr-2 pb-1'>
-                          {report.attributes.createdAt.split('T')[0].split('-').join('/')}
-                        </p>
+                        <div className='h-48 p-2' />
+                        <div className='px-4 py-2 h-20'>
+                          <p className='text-md'>&nbsp;</p>
+                        </div>
+                        <p className='text-sm pr-2 pb-1'>&nbsp;</p>
                       </div>
-                    </div>
-                  </Link>
-                </div>
-              ) : (
-                <div key={report.attributes.title} className='w-full lg:w-1/2'>
-                  <div className='px-4 pb-6'>
-                    <div className='border-2 opacity-0'>
-                      <div className='mt-2 ml-2'>
-                        <div className='text-xs px-2 py-1'>&nbsp;</div>
-                      </div>
-                      <div className='h-48 p-2' />
-                      <div className='px-4 py-2 h-20'>
-                        <p className='text-md'>&nbsp;</p>
-                      </div>
-                      <p className='text-sm pr-2 pb-1'>&nbsp;</p>
                     </div>
                   </div>
-                </div>
-              ),
-            )}
-          </div>
+                ),
+              )}
+            </div>
+          ) : (
+            <div className='flex items-center justify-between flex-wrap'>
+              {(
+                [...Array(pageSize)].map((_, i) => (
+                  <div key={i} className='w-full lg:w-1/2'>
+                    <div className='px-4 pb-6'>
+                      <div className='border-2 opacity-0'>
+                        <div className='mt-2 ml-2'>
+                          <div className='text-xs px-2 py-1'>&nbsp;</div>
+                        </div>
+                        <div className='h-48 p-2' />
+                        <div className='px-4 py-2 h-20'>
+                          <p className='text-md'>&nbsp;</p>
+                        </div>
+                        <p className='text-sm pr-2 pb-1'>&nbsp;</p>
+                      </div>
+                    </div>
+                  </div>
+                ))
+              )}
+            </div>
+          )}
         </div>
         <div className='flex items-center justify-center mt-4'>
           {page > 1 ? (
@@ -142,8 +165,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
           )}
         </div>
       </>
-    )) ||
-    null
+    )
   );
 };
 

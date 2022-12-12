@@ -47,7 +47,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
-    if (!knowledges) return;
+    if (knowledges.length) return;
 
     setKnowledges(data);
     setKnowledges(generateKnowledgesDummy(data, pageSize));
@@ -55,15 +55,15 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
   }, [find, loading, page]);
 
   return (
-    (knowledges.length > 0 && (
-      <>
-        <div className='card-color rounded'>
-          <h1 className='text-xl text-center py-4'>
-            <div className='flex justify-center items-center'>
-              <i className='las la-paperclip'></i>
-              <span className='mx-2'>新規知見</span>
-            </div>
-          </h1>
+    <>
+      <div className='card-color rounded'>
+        <h1 className='text-xl text-center py-4'>
+          <div className='flex justify-center items-center'>
+            <i className='las la-paperclip'></i>
+            <span className='mx-2'>新規知見</span>
+          </div>
+        </h1>
+        { !loading ? (
           <div className='flex items-center justify-center flex-wrap'>
             {knowledges.map((knowledge) =>
               knowledge.id !== 0 ? (
@@ -144,37 +144,57 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
               ),
             )}
           </div>
-        </div>
-        <div className='flex items-center justify-center mt-4'>
-          {page > 1 ? (
-            <button onClick={() => setPage(page - 1)} className='mr-2'>
-              <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <span className='flex justify-center items-center'>
-                  <i className='las la-angle-left'></i>
-                </span>
-              </p>
-            </button>
-          ) : (
-            <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
-          )}
-          <p className='text-md mr-2'>
-            {page} / {total}
-          </p>
-          {page < total ? (
-            <button onClick={() => setPage(page + 1)} className='mr-2'>
-              <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
-                <span className='flex justify-center items-center'>
-                  <i className='las la-angle-right'></i>
-                </span>
-              </p>
-            </button>
-          ) : (
-            <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
-          )}
-        </div>
-      </>
-    )) ||
-    null
+        ) : (
+          <div className='flex items-center justify-center flex-wrap'>
+            {(
+              [...Array(pageSize)].map((_, i) => (
+                <div key={i} className='w-full mx-6 mb-4 overflow-hidden border-2 opacity-0'>
+                  <br />
+                  <div className='flex items-center'>
+                    <div className='w-16 h-16 mx-6' />
+                    <div className='text-left'>
+                      <p className='text-sm'>&nbsp;</p>
+                      <p className='text-xl'>&nbsp;</p>
+                      <p className='text-sm'>&nbsp;</p>
+                    </div>
+                  </div>
+                  <div className='flex justify-end items-center'>
+                    <p className='text-sm px-3 py-1 mx-2 my-2'>&nbsp;</p>
+                  </div>
+                </div>
+              ))
+            )}
+          </div>
+        )}
+      </div>
+      <div className='flex items-center justify-center mt-4'>
+        {page > 1 ? (
+          <button onClick={() => setPage(page - 1)} className='mr-2'>
+            <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
+              <span className='flex justify-center items-center'>
+                <i className='las la-angle-left'></i>
+              </span>
+            </p>
+          </button>
+        ) : (
+          <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
+        )}
+        <p className='text-md mr-2'>
+          {page} / {total}
+        </p>
+        {page < total ? (
+          <button onClick={() => setPage(page + 1)} className='mr-2'>
+            <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
+              <span className='flex justify-center items-center'>
+                <i className='las la-angle-right'></i>
+              </span>
+            </p>
+          </button>
+        ) : (
+          <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
+        )}
+      </div>
+    </>
   );
 };
 
