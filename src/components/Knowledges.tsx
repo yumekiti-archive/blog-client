@@ -54,6 +54,8 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
     setTotal(meta.pagination.pageCount);
   }, [find, loading, page]);
 
+  useEffect(() => {setPage(1)}, [find]);
+
   return (
     <>
       <div className='card-color rounded'>
