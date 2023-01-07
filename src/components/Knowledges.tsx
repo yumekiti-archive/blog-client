@@ -148,7 +148,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
           <div className='flex items-center justify-center flex-wrap'>
             {(
               [...Array(pageSize)].map((_, i) => (
-                <div key={i} className='animate-pulse w-full mx-6 mb-4 overflow-hidden border-2 relative'>
+                <div key={i} className='animate-pulse w-full mx-6 mb-4 overflow-hidden relative'>
                   <div className='opacity-0'>
                     <br />
                     <div className='flex items-center'>

@@ -8,7 +8,6 @@ import KnowledgesList from './pages/KnowledgesPage';
 import ReportPage from './pages/ReportPage';
 import CategoriesPage from './pages/CategoriesPage';
 import TagsPage from './pages/TagsPage';
-import SearchPage from './pages/SearchPage';
 
 import { getHeaderMock } from './libs/mocks/header';
 
@@ -23,7 +22,6 @@ const App: FC = () => {
         <Route path='/knowledge' element={<KnowledgesList />} />
         <Route path='/categories/:id' element={<CategoriesPage />} />
         <Route path='/tags/:id' element={<TagsPage />} />
-        <Route path='/search' element={<SearchPage />} />
       </Routes>
     </>
   );

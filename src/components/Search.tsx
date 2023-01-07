@@ -1,7 +1,9 @@
 import { FC, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const Search: FC = () => {
   const [search, setSearch] = useState('');
+  const navigate = useNavigate()
 
   return (
     <div className='card-color rounded'>
@@ -18,11 +20,9 @@ const Search: FC = () => {
           placeholder='キーワードを入力'
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          onKeyPress={(e) => {
+          onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              // /serch 検索ページに遷移
-              // /serch?search=検索ワード
-              window.location.href = '/search?search=' + search;
+              navigate(`/?search=${search}`)
             }
           }}
         />

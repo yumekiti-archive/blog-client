@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 import Introduce from '../components/Introduce';
 import Categories from '../components/Categories';
@@ -8,15 +9,18 @@ import Knowledges from '../components/Knowledges';
 import Search from '../components/Search';
 
 const Home: FC = () => {
+  const [searchParams] = useSearchParams();
+  const search = searchParams.get('search') || '';
+
   return (
     <>
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports pageSize={4} find={{ type: 0, value: '' }} />
+            <Reports pageSize={4} find={{ type: 3, value: search }} />
           </div>
           <div className='my-12 mx-6'>
-            <Knowledges pageSize={5} find={{ type: 0, value: '' }} />
+            <Knowledges pageSize={5} find={{ type: 3, value: search }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
