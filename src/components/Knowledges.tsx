@@ -15,13 +15,13 @@ interface Props {
 const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: number): Knowledge['data'] => {
   const knowledgesWithoutDummy = prevKnowledges.filter((knowledge) => knowledge.id !== 0);
   if (knowledgesWithoutDummy.length % pageSize !== 0) {
-    for (let i = 0; i < knowledgesWithoutDummy.length % pageSize; i++) {
+    for (let i = knowledgesWithoutDummy.length % pageSize; i < pageSize; i++) {
       knowledgesWithoutDummy.push({
         id: 0,
         attributes: {
           title: `dummy${i}`,
           content: '',
-          img: { data: { id: 1, attributes: { name: '', url: '' } } },
+          img: { data: { id: 0, attributes: { name: '', url: '' } } },
           path: '',
           category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
           tags: { data: [] },

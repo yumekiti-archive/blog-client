@@ -16,7 +16,7 @@ interface Props {
 const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
   const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
   if (reportsWithoutDummy.length % pageSize !== 0) {
-    for (let i = 0; i < reportsWithoutDummy.length % pageSize; i++) {
+    for (let i = reportsWithoutDummy.length % pageSize; i < pageSize; i++) {
       reportsWithoutDummy.push({
         id: 0,
         attributes: {
@@ -119,7 +119,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
               [...Array(pageSize)].map((_, i) => (
                 <div key={i} className='animate-pulse w-full lg:w-1/2 relative'>
                   <div className='px-4 pb-6'>
-                    <div className='border-2 opacity-0'>
+                    <div className='border-2'>
                       <div className='mt-2 ml-2'>
                         <div className='text-xs px-2 py-1'>&nbsp;</div>
                       </div>
