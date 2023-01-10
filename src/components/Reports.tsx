@@ -15,22 +15,21 @@ interface Props {
 // 疑似要素
 const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
   const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
-  if (reportsWithoutDummy.length % pageSize !== 0) {
-    for (let i = reportsWithoutDummy.length % pageSize; i < pageSize; i++) {
-      reportsWithoutDummy.push({
-        id: 0,
-        attributes: {
-          img: { data: { id: 0, attributes: { name: '', url: '' } } },
-          title: `dummy${i}`,
-          body: '',
-          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
-          tags: { data: [] },
-          createdAt: '',
-          updatedAt: '',
-          publishedAt: '',
-        },
-      });
-    }
+  if (reportsWithoutDummy.length % pageSize === 0) return reportsWithoutDummy;
+  for (let i = 0; i < pageSize - (reportsWithoutDummy.length % pageSize); i++) {
+    reportsWithoutDummy.push({
+      id: 0,
+      attributes: {
+        img: { data: { id: 0, attributes: { name: '', url: '' } } },
+        title: `dummy${i}`,
+        body: '',
+        category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+        tags: { data: [] },
+        createdAt: '',
+        updatedAt: '',
+        publishedAt: '',
+      },
+    });
   }
   return reportsWithoutDummy;
 };

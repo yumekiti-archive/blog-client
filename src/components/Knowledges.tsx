@@ -14,23 +14,22 @@ interface Props {
 
 const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: number): Knowledge['data'] => {
   const knowledgesWithoutDummy = prevKnowledges.filter((knowledge) => knowledge.id !== 0);
-  if (knowledgesWithoutDummy.length % pageSize !== 0) {
-    for (let i = knowledgesWithoutDummy.length % pageSize; i < pageSize; i++) {
-      knowledgesWithoutDummy.push({
-        id: 0,
-        attributes: {
-          title: `dummy${i}`,
-          content: '',
-          img: { data: { id: 0, attributes: { name: '', url: '' } } },
-          path: '',
-          category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
-          tags: { data: [] },
-          createdAt: '',
-          updatedAt: '',
-          publishedAt: '',
-        },
-      });
-    }
+  if (prevKnowledges.length % pageSize === 0) return knowledgesWithoutDummy;
+  for (let i = 0; i < pageSize - (prevKnowledges.length % pageSize); i++) {
+    knowledgesWithoutDummy.push({
+      id: 0,
+      attributes: {
+        title: `dummy${i}`,
+        content: '',
+        img: { data: { id: 0, attributes: { name: '', url: '' } } },
+        path: '',
+        category: { data: { id: 0, attributes: { name: '', createdAt: '', updatedAt: '', publishedAt: '' } } },
+        tags: { data: [] },
+        createdAt: '',
+        updatedAt: '',
+        publishedAt: '',
+      },
+    });
   }
   return knowledgesWithoutDummy;
 };
@@ -49,7 +48,6 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
     setLoading(true);
     if (!data.length) return;
 
-    setKnowledges(data);
     setKnowledges(generateKnowledgesDummy(data, pageSize));
     setTotal(meta.pagination.pageCount);
   }, [find, loading, page]);
