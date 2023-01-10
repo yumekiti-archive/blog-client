@@ -46,6 +46,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
 
   useEffect(() => {
     setLoading(true);
+    setKnowledges(data);
     if (!data.length) return;
 
     setKnowledges(generateKnowledgesDummy(data, pageSize));
