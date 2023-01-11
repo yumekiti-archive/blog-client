@@ -18,7 +18,7 @@ const Tags: FC<Props> = ({ pageSize, find }) => {
   const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const { type, value } = find;
-  const { data, error, isLoading } = useGet("tags", page, pageSize, type, value);
+  const { data, error, isLoading } = useGet('tags', page, pageSize, type, value);
 
   useEffect(() => {
     if (!data) return;

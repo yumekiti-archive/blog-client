@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 const Search: FC = () => {
   const [search, setSearch] = useState('');
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   return (
     <div className='card-color rounded'>
@@ -22,7 +22,7 @@ const Search: FC = () => {
           onChange={(e) => setSearch(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              navigate(`/?search=${search}`)
+              navigate(`/?search=${search}`);
             }
           }}
         />

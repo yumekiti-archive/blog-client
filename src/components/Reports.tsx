@@ -14,7 +14,7 @@ interface Props {
 
 // 疑似要素
 const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
-  const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);  
+  const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
   if (prevReports.length % pageSize === 0) return reportsWithoutDummy;
   for (let i = 0; i < pageSize - (prevReports.length % pageSize); i++) {
     reportsWithoutDummy.push({
@@ -47,7 +47,9 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
     setPageCount(data.meta.pagination.pageCount);
   }, [data]);
 
-  useEffect(() => {setPage(1)}, [find]);
+  useEffect(() => {
+    setPage(1);
+  }, [find]);
 
   return (
     <>
@@ -58,7 +60,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
             <span className='mx-2'>新規記事</span>
           </div>
         </h1>
-        { !isLoading ? (
+        {!isLoading ? (
           <div className='flex items-center justify-between flex-wrap'>
             {reports.map((report) =>
               report.id !== 0 ? (
@@ -110,24 +112,22 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
           </div>
         ) : (
           <div className='flex items-center justify-between flex-wrap'>
-            {(
-              [...Array(pageSize)].map((_, i) => (
-                <div key={i} className='animate-pulse w-full lg:w-1/2 relative'>
-                  <div className='px-4 pb-6'>
-                    <div className='border-2'>
-                      <div className='mt-2 ml-2'>
-                        <div className='text-xs px-2 py-1'>&nbsp;</div>
-                      </div>
-                      <div className='h-48 p-2' />
-                      <div className='px-4 py-2 h-20'>
-                        <p className='text-md'>&nbsp;</p>
-                      </div>
-                      <p className='text-sm pr-2 pb-1'>&nbsp;</p>
+            {[...Array(pageSize)].map((_, i) => (
+              <div key={i} className='animate-pulse w-full lg:w-1/2 relative'>
+                <div className='px-4 pb-6'>
+                  <div className='border-2'>
+                    <div className='mt-2 ml-2'>
+                      <div className='text-xs px-2 py-1'>&nbsp;</div>
                     </div>
+                    <div className='h-48 p-2' />
+                    <div className='px-4 py-2 h-20'>
+                      <p className='text-md'>&nbsp;</p>
+                    </div>
+                    <p className='text-sm pr-2 pb-1'>&nbsp;</p>
                   </div>
                 </div>
-              ))
-            )}
+              </div>
+            ))}
           </div>
         )}
       </div>

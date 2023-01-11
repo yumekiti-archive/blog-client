@@ -57,7 +57,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
             <span className='mx-2'>新規知見</span>
           </div>
         </h1>
-        { !isLoading ? (
+        {!isLoading ? (
           <div className='flex items-center justify-center flex-wrap'>
             {knowledges.map((knowledge) =>
               knowledge.id !== 0 ? (
@@ -86,7 +86,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
                           {knowledge.attributes.createdAt.split('T')[0].split('-').join('/')}
                         </p>
                         <div className='overflow-scroll overflow-hidden'>
-                          <p className='text-xl'>{knowledge.attributes.title}</p> 
+                          <p className='text-xl'>{knowledge.attributes.title}</p>
                           {knowledge.attributes.content ? (
                             <p className='text-sm'>{knowledge.attributes.content}</p>
                           ) : (
@@ -110,9 +110,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
                       {knowledge.attributes.tags.data &&
                         knowledge.attributes.tags.data.map((tag) => (
                           <Link to={'/tags/' + tag.id} key={tag.id}>
-                            <p
-                              className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline whitespace-nowrap'
-                            >
+                            <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline whitespace-nowrap'>
                               {tag.attributes.name}
                             </p>
                           </Link>
@@ -140,26 +138,24 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
           </div>
         ) : (
           <div className='flex items-center justify-center flex-wrap'>
-            {(
-              [...Array(pageSize)].map((_, i) => (
-                <div key={i} className='animate-pulse w-full mx-6 mb-4 overflow-hidden border-2 relative'>
-                  <div className='opacity-0'>
-                    <br />
-                    <div className='flex items-center'>
-                      <div className='w-16 h-16 mx-6' />
-                      <div className='text-left'>
-                        <p className='text-sm'>&nbsp;</p>
-                        <p className='text-xl'>&nbsp;</p>
-                        <p className='text-sm'>&nbsp;</p>
-                      </div>
-                    </div>
-                    <div className='flex justify-end items-center'>
-                      <p className='text-sm px-3 py-1 mx-2 my-2'>&nbsp;</p>
+            {[...Array(pageSize)].map((_, i) => (
+              <div key={i} className='animate-pulse w-full mx-6 mb-4 overflow-hidden border-2 relative'>
+                <div className='opacity-0'>
+                  <br />
+                  <div className='flex items-center'>
+                    <div className='w-16 h-16 mx-6' />
+                    <div className='text-left'>
+                      <p className='text-sm'>&nbsp;</p>
+                      <p className='text-xl'>&nbsp;</p>
+                      <p className='text-sm'>&nbsp;</p>
                     </div>
                   </div>
+                  <div className='flex justify-end items-center'>
+                    <p className='text-sm px-3 py-1 mx-2 my-2'>&nbsp;</p>
+                  </div>
                 </div>
-              ))
-            )}
+              </div>
+            ))}
           </div>
         )}
       </div>
