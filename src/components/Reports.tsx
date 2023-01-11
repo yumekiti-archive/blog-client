@@ -15,7 +15,7 @@ interface Props {
 // 疑似要素
 const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
   const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
-  if (prevReports.length % pageSize === 0) return reportsWithoutDummy;
+  if (prevReports.length % pageSize === 0 && !(prevReports.length === 0)) return reportsWithoutDummy;
   for (let i = 0; i < pageSize - (prevReports.length % pageSize); i++) {
     reportsWithoutDummy.push({
       id: 0,
@@ -36,7 +36,7 @@ const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Re
 
 const Reports: FC<Props> = ({ size, find }) => {
   const pageSize = size;
-  const [reports, setReports] = useState<Report['data']>([]);
+  const [reports, setReports] = useState<Report['data']>(generateReportsDummy([], pageSize));
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const { type, value } = find;

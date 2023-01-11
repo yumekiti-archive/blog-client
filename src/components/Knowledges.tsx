@@ -14,8 +14,7 @@ interface Props {
 
 const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: number): Knowledge['data'] => {
   const knowledgesWithoutDummy = prevKnowledges.filter((knowledge) => knowledge.id !== 0);
-
-  if (prevKnowledges.length % pageSize === 0) return knowledgesWithoutDummy;
+  if (prevKnowledges.length % pageSize === 0 && !(prevKnowledges.length === 0)) return knowledgesWithoutDummy;
   for (let i = 0; i < pageSize - (prevKnowledges.length % pageSize); i++) {
     knowledgesWithoutDummy.push({
       id: 0,
