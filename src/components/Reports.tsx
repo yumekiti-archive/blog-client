@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Report } from '../libs/interfaces/report';
 
-import { useGetReports } from '../libs/api';
+import { useGet } from '../libs/api';
 
 interface Props {
   pageSize: number;
@@ -14,9 +14,9 @@ interface Props {
 
 // 疑似要素
 const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
-  const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
-  if (reportsWithoutDummy.length % pageSize === 0) return reportsWithoutDummy;
-  for (let i = 0; i < pageSize - (reportsWithoutDummy.length % pageSize); i++) {
+  const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);  
+  if (prevReports.length % pageSize === 0) return reportsWithoutDummy;
+  for (let i = 0; i < pageSize - (prevReports.length % pageSize); i++) {
     reportsWithoutDummy.push({
       id: 0,
       attributes: {
@@ -37,22 +37,15 @@ const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Re
 const Reports: FC<Props> = ({ pageSize, find }) => {
   const [reports, setReports] = useState<Report['data']>([]);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [pageCount, setPageCount] = useState(0);
   const { type, value } = find;
-  const { data, meta } = useGetReports(page, pageSize, type, value);
-
-  if (loading && data.length > 0) setLoading(false);
+  const { data, error, isLoading } = useGet('reports', page, pageSize, type, value);
 
   useEffect(() => {
-    setLoading(true);
-    setReports(data);
-    if (!data.length) return;
-
-    setReports(data);
-    setReports(generateReportsDummy(data, pageSize));
-    setTotal(meta.pagination.pageCount);
-  }, [find, loading, page]);
+    if (!data) return;
+    setReports(generateReportsDummy(data.data, pageSize));
+    setPageCount(data.meta.pagination.pageCount);
+  }, [data]);
 
   useEffect(() => {setPage(1)}, [find]);
 
@@ -65,7 +58,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
             <span className='mx-2'>新規記事</span>
           </div>
         </h1>
-        { !loading ? (
+        { !isLoading ? (
           <div className='flex items-center justify-between flex-wrap'>
             {reports.map((report) =>
               report.id !== 0 ? (
@@ -151,9 +144,9 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
           <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
         )}
         <p className='text-md mr-2'>
-          {page} / {total}
+          {page} / {pageCount}
         </p>
-        {page < total ? (
+        {page < pageCount ? (
           <button onClick={() => setPage(page + 1)} className='mr-2'>
             <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
               <span className='flex justify-center items-center'>

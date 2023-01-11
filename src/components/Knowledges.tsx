@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Knowledge from '../libs/interfaces/knowledge';
 
-import { useGetKnowledges } from '../libs/api';
+import { useGet } from '../libs/api';
 
 interface Props {
   pageSize: number;
@@ -14,6 +14,7 @@ interface Props {
 
 const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: number): Knowledge['data'] => {
   const knowledgesWithoutDummy = prevKnowledges.filter((knowledge) => knowledge.id !== 0);
+
   if (prevKnowledges.length % pageSize === 0) return knowledgesWithoutDummy;
   for (let i = 0; i < pageSize - (prevKnowledges.length % pageSize); i++) {
     knowledgesWithoutDummy.push({
@@ -37,23 +38,15 @@ const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: nu
 const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
   const [knowledges, setKnowledges] = useState<Knowledge['data']>([]);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [pageCount, setPageCount] = useState(0);
   const { type, value } = find;
-  const { data, meta } = useGetKnowledges(page, pageSize, type, value);
-
-  if (loading && data.length > 0) setLoading(false);
+  const { data, error, isLoading } = useGet('knowledges', page, pageSize, type, value);
 
   useEffect(() => {
-    setLoading(true);
-    setKnowledges(data);
-    if (!data.length) return;
-
-    setKnowledges(generateKnowledgesDummy(data, pageSize));
-    setTotal(meta.pagination.pageCount);
-  }, [find, loading, page]);
-
-  useEffect(() => {setPage(1)}, [find]);
+    if (!data) return;
+    setKnowledges(generateKnowledgesDummy(data.data, pageSize));
+    setPageCount(data.meta.pagination.pageCount);
+  }, [data]);
 
   return (
     <>
@@ -64,7 +57,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
             <span className='mx-2'>新規知見</span>
           </div>
         </h1>
-        { !loading ? (
+        { !isLoading ? (
           <div className='flex items-center justify-center flex-wrap'>
             {knowledges.map((knowledge) =>
               knowledge.id !== 0 ? (
@@ -183,9 +176,9 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
           <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm mr-2' />
         )}
         <p className='text-md mr-2'>
-          {page} / {total}
+          {page} / {pageCount}
         </p>
-        {page < total ? (
+        {page < pageCount ? (
           <button onClick={() => setPage(page + 1)} className='mr-2'>
             <p className='w-8 h-8 card-color rounded-full flex items-center justify-center text-sm hover:bg-cyan-100'>
               <span className='flex justify-center items-center'>

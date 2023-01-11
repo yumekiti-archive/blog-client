@@ -2,7 +2,7 @@ import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Tag } from '../libs/interfaces/tag';
 
-import { useGetTags } from '../libs/api';
+import { useGet } from '../libs/api';
 
 interface Props {
   pageSize: number;
@@ -15,19 +15,16 @@ interface Props {
 const Tags: FC<Props> = ({ pageSize, find }) => {
   const [tags, setTags] = useState<Tag['data']>([]);
   const [page, setPage] = useState(1);
-  const [total, setTotal] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
   const [loading, setLoading] = useState(true);
   const { type, value } = find;
-  const { data, meta } = useGetTags(page, pageSize, type, value);
-
-  if (loading && data.length > 0) setLoading(false);
+  const { data, error, isLoading } = useGet("tags", page, pageSize, type, value);
 
   useEffect(() => {
-    setLoading(true);
     if (!data) return;
-    setTags(data);
-    setTotal(meta.pagination.pageCount);
-  }, [loading, page]);
+    setTags(data.data);
+    setPageCount(data.meta.pagination.pageCount);
+  }, [data]);
 
   return (
     (tags.length > 0 && (

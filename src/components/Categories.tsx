@@ -1,7 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Category } from '../libs/interfaces/category';
-import { useGetCategories } from '../libs/api';
+import { useGet } from '../libs/api';
 
 interface Props {
   pageSize: number;
@@ -15,18 +15,13 @@ const CategoriesComponent: FC<Props> = ({ pageSize, find }) => {
   const [categories, setCategories] = useState<Category['data']>([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(true);
   const { type, value } = find;
-  const { data, meta } = useGetCategories(page, pageSize, type, value);
-
-  if (loading && data.length > 0) setLoading(false);
+  const { data, error, isLoading } = useGet('categories', page, pageSize, type, value);
 
   useEffect(() => {
-    setLoading(true);
     if (!data) return;
-    setCategories(data);
-    setTotal(meta.pagination.pageCount);
-  }, [loading, page]);
+    setCategories(data.data);
+  }, [data]);
 
   return (
     (categories.length > 0 && (
