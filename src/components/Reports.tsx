@@ -43,6 +43,8 @@ const Reports: FC<Props> = ({ size, find }) => {
   const { data, error, isLoading } = useGet('reports', page, pageSize, type, value);
 
   useEffect(() => {
+    setReports(generateReportsDummy([], pageSize));
+  
     if (!data) return;
     setReports(generateReportsDummy(data.data, pageSize));
     setPageCount(data.meta.pagination.pageCount);

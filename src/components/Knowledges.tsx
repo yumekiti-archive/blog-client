@@ -43,6 +43,8 @@ const KnowledgesComponent: FC<Props> = ({ size, find }) => {
   const { data, error, isLoading } = useGet('knowledges', page, pageSize, type, value);
 
   useEffect(() => {
+    setKnowledges(generateKnowledgesDummy([], pageSize));
+  
     if (!data) return;
     setKnowledges(generateKnowledgesDummy(data.data, pageSize));
     setPageCount(data.meta.pagination.pageCount);
