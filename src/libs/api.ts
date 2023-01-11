@@ -1,10 +1,5 @@
 import useSWR from 'swr';
 
-import { Category } from './interfaces/category';
-import Knowledge from './interfaces/knowledge';
-import { Report, ReportDetail } from './interfaces/report';
-import { Tag } from './interfaces/tag';
-
 const filter = [
   '', // none filter
   '[category][id][$in]', // category id in

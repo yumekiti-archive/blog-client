@@ -25,10 +25,10 @@ const ReportList: FC = () => {
           <Search />
         </div>
         <div className='my-12 mx-6'>
-          <Categories pageSize={10} find={{ type: 0, value: '' }} />
+          <Categories size={10} find={{ type: 0, value: '' }} />
         </div>
         <div className='my-12 mx-6'>
-          <Tags pageSize={100} find={{ type: 0, value: '' }} />
+          <Tags size={100} find={{ type: 0, value: '' }} />
         </div>
       </div>
     </div>

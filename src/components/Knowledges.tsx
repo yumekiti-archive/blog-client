@@ -5,7 +5,7 @@ import Knowledge from '../libs/interfaces/knowledge';
 import { useGet } from '../libs/api';
 
 interface Props {
-  pageSize: number;
+  size: number;
   find: {
     type: number;
     value: string;
@@ -35,7 +35,8 @@ const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: nu
   return knowledgesWithoutDummy;
 };
 
-const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
+const KnowledgesComponent: FC<Props> = ({ size, find }) => {
+  const pageSize = size;
   const [knowledges, setKnowledges] = useState<Knowledge['data']>([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
@@ -50,6 +51,7 @@ const KnowledgesComponent: FC<Props> = ({ pageSize, find }) => {
 
   return (
     <>
+      {error && <div className='text-red-400'>{error}</div>}
       <div className='card-color rounded'>
         <h1 className='text-xl text-center py-4'>
           <div className='flex justify-center items-center'>

@@ -5,7 +5,7 @@ import { Report } from '../libs/interfaces/report';
 import { useGet } from '../libs/api';
 
 interface Props {
-  pageSize: number;
+  size: number;
   find: {
     type: number;
     value: string;
@@ -34,7 +34,8 @@ const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Re
   return reportsWithoutDummy;
 };
 
-const Reports: FC<Props> = ({ pageSize, find }) => {
+const Reports: FC<Props> = ({ size, find }) => {
+  const pageSize = size;
   const [reports, setReports] = useState<Report['data']>([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
@@ -53,6 +54,7 @@ const Reports: FC<Props> = ({ pageSize, find }) => {
 
   return (
     <>
+      {error && <div className='text-red-400'>{error}</div>}
       <div className='card-color rounded'>
         <h1 className='text-xl text-center py-4'>
           <div className='flex justify-center items-center'>

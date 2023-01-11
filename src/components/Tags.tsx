@@ -5,25 +5,22 @@ import { Tag } from '../libs/interfaces/tag';
 import { useGet } from '../libs/api';
 
 interface Props {
-  pageSize: number;
+  size: number;
   find: {
     type: number;
     value: string;
   };
 }
 
-const Tags: FC<Props> = ({ pageSize, find }) => {
+const Tags: FC<Props> = ({ size, find }) => {
+  const pageSize = size;
   const [tags, setTags] = useState<Tag['data']>([]);
-  const [page, setPage] = useState(1);
-  const [pageCount, setPageCount] = useState(0);
-  const [loading, setLoading] = useState(true);
   const { type, value } = find;
-  const { data, error, isLoading } = useGet('tags', page, pageSize, type, value);
+  const { data } = useGet('tags', 1, pageSize, type, value);
 
   useEffect(() => {
     if (!data) return;
     setTags(data.data);
-    setPageCount(data.meta.pagination.pageCount);
   }, [data]);
 
   return (

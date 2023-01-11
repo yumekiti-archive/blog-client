@@ -10,10 +10,11 @@ interface Props {
 }
 
 const ReportDetailComponent: FC<Props> = ({ id }) => {
-  const { data, error, isLoading } = useGetReport(id);
+  const { data, error } = useGetReport(id);
 
   return (
     <>
+      {error && <div className='text-red-400'>{error}</div>}
       {data && (
         <div className='card-color rounded'>
           <div className='block px-4 py-12 text-center'>

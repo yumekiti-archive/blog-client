@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { FC } from 'react';
 import { useParams } from 'react-router-dom';
 
 import Introduce from '../components/Introduce';
@@ -16,10 +16,10 @@ const CategoriesList: FC = () => {
       <div className='container mx-auto flex flex-wrap'>
         <div className='w-full lg:w-3/4 mx-auto'>
           <div className='my-12 mx-6'>
-            <Reports pageSize={4} find={{ type: 1, value: String(id) }} />
+            <Reports size={4} find={{ type: 1, value: String(id) }} />
           </div>
           <div className='my-12 mx-6'>
-            <Knowledges pageSize={5} find={{ type: 1, value: String(id) }} />
+            <Knowledges size={5} find={{ type: 1, value: String(id) }} />
           </div>
         </div>
         <div className='w-full lg:w-1/4 mx-auto'>
@@ -30,10 +30,10 @@ const CategoriesList: FC = () => {
             <Search />
           </div>
           <div className='my-12 mx-6'>
-            <Categories pageSize={10} find={{ type: 0, value: '' }} />
+            <Categories size={10} find={{ type: 0, value: '' }} />
           </div>
           <div className='my-12 mx-6'>
-            <Tags pageSize={100} find={{ type: 0, value: '' }} />
+            <Tags size={100} find={{ type: 0, value: '' }} />
           </div>
         </div>
       </div>
