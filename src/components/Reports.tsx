@@ -13,7 +13,7 @@ interface Props {
 }
 
 // 疑似要素
-const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Report['data'] => {
+const generateReportsDummy = (prevReports: Report[], pageSize: number): Report[] => {
   const reportsWithoutDummy = prevReports.filter((report) => report.id !== 0);
   if (prevReports.length % pageSize === 0 && !(prevReports.length === 0)) return reportsWithoutDummy;
   for (let i = 0; i < pageSize - (prevReports.length % pageSize); i++) {
@@ -36,7 +36,7 @@ const generateReportsDummy = (prevReports: Report['data'], pageSize: number): Re
 
 const Reports: FC<Props> = ({ size, find }) => {
   const pageSize = size;
-  const [reports, setReports] = useState<Report['data']>(generateReportsDummy([], pageSize));
+  const [reports, setReports] = useState<Report[]>(generateReportsDummy([], pageSize));
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const { type, value } = find;
