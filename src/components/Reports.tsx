@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Report } from '../libs/interfaces/report';
+import Report from '../libs/interfaces/report';
 
 import { useGet } from '../libs/api';
 
@@ -44,7 +44,7 @@ const Reports: FC<Props> = ({ size, find }) => {
 
   useEffect(() => {
     setReports(generateReportsDummy([], pageSize));
-  
+
     if (!data) return;
     setReports(generateReportsDummy(data.data, pageSize));
     setPageCount(data.meta.pagination.pageCount);

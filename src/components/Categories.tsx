@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Category } from '../libs/interfaces/category';
+import Category from '../libs/interfaces/category';
 import { useGet } from '../libs/api';
 
 interface Props {
@@ -52,7 +52,7 @@ const CategoriesComponent: FC<Props> = ({ size, find }) => {
           </ul>
         </div>
       )) ||
-      null}
+        null}
     </>
   );
 };

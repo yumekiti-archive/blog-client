@@ -1,6 +1,6 @@
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Tag } from '../libs/interfaces/tag';
+import Tag from '../libs/interfaces/tag';
 
 import { useGet } from '../libs/api';
 
@@ -14,7 +14,7 @@ interface Props {
 
 const Tags: FC<Props> = ({ size, find }) => {
   const pageSize = size;
-  const [tags, setTags] = useState<Tag['data']>([]);
+  const [tags, setTags] = useState<Tag[]>([]);
   const { type, value } = find;
   const { data } = useGet('tags', 1, pageSize, type, value);
 

@@ -1,6 +1,7 @@
 import { FC, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Knowledge from '../libs/interfaces/knowledge';
+import Tag from '../libs/interfaces/tag';
 
 import { useGet } from '../libs/api';
 
@@ -44,7 +45,7 @@ const KnowledgesComponent: FC<Props> = ({ size, find }) => {
 
   useEffect(() => {
     setKnowledges(generateKnowledgesDummy([], pageSize));
-  
+
     if (!data) return;
     setKnowledges(generateKnowledgesDummy(data.data, pageSize));
     setPageCount(data.meta.pagination.pageCount);
@@ -111,7 +112,7 @@ const KnowledgesComponent: FC<Props> = ({ size, find }) => {
                     </div>
                     <div className='overflow-scroll overflow-hidden flex'>
                       {knowledge.attributes.tags.data &&
-                        knowledge.attributes.tags.data.map((tag) => (
+                        knowledge.attributes.tags.data.map((tag: Tag) => (
                           <Link to={'/tags/' + tag.id} key={tag.id}>
                             <p className='text-sm bg-gray-200 inline-block rounded-full px-3 py-1 cursor-pointer mr-2 my-2 hover:underline whitespace-nowrap'>
                               {tag.attributes.name}

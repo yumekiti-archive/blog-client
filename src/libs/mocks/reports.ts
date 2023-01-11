@@ -1,4 +1,4 @@
-import { Report } from '../interfaces/report';
+import Report from '../interfaces/report';
 
 export const getReportsMock = (): Report[] => {
   return [

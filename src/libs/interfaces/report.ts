@@ -1,7 +1,7 @@
-import { Category } from './category';
-import { TagRelation } from './tag';
+import Category from './category';
+import Tag from './tag';
 
-export interface Report {
+export default interface Report {
   id: number;
   attributes: {
     img: {
@@ -16,7 +16,7 @@ export interface Report {
     title: string;
     body: string;
     category: { data: Category };
-    tags: TagRelation;
+    tags: { data: Tag[] };
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
