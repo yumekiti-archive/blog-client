@@ -12,7 +12,7 @@ interface Props {
   };
 }
 
-const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: number): Knowledge['data'] => {
+const generateKnowledgesDummy = (prevKnowledges: Knowledge[], pageSize: number): Knowledge[] => {
   const knowledgesWithoutDummy = prevKnowledges.filter((knowledge) => knowledge.id !== 0);
   if (prevKnowledges.length % pageSize === 0 && !(prevKnowledges.length === 0)) return knowledgesWithoutDummy;
   for (let i = 0; i < pageSize - (prevKnowledges.length % pageSize); i++) {
@@ -36,7 +36,7 @@ const generateKnowledgesDummy = (prevKnowledges: Knowledge['data'], pageSize: nu
 
 const KnowledgesComponent: FC<Props> = ({ size, find }) => {
   const pageSize = size;
-  const [knowledges, setKnowledges] = useState<Knowledge['data']>([]);
+  const [knowledges, setKnowledges] = useState<Knowledge[]>([]);
   const [page, setPage] = useState(1);
   const [pageCount, setPageCount] = useState(0);
   const { type, value } = find;
