@@ -1,4 +1,4 @@
-import { CategoryRelation } from './category';
+import { Category } from './category';
 import { TagRelation } from './tag';
 
 export default interface Knowledge {
@@ -17,7 +17,7 @@ export default interface Knowledge {
       title: string;
       content: string;
       path: string;
-      category: CategoryRelation;
+      category: { data: Category };
       tags: TagRelation;
       createdAt: string;
       updatedAt: string;

@@ -13,7 +13,7 @@ interface Props {
 
 const CategoriesComponent: FC<Props> = ({ size, find }) => {
   const pageSize = size;
-  const [categories, setCategories] = useState<Category['data']>([]);
+  const [categories, setCategories] = useState<Category[]>([]);
   const { type, value } = find;
   const { data, error } = useGet('categories', 1, pageSize, type, value);
 

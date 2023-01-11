@@ -1,4 +1,4 @@
-import { CategoryRelation } from './category';
+import { Category } from './category';
 import { TagRelation } from './tag';
 
 export interface Report {
@@ -16,7 +16,7 @@ export interface Report {
       };
       title: string;
       body: string;
-      category: CategoryRelation;
+      category: { data: Category };
       tags: TagRelation;
       createdAt: string;
       updatedAt: string;
@@ -48,7 +48,7 @@ export interface ReportDetail {
       };
       title: string;
       body: string;
-      category: CategoryRelation;
+      category: { data: Category };
       tags: TagRelation;
       createdAt: string;
       updatedAt: string;
